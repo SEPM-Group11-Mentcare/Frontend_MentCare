@@ -22,7 +22,7 @@ const Footer = () => {
         window.open("https://www.google.com/maps?q=Somewhere+in+the+world");
       };
   return (
-    <footer className="py-8">
+    <footer className="md:mt-5 sm:mt-5 py-8">
       <div className="container mx-auto flex flex-wrap justify-between">
        {/* Column 1 */}
        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0 pl-6 lg:pl-0 pr-3">
