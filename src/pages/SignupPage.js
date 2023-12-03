@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SignupImg from "../assets/images/SignupImg.png";
 import InputForm from "../components/common/InputForm";
 import { ValidationSignup } from "../services/ValidationSignup";
+import ArrowIcon from "../assets/svg/ArrowIcon";
 
 const SignupPage = () => {
   // Handle value of signup form
@@ -75,7 +76,7 @@ const SignupPage = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="bg-white shadow-md rounded-lg overflow-hidden lg:flex w-3/4">
+      <div className="bg-white shadow-2xl rounded-lg overflow-hidden lg:flex w-3/4">
         {/* Image */}
         <div className="lg:w-1/2">
           {/* Title */}
@@ -162,11 +163,11 @@ const SignupPage = () => {
               />
               <span className="ml-2 text-gray-700 text-sm">
                 I agree with{" "}
-                <a href="/terms" className="text-blue-500 underline">
+                <a href="/terms" className="text-gray-500 underline">
                   Terms of Use
                 </a>{" "}
                 and{" "}
-                <a href="/privacy" className="text-blue-500 underline">
+                <a href="/privacy" className="text-gray-500 underline">
                   Privacy Policy
                 </a>
               </span>
@@ -188,11 +189,13 @@ const SignupPage = () => {
             <p className="mx-4 text-gray-500 font-bold">OR</p>
             <hr className="flex-1 border-t border-gray-300" />
           </div>{" "}
-          {/* Login Link */}
-          <p className="text-center">
+          <p className="item-center flex justify-center">
             Already have an account?{" "}
-            <a href="/login" className="text-blue-500 underline">
+            <a className="ml-2 font-bold underline flex items-center">
               Login
+              <span className="ml-1">
+                <ArrowIcon />
+              </span>
             </a>
           </p>
         </div>

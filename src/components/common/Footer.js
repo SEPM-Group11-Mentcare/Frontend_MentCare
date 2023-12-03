@@ -83,7 +83,7 @@ const Footer = () => {
           
 
         </div>
-        <div className="w-full mt-4 text-center border-t pt-4">
+        <div className="w-full mt-4 text-center border-t pt-4 text-gray-500">
           <p>2023 RMIT. All rights reserved.</p>
           </div>
       </div>
