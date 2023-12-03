@@ -91,17 +91,17 @@ const SigninPage = () => {
           </div>
           {/* Signup Button */}
           <button
-            className={`bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 w-full
+            className={`font-bold bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 w-full
              
             `}
             onClick={handleSigninButton}
           >
-            Signup
+            Login
           </button>
           {/* OR Line */}
           <div className="flex items-center my-6">
             <hr className="flex-1 border-t border-gray-300" />
-            <p className="mx-4 text-gray-500 font-bold">OR</p>
+            <p className="mx-4 text-gray-400 font-bold">OR</p>
             <hr className="flex-1 border-t border-gray-300" />
           </div>{" "}
           <p className="item-center flex justify-center">
