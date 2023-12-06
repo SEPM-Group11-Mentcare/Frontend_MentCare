@@ -1,122 +1,119 @@
 import React, { useState } from "react";
-import SignupImg from "../assets/images/SignupImg.png";
 import InputForm from "../components/common/InputForm";
-import SigninImg from "../assets/images/SigninImg.png";
 import ArrowIcon from "../assets/svg/ArrowIcon";
+import SignupImg from "../assets/images/SignupImg.png";
+import SigninImg from "../assets/images/SigninImg.png";
 
-const SigninPage = () => {
-  // Handle value of signup form
-  const [value, setValue] = useState({
+const TestPage2 = () => {
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
-    username: "",
   });
 
-  const handleValueChange = (fieldName) => (e) => {
-    const newValue = { ...value, [fieldName]: e.target.value };
-    setValue(newValue);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
-  const handleSigninButton = () => {
-    const userData = {
-      email: value.email,
-      password: value.password,
-    };
-    // Log user data (in a real application, this would be sent to a server)
-    console.log("user data", userData);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
   };
-  // Handle the error of value
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="bg-white shadow-2xl rounded-lg overflow-hidden md:mb-5 lg:flex w-3/4">
-        {/* Image */}
-        <div className="lg:w-1/2">
-          <img
-            src={SigninImg}
-            alt="Signup"
-            className="w-full h-full object-cover object-center"
-          />
-        </div>
-        {/* Signup Form */}
-        <div className="lg:w-1/2 p-8  ">
-          <h1 className="text-3xl font-bold mb-6 text-center">Welcome back!</h1>
-          {/* Email Input */}
-          <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              Email
-            </label>
-            <InputForm
-              size="md"
-              background="grey"
-              border="thin"
-              placeholder="Enter your email"
-              onChange={handleValueChange("email")}
-            />
-          </div>
-          {/* Password Input */}
-          <div className="mb-4">
-            <label
-              htmlFor="password"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              Password
-            </label>
-            <InputForm
-              type="password"
-              size="md"
-              background="grey"
-              border="thin"
-              placeholder="Enter your password"
-              onChange={handleValueChange("password")}
-            />
-          </div>
-          <div className="mb-4 text-right">
-            <a href="/login" className="text-gray-500 text-xs ">
-              Forgot password?
-            </a>
-          </div>
-          {/* Checkbox */}
-          <div className="mb-4 text-left">
-            <label htmlFor="agree" className="flex items-center">
-              <input
-                id="agree"
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-500 rounded focus:border-transparent focus:ring-0"
+    <div className="bg-bgColor flex items-center min-h-screen min-w-screen">
+      {/* For Laptop */}
+      <div className="hidden lg:block w-1/2">
+        <img
+          src={SigninImg}
+          alt="Signin"
+          className="max-w-none h-auto w-full"
+          style={{
+            width: `${SigninImg.width}px`,
+            height: `580px`,
+          }}
+        />
+      </div>
+
+      <div className="phone:w-full phone:mx-5 tablet:mx-10 h-full laptop:w-1/2 desktop:mr-20 ml-0 bg-white flex rounded-lg">
+        <div className="px-10 pb-10 w-full">
+          <h1 className="text-4xl font-bold p-10 text-center">Welcome back!</h1>
+          {/* Email and Password Inputs */}
+          <form onSubmit={handleSubmit}>
+            <div className="pb-5">
+              <label
+                htmlFor="email"
+                className="block text-gray-700 text-sm font-bold pb-2.5"
+              >
+                Email
+              </label>
+              <InputForm
+                size="md"
+                background="grey"
+                border="thin"
+                placeholder="Enter your email"
+                name="email"
+                onChange={handleInputChange}
               />
-              <span className="ml-2 text-gray-700 text-sm">Remember me</span>
-            </label>
-          </div>
-          {/* Signup Button */}
-          <button
-            className={`font-bold bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 w-full
-             
-            `}
-            onClick={handleSigninButton}
-          >
-            Login
-          </button>
-          {/* OR Line */}
-          <div className="flex items-center my-6">
-            <hr className="flex-1 border-t border-gray-300" />
-            <p className="mx-4 text-gray-400 font-bold">OR</p>
-            <hr className="flex-1 border-t border-gray-300" />
-          </div>{" "}
-          <p className="item-center flex justify-center">
-            Don't have an account?{" "}
-            <a className="ml-2 font-bold underline flex items-center">
-              Sign Up
-              <span className="ml-1">
-                <ArrowIcon />
-              </span>
-            </a>
-          </p>
+            </div>
+            <div className="">
+              <label
+                htmlFor="password"
+                className="block text-gray-700 text-sm font-bold pb-2.5"
+              >
+                Password
+              </label>
+              <InputForm
+                size="md"
+                background="grey"
+                border="thin"
+                placeholder="Enter your password"
+                onChange={handleInputChange}
+                name="password"
+                isPassword
+              />
+            </div>
+            {/* Forgot password, Remember me, Login, OR Line */}
+            <div className="pt-2.5 text-right">
+              <a href="/login" className="text-gray-500 text-xs">
+                Forgot password?
+              </a>
+            </div>
+            <div className=" pb-2.5">
+              <label htmlFor="agree" className="flex items-center">
+                <input
+                  id="agree"
+                  type="checkbox"
+                  className="form-checkbox h-4 w-4 text-blue-500 rounded focus:border-transparent focus:ring-0"
+                />
+                <span className="ml-2 text-gray-700 text-sm">Remember me</span>
+              </label>
+            </div>
+            <div className="">
+              <button
+                className="font-bold bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 w-full"
+                type="submit"
+              >
+                Login
+              </button>
+            </div>
+            <span className="flex items-center my-6 ">
+              <hr className="flex-1 border-t border-gray-300" />
+              <p className="mx-4 text-gray-400 font-bold">OR</p>
+              <hr className="flex-1 border-t border-gray-300" />
+            </span>
+            <span className="item-center flex justify-center ">
+              Don't have an account?{" "}
+              <a className="ml-2 font-bold underline flex items-center pr-1">
+                Sign Up
+              </a>
+              <ArrowIcon />
+            </span>
+          </form>
         </div>
       </div>
     </div>
   );
 };
 
-export default SigninPage;
+export default TestPage2;

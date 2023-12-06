@@ -1,47 +1,40 @@
 import React, { useState } from "react";
-import SignupImg from "../assets/images/SignupImg.png";
 import InputForm from "../components/common/InputForm";
-import { ValidationSignup } from "../services/ValidationSignup";
 import ArrowIcon from "../assets/svg/ArrowIcon";
+import SignupImg from "../assets/images/SignupImg.png";
+import SigninImg from "../assets/images/SigninImg.png";
+import { ValidationSignup } from "../services/ValidationSignup";
 
-const SignupPage = () => {
-  // Handle value of signup form
+const TestPage2 = () => {
   const [value, setValue] = useState({
     email: "",
     password: "",
     username: "",
   });
 
-  // Handle the error of value
   const [errorMessages, setErrorMessages] = useState({
     email: "",
     password: "",
     username: "",
   });
 
-  // Check value of checkbox
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
 
-  // Function to update value and perform validation
   const handleValueChange = (fieldName) => (e) => {
-    // Update the field value in state
     const newValue = { ...value, [fieldName]: e.target.value };
     setValue(newValue);
 
-    // Perform validation based on the field being updated
     const validationInput = ValidationSignup(
       fieldName === "email" ? e.target.value : value.email,
       fieldName === "password" ? e.target.value : value.password,
       fieldName === "username" ? e.target.value : value.username
     );
 
-    // Update the error message for the field in state
     setErrorMessages((prevError) => ({
       ...prevError,
       [fieldName]: validationInput.errors[fieldName] || "",
     }));
 
-    // Reset error message if the field is valid
     if (!validationInput.errors[fieldName]) {
       setErrorMessages((prevError) => ({
         ...prevError,
@@ -50,110 +43,102 @@ const SignupPage = () => {
     }
   };
 
-  // Handle the checkbox change event
   const handleCheckboxChange = (e) => {
     setIsCheckboxChecked(e.target.checked);
   };
 
-  // Handle signup button click
-  //Modify the Axios for Connect Backend here
   const handleSignupButton = () => {
-    // Perform signup logic when the button is clicked
     if (isCheckboxChecked) {
-      // Prepare user data to be sent to the server
       const userData = {
         username: value.username,
         email: value.email,
         password: value.password,
       };
-      // Log user data (in a real application, this would be sent to a server)
       console.log("user data", userData);
     } else {
-      // Display an alert if the checkbox is not checked
       alert("Please agree to the terms to sign up.");
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="bg-white shadow-2xl rounded-lg overflow-hidden lg:flex w-3/4">
-        {/* Image */}
-        <div className="lg:w-1/2">
-          {/* Title */}
-          <div className="text-center lg:text-left py-8 px-4">
-            <h1 className="text-3xl font-bold mb-6 text-center">
-              Let’s begin your journey!
-            </h1>
-          </div>
-          <img
-            src={SignupImg}
-            alt="Signup"
-            className="w-full h-full object-cover object-center"
-          />
-        </div>
-        {/* Signup Form */}
-        <div className="lg:w-1/2 p-8">
-          <h1 className="text-3xl font-bold mb-6 text-center">Sign Up</h1>
-          {/* Full Name Input */}
-          <div className="mb-4">
-            <label
-              htmlFor="fullname"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              Full Name
-            </label>
-            <InputForm
-              size="md"
-              background="grey"
-              border="thin"
-              placeholder="Enter your name"
-              onChange={handleValueChange("username")}
-            />
-            <span className="text-xs text-red-500 ml-0">
+    <div className="bg-bgColor flex items-center min-h-screen">
+      <div className="hidden laptop:flex flex-col justify-center items-center w-2/3 h-3/5">
+        <span className="text-4xl font-bold text-center">
+          Let’s begin your journey!
+        </span>
+        <img
+          src={SignupImg}
+          alt="Signup"
+          className="w-full h-full object-cover"
+          style={{
+            width: `${SigninImg.width}px`,
+            height: `590px`,
+          }}
+        />
+      </div>
+
+      <div className="phone:w-full phone:mx-5 tablet:mx-10 laptop:w-1/3 h-full laptop:ml-0 desktop:mr-20 bg-white flex mr-10 rounded-lg">
+        <div className="px-10 pb-10 w-full h-full">
+          <h1 className="text-4xl font-bold p-10 text-center">Sign Up</h1>
+          <form action="">
+            <div className="pb-5 relative">
+              <label
+                htmlFor="email"
+                className="block text-gray-700 text-sm font-bold pb-2.5"
+              >
+                Full Name
+              </label>
+              
+              <InputForm
+                size="md"
+                background="grey"
+                border="thin"
+                placeholder="Enter your Name"
+                onChange={handleValueChange("username")}
+              />
+              <span className="text-xs text-red-500 ml-0 absolute bottom-0 ">
               {errorMessages.username}
             </span>
-          </div>
-          {/* Email Input */}
-          <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              Email
-            </label>
-            <InputForm
-              size="md"
-              background="grey"
-              border="thin"
-              placeholder="Enter your email"
-              onChange={handleValueChange("email")}
-            />
-            <span className="text-xs text-red-500 ml-0">
+            </div>
+            <div className="pb-5 relative">
+              <label
+                htmlFor="email"
+                className="block text-gray-700 text-sm font-bold pb-2.5"
+              >
+                Email
+              </label>
+              <InputForm
+                size="md"
+                background="grey"
+                border="thin"
+                placeholder="Enter your Email"
+                onChange={handleValueChange("email")}
+              />
+               <span className="text-xs text-red-500 ml-0 absolute bottom-0 ">
               {errorMessages.email}
             </span>
-          </div>
-          {/* Password Input */}
-          <div className="mb-4">
-            <label
-              htmlFor="password"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              Password
-            </label>
-            <InputForm
-              type="password"
-              size="md"
-              background="grey"
-              border="thin"
-              placeholder="Enter your password"
-              onChange={handleValueChange("password")}
-            />
-            <span className="text-xs text-red-500 ml-0">
+            </div>
+            <div className="relative">
+              <label
+                htmlFor="password"
+                className="block text-gray-700 text-sm font-bold pb-2.5"
+              >
+                Password
+              </label>
+              <InputForm
+                size="md"
+                background="grey"
+                border="thin"
+                placeholder="Enter your Password"
+                onChange={handleValueChange("password")}
+                isPassword
+              />
+               <span className="text-xs text-red-500 ml-0 absolute pt-1 ">
               {errorMessages.password}
             </span>
-          </div>
-          {/* Checkbox */}
-          <div className="mb-4 text-left">
+            </div>
+          </form>
+          <div className="pt-5 text-left">
             <label htmlFor="agree" className="flex items-center">
               <input
                 id="agree"
@@ -173,25 +158,26 @@ const SignupPage = () => {
               </span>
             </label>
           </div>
-          {/* Signup Button */}
-          <button
-            className={`font-bold bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 w-full ${
-              !isCheckboxChecked ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-            onClick={handleSignupButton}
-            disabled={!isCheckboxChecked} // Disable button if checkbox is not checked
-          >
-            Sign Up
-          </button>
-          {/* OR Line */}
+          <div className="pt-5">
+            <button
+              className={`font-bold bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 w-full ${
+                !isCheckboxChecked ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              onClick={handleSignupButton}
+              disabled={!isCheckboxChecked}
+              type="submit"
+            >
+              Sign Up
+            </button>
+          </div>
           <div className="flex items-center my-6">
             <hr className="flex-1 border-t border-gray-300" />
             <p className="mx-4 text-gray-400 font-bold">OR</p>
             <hr className="flex-1 border-t border-gray-300" />
-          </div>{" "}
+          </div>
           <p className="item-center flex justify-center">
             Already have an account?{" "}
-            <a className="ml-2 font-bold underline flex items-center">
+            <a className="ml-2 font-bold underline flex items-center" href="/">
               Login
               <span className="ml-1">
                 <ArrowIcon />
@@ -204,4 +190,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default TestPage2;

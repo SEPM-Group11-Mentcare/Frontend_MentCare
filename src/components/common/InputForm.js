@@ -31,14 +31,15 @@ const InputFormVariants = cva(
   }
 );
 
-const InputForm = ({ type, size, placeholder, background, border, onChange }) => {
+const InputForm = ({ isPassword, size, placeholder, background, border, onChange,name }) => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
+  const togglePasswordVisibility = (e) => {
+    e.preventDefault();
     setShowPassword(!showPassword);
   };
 
-  const inputType = type === "password" ? (showPassword ? "text" : "password") : type;
+  const inputType = isPassword ? (showPassword ? "text" : "password") : "text";
 
   return (
     <div className="relative">
@@ -46,14 +47,15 @@ const InputForm = ({ type, size, placeholder, background, border, onChange }) =>
         type={inputType}
         placeholder={placeholder}
         onChange={onChange}
+        name={name}
         className={cn(InputFormVariants({ size, background, border }))}
       />
-      {type === "password" && (
+      {isPassword && (
         <button
           className="absolute top-1/2 right-4 transform -translate-y-1/2"
           onClick={togglePasswordVisibility}
         >
-          {showPassword ? <EyeIcon/> : <EyeSlashIcon/>}
+          {showPassword ? <EyeIcon /> : <EyeSlashIcon />}
         </button>
       )}
     </div>
