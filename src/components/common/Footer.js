@@ -21,10 +21,10 @@ const Footer = () => {
     window.open("https://www.google.com/maps?q=Somewhere+in+the+world");
   };
   return (
-    <footer className="md:mt-5 sm:mt-5 py-8">
-      <div className="container mx-auto flex flex-wrap justify-between">
+    <footer className="py-8">
+      <div className="container  justify-between mx-auto md:ml-[40px] flex md:flex-wrap lg:flex-nowrap">
         {/* Column 1 */}
-        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0 pl-6 lg:pl-0 pr-3">
+        <div className="w-full md:w-1/2  lg:w-1/4  lg:ml-[80px] lg:mr-[200px]">
           <h3 className="font-bold mb-7">
             <Logo />
           </h3>
@@ -60,7 +60,7 @@ const Footer = () => {
         </div>
 
         {/* Column 2 */}
-        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0 lg:pl-48 pr-3 pl-6">
+        <div className="w-full md:w-1/2 lg:w-1/4 mr-[24px]">
           <h3 className="font-bold lg:mb-7 lg:mt-3 md:mb-7 sm:mb-3">Home</h3>
           <ul className="space-y-2 ">
             <li className="mb-2 hover:text-blue-500 cursor-pointer">
@@ -77,7 +77,7 @@ const Footer = () => {
         </div>
 
         {/* Column 3 */}
-        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0 lg:pl-48 pr-3 pl-6">
+        <div className="w-full md:w-1/2 lg:w-1/4 mr-[24px]">
           <h3 className="font-bold lg:mb-7 lg:mt-3 md:mb-7 sm:mb-3">
             About Us
           </h3>
@@ -89,7 +89,7 @@ const Footer = () => {
         </div>
 
         {/* Column 4 */}
-        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0 lg:pl-40 pl-6">
+        <div className="w-full md:w-1/2 lg:w-1/4 mr-[80px]">
           <h3 className="font-bold lg:mb-7 lg:mt-3 md:mb-7 sm:mb-3">
             Social Media
           </h3>
@@ -105,10 +105,11 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="w-full mt-4 text-center border-t pt-4 text-gray-500">
+        
+      </div>
+      <div className="flex justify-center w-full mt-4 text-center border-t pt-4 text-gray-500">
           <p>2023 RMIT. All rights reserved.</p>
         </div>
-      </div>
     </footer>
   );
 };
