@@ -1,20 +1,21 @@
-import React from 'react';
-import './App.css';
-import  InputForm  from './components/common/InputForm';
-import Footer from './components/common/Footer';
-import SignupPage from './pages/SignupPage';
-import SigninPage from './pages/SigninPage';
-import LandingPage from './pages/LandingPage';
+import React from "react";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Landing from "./pages/Landing";
+import Footer from "./components/common/Footer";
+import Signup from "./pages/Signup";
+import Signin from "./pages/Signin";
 
 function App() {
   return (
     <div className="App">
-      {/* <SigninPage/> */}
-      {/* <SignupPage/> */}
-      <LandingPage/>
+      <Routes>
+        <Route path="/" element={<Landing />}></Route>
+        <Route path="/signup" element={<Signup/>}></Route>
+        <Route path="/signin" element={<Signin/>}></Route>
+      </Routes>
       <Footer/>
     </div>
-
   );
 }
 

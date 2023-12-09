@@ -4,34 +4,43 @@ import { cn } from "../../utils/cn";
 import { Link } from "react-router-dom";
 import EyeIcon from "../../assets/svg/EyeIcon";
 import EyeSlashIcon from "../../assets/svg/EyeSlashIcon";
+import Text from "./Text";
 
 const InputFormVariants = cva(
-  "input input-bordered focus:border-transparent focus:ring-0",
+  "input input-bordered hover:border-[#7879F1] focus:border-[#7879F1] focus:outline-none",
   {
     variants: {
       size: {
-        default: "input-md w-full",
+        default: "w-full text-sm",
         md: "input-md w-full ",
         sm: "input-sm w-full ",
         lg: "input-lg w-full ",
       },
       background: {
         grey: "bg-gray-100", // Background color grey
-        white: "bg-white",   // Background color white
+        white: "bg-white", // Background color white
       },
       border: {
         none: "border-none", // Style for no border
         thin: "border border-gray-200",
         normal: "border border-gray-400", // Style for normal border
       },
-      defaultVariants: {
-        size: "default",
-      },
+    },
+    defaultVariants: {
+      size: "default",
     },
   }
 );
 
-const InputForm = ({ isPassword, size, placeholder, background, border, onChange,name }) => {
+const InputForm = ({
+  size,
+  placeholder,
+  onChange,
+  label,
+  type,
+  value,
+  className,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = (e) => {
@@ -39,20 +48,31 @@ const InputForm = ({ isPassword, size, placeholder, background, border, onChange
     setShowPassword(!showPassword);
   };
 
-  const inputType = isPassword ? (showPassword ? "text" : "password") : "text";
+  let inputType;
+  if (type === "password") {
+    inputType = showPassword ? "text" : "password";
+  } else {
+    inputType = type;
+  }
 
   return (
     <div className="relative">
+      <div className="label w-full">
+        <Text variant="text-sm" weight="semibold" className="label-text">
+          {label}
+        </Text>
+      </div>
       <input
         type={inputType}
-        placeholder={placeholder}
+        value={value}
         onChange={onChange}
-        name={name}
-        className={cn(InputFormVariants({ size, background, border }))}
+        placeholder={placeholder}
+        className={cn(InputFormVariants({ className, size }))}
       />
-      {isPassword && (
+
+      {type === "password" && (
         <button
-          className="absolute top-1/2 right-4 transform -translate-y-1/2"
+          className="absolute bottom-0 right-4 transform -translate-y-1/2"
           onClick={togglePasswordVisibility}
         >
           {showPassword ? <EyeIcon /> : <EyeSlashIcon />}

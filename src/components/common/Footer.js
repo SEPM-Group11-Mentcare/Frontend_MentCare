@@ -1,11 +1,12 @@
 import React from "react";
-import Logo from "../../assets/svg/logo";
 import EmailIcon from "../../assets/svg/EmailIcon";
-import PhoneIcon from "../../assets/svg/PhoneIcon";
-import LocationIcon from "../../assets/svg/LocationIcon";
 import FacebookIcon from "../../assets/svg/FacebookIcon";
-import TwitterIcon from "../../assets/svg/TwiiterIcon";
 import LinkedinIcon from "../../assets/svg/LinkedinIcon";
+import LocationIcon from "../../assets/svg/LocationIcon";
+import Logo from "../../assets/svg/logo";
+import PhoneIcon from "../../assets/svg/PhoneIcon";
+import TwitterIcon from "../../assets/svg/TwiiterIcon";
+import Text from "./Text";
 
 const Footer = () => {
   //Function to open application
@@ -21,93 +22,67 @@ const Footer = () => {
     window.open("https://www.google.com/maps?q=Somewhere+in+the+world");
   };
   return (
-    <footer className="py-8">
-      <div className="container  justify-between mx-auto md:ml-[40px] flex md:flex-wrap lg:flex-nowrap">
-        {/* Column 1 */}
-        <div className="w-full md:w-1/2  lg:w-1/4  lg:ml-[80px] lg:mr-[200px]">
-          <h3 className="font-bold mb-7">
-            <Logo />
-          </h3>
-          <ul>
-            <li
-              className="flex items-center mb-3 hover:text-blue-500 cursor-pointer"
-              onClick={openEmail}
-            >
-              <EmailIcon />
-              <p className="pl-2 hover:text-blue-500 cursor-pointer">
-                example@example.com
-              </p>
-            </li>
-            <li
-              className="flex items-center mb-3 hover:text-blue-500 cursor-pointer"
-              onClick={openPhone}
-            >
-              <PhoneIcon />
-              <p className="pl-2 hover:text-blue-500 cursor-pointer">
-                +84 12345678
-              </p>
-            </li>
-            <li
-              className="flex items-center mb-3 hover:text-blue-500 cursor-pointer"
-              onClick={openLocation}
-            >
-              <LocationIcon />
-              <p className="pl-2 hover:text-blue-500 cursor-pointer">
-                Somewhere in the world
-              </p>
-            </li>
-          </ul>
+    <footer className="bg-white pt-10 flex flex-col gap-4">
+      <div className="flex justify-between px-20">
+      <div className="flex flex-col gap-3">
+        <div className="flex gap-2 items-center ">
+          <Logo />
+          <Text variant="text-2xl" weight="bold">
+            MindHeal
+          </Text>
         </div>
 
-        {/* Column 2 */}
-        <div className="w-full md:w-1/2 lg:w-1/4 mr-[24px]">
-          <h3 className="font-bold lg:mb-7 lg:mt-3 md:mb-7 sm:mb-3">Home</h3>
-          <ul className="space-y-2 ">
-            <li className="mb-2 hover:text-blue-500 cursor-pointer">
-              Benefits
-            </li>
-            <li className="mb-2 hover:text-blue-500 cursor-pointer">
-              Our Doctors
-            </li>
-            <li className="mb-2 hover:text-blue-500 cursor-pointer">
-              Our Testimonials
-            </li>
-            <li className="mb-2 hover:text-blue-500 cursor-pointer">Our FAQ</li>
-          </ul>
+        <div className="flex gap-2 items-center">
+          <EmailIcon />
+          <Text className="hover:text-blue-500" noLink={false}>
+          hello@menheal.com
+          </Text>
         </div>
 
-        {/* Column 3 */}
-        <div className="w-full md:w-1/2 lg:w-1/4 mr-[24px]">
-          <h3 className="font-bold lg:mb-7 lg:mt-3 md:mb-7 sm:mb-3">
-            About Us
-          </h3>
-          <ul className="space-y-2 ">
-            <li className="hover:text-blue-500 cursor-pointer">Company</li>
-            <li className="hover:text-blue-500 cursor-pointer">Achievement</li>
-            <li className="hover:text-blue-500 cursor-pointer">Our Goals</li>
-          </ul>
+        <div className="flex gap-2 items-center hover:text-blue-500">
+          <PhoneIcon/>
+          <Text className="hover:text-blue-500" noLink={false}>
+          +91 91813 23 2309
+          </Text>
         </div>
 
-        {/* Column 4 */}
-        <div className="w-full md:w-1/2 lg:w-1/4 mr-[80px]">
-          <h3 className="font-bold lg:mb-7 lg:mt-3 md:mb-7 sm:mb-3">
-            Social Media
-          </h3>
-          <ul className="flex">
-            <li className="mr-2">
-              <FacebookIcon />
-            </li>
-            <li className="mr-2">
-              <TwitterIcon />
-            </li>
-            <li>
-              <i className="fab fa-linkedin"></i> <LinkedinIcon />
-            </li>
-          </ul>
+        <div className="flex gap-2 items-center">
+          <LocationIcon/>
+          <Text className="hover:text-blue-500" noLink={false}>
+          Somewhere in the World
+          </Text>
         </div>
-        
       </div>
-      <div className="flex justify-center w-full mt-4 text-center border-t pt-4 text-gray-500">
+
+      <div className="flex gap-32">
+        <div className="flex flex-col gap-2">
+          <Text weight="semibold" noLink={false} className="hover:text-blue-500">Home</Text>
+          <Text className="text-gray-500 hover:text-blue-500" noLink={false}>Benefits</Text>
+          <Text className="text-gray-500 hover:text-blue-500" noLink={false}>Our Doctors</Text>
+          <Text className="text-gray-500 hover:text-blue-500" noLink={false}>Our Testimonials</Text>
+          <Text className="text-gray-500 hover:text-blue-500" noLink={false}>Our FAQ</Text>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Text weight="semibold" noLink={false} className="hover:text-blue-500">About Us</Text>
+          <Text className="text-gray-500 hover:text-blue-500" noLink={false}>Company</Text>
+          <Text className="text-gray-500 hover:text-blue-500" noLink={false}>Archivements</Text>
+          <Text className="text-gray-500 hover:text-blue-500" noLink={false}>Our Goal</Text>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Text weight="semibold" noLink={false} className="hover:text-blue-500">Home</Text>
+          <div className="flex gap-3">
+          <FacebookIcon/>
+          <TwitterIcon/>
+          <LinkedinIcon />
+          </div>
+        </div>
+       
+      </div>
+      </div>
+
+      <div className="flex justify-center w-full text-center border-t py-4 text-gray-500">
           <p>2023 RMIT. All rights reserved.</p>
         </div>
     </footer>
