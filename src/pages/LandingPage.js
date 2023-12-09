@@ -21,7 +21,9 @@ import icontag12 from "../assets/images/IconTag12.png";
 
 const LandingPage = () => {
   return (
+    // Set basic bacground color
     <div className="bg-bgColor">
+      {/* Section 1: Banner  */}
       <div className="flex pb-[97px]">
         <div className="ml-[102px] -w-1/3 ">
           <img src={background1} alt="background1" />
@@ -30,12 +32,14 @@ const LandingPage = () => {
           <img src={tagline} alt="tagline" />
         </div>
       </div>
+      {/* Section 2: Getting Started Section */}
       <div className="bg-white pb-[72px]">
         <div className="flex justify-center items-center pt-16 mb-5 ">
           <h1 className="text-4xl font-bold">Getting Started</h1>
         </div>
 
         <div className="flex justify-center lg:justify-around flex-wrap lg:flex-nowrap">
+        {/* Getting Started Container 1 */}
           <div className="flex flex-col items-center mx-32 lg:ml-44">
             <img
               src={logo1}
@@ -49,6 +53,7 @@ const LandingPage = () => {
               Get <span className="text-primaryBlue ">Online Consulting</span>
             </span>
           </div>
+          {/* Getting Started Container 2 */}
           <div className="flex flex-col items-center mx-4">
             <img
               src={logo3}
@@ -63,6 +68,7 @@ const LandingPage = () => {
               in distance
             </span>
           </div>
+          {/* Getting Started Container 3 */}
           <div className="flex flex-col items-center mx-32  lg:mr-44">
             <img
               src={logo2}
@@ -79,7 +85,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      {/* Part 3 */}
+      {/* Section 3: Always by your side */}
       <div className="pb-[156px]">
         <div className="flex justify-center items-center pt-16 ">
           <h1 className="text-4xl font-bold pb-[92px]">Always by your side</h1>
@@ -122,8 +128,10 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
+      {/* Section 4: What member said? */}
       <div className="bg-[#E1EEFF] flex pb-[156px] flex-wrap lg:flex-nowrap">
         <div className="w-full flex lg:w-1/2 pt-[156px] pl-[110px] pr-[108px]">
+          {/* Section 4 : Left view */}
           <div>
             <h1 className="text-[48px] font-bold pb-[22px]">
               What <span className="text-primaryBlue"> Our Member's </span>{" "}
@@ -156,6 +164,7 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
+        {/* Section 4 : Right view */}
         <div className="flex w-full lg:w-1/2 pt-[156px] ml-[110px] lg:ml-0">
           <div className="  w-[590px] h-[305px] rounded-[20px] border-2 bg-white ">
             <div className="flex pt-[49px] pl-[52px]">
@@ -187,8 +196,10 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
+      {/* Section 5 */}
       <div>
         <div className="flex justify-center py-[66px]">
+          {/* Section 5 Title */}
           <h1 className="text-[38px]">
             <span>
               Choose <span className="font-bold ">MindHeal</span>
