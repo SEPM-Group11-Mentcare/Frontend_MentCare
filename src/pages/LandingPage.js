@@ -29,7 +29,7 @@ const Landing = () => {
           </Text>
 
           <div className="flex justify-center items-center gap-6">
-            <Logo/>
+            <Logo />
             <Text variant="text-2xl" weight="bold">
               MindHeal
             </Text>
@@ -272,7 +272,6 @@ const Landing = () => {
           />
         </div>
       </div>
-
     </div>
   );
 };
