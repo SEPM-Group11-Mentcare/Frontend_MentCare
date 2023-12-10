@@ -7,6 +7,7 @@ import Checkbox from "../components/common/Checkbox";
 import Button from "../components/common/Button";
 import { ValidationSignup } from "../services/ValidationSignup";
 import ArrowIcon from "../assets/svg/ArrowIcon";
+import NavBar from "../components/common/NavBar";
 
 const Signup = () => {
   const {
@@ -22,15 +23,23 @@ const Signup = () => {
   };
 
   return (
-    <div className="bg-bgColor flex justify-center py-32">
-      <div className="h-3/4 flex max-w-3xl flex-col justify-center items-center gap-20">
-        <Text variant="text-2xl" weight="semibold" className="italic">
-          Let's begin your journey!
-        </Text>
-        <img src={require("../assets/images/SignupImg.png")} alt="avatarIcon" />
-      </div>
+    <div className="bg-bgColor flex flex-col">
+      {/* Navigation bar */}
+      <NavBar />
 
-      <Box className="w-1/3 max-w-md flex flex-col gap-4 justify-center">
+      {/* Form Sign In */}
+      <div className="bg-bgColor flex justify-center py-32">
+        <div className="h-3/4 flex max-w-3xl flex-col justify-center items-center gap-20">
+          <Text variant="text-2xl" weight="semibold" className="italic">
+            Let's begin your journey!
+          </Text>
+          <img
+            src={require("../assets/images/SignupImg.png")}
+            alt="avatarIcon"
+          />
+        </div>
+
+        <Box className="w-1/3 max-w-md flex flex-col gap-4 justify-center">
           <Text variant="text-2xl" weight="semibold" className="text-center">
             Sign Up
           </Text>
@@ -68,10 +77,14 @@ const Signup = () => {
               name="email"
               control={control}
               defaultValue=""
-              rules={{ required: "Email is required!", pattern: {
-                value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                message: "Invalid email format"
-              } }}
+              rules={{
+                required: "Email is required!",
+                pattern: {
+                  value:
+                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                  message: "Invalid email format",
+                },
+              }}
               render={({ field }) => (
                 <div>
                   <InputForm
@@ -94,10 +107,14 @@ const Signup = () => {
               name="password"
               control={control}
               defaultValue=""
-              rules={{ required: "Password is required!", pattern: {
-                value: /^(?=.*[A-Z]).{8,}$/,
-                message: "At least one uppercase letter and be at least 8 characters long."
-              } }}
+              rules={{
+                required: "Password is required!",
+                pattern: {
+                  value: /^(?=.*[A-Z]).{8,}$/,
+                  message:
+                    "At least one uppercase letter and be at least 8 characters long.",
+                },
+              }}
               render={({ field }) => (
                 <div>
                   <InputForm
@@ -155,12 +172,17 @@ const Signup = () => {
           </div>
 
           <div className="flex justify-center gap-3">
-          <Text>Already have an account?</Text>
-          <Text noLink={false} href="/signin" className="text-primaryBlue hover:underline hover:underline-offset-4">Sign In</Text>
+            <Text>Already have an account?</Text>
+            <Text
+              noLink={false}
+              href="/signin"
+              className="text-primaryBlue hover:underline hover:underline-offset-4"
+            >
+              Sign In
+            </Text>
           </div>
-
         </Box>
-    
+      </div>
     </div>
   );
 };
