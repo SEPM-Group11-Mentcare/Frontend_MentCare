@@ -6,6 +6,8 @@ import { Controller, useForm } from "react-hook-form";
 import Checkbox from "../components/common/Checkbox";
 import Button from "../components/common/Button";
 import NavBar from "../components/common/NavBar";
+import * as axiosInstance from "../services/axiosService";
+import Cookies from "js-cookie";
 
 const Signin = () => {
   const {
@@ -16,8 +18,16 @@ const Signin = () => {
     mode: "onChange",
   });
 
-  const onSubmit = (d) => {
-    console.log(d);
+  const onSubmit = async (d) => {
+    await axiosInstance
+      .signin(d.username, d.password)
+      .then((res) => {
+        console.log(res);
+        Cookies.set("token", res.token);
+      })
+      .catch((err) => {
+        console.log(err.response.data.error.message);
+      });
   };
 
   return (
@@ -26,7 +36,7 @@ const Signin = () => {
       <NavBar />
 
       {/* Form Sign In and Image */}
-      <div className="flex justify-center py-32">
+      <div className="flex justify-center py-16">
         <div className="h-1/2 flex max-w-3xl flex-col justify-center items-center gap-20">
           <img
             src={require("../assets/images/SigninImg.png")}
@@ -39,7 +49,7 @@ const Signin = () => {
             Welcome back!
           </Text>
           <form className="flex-col flex gap-6">
-            <Controller
+            {/* <Controller
               name="email"
               control={control}
               defaultValue=""
@@ -63,6 +73,35 @@ const Signin = () => {
                   {errors.email && (
                     <Text variant="text-xs" className="text-red-500 mt-3">
                       {errors.email.message}
+                    </Text>
+                  )}
+                </div>
+              )}
+            /> */}
+
+            <Controller
+              name="username"
+              control={control}
+              defaultValue=""
+              rules={{
+                required: "Username is required!",
+                minLength: {
+                  value: 2,
+                  message: "Username should be at least 2 characters long.",
+                },
+              }}
+              render={({ field }) => (
+                <div>
+                  <InputForm
+                    type="text"
+                    label="Username"
+                    name="username"
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {errors.username && (
+                    <Text variant="text-xs" className="text-red-500 mt-3">
+                      {errors.username.message}
                     </Text>
                   )}
                 </div>
