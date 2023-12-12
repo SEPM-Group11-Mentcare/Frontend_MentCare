@@ -7,6 +7,8 @@ import Checkbox from "../components/common/Checkbox";
 import Button from "../components/common/Button";
 import { ValidationSignup } from "../services/ValidationSignup";
 import ArrowIcon from "../assets/svg/ArrowIcon";
+import * as axiosInstance from "../services/axiosService";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const {
@@ -17,14 +19,25 @@ const Signup = () => {
     mode: "onChange",
   });
 
-  const onSubmit = (d) => {
-    console.log(d);
+  const navigate = useNavigate();
+
+  const onSubmit = async (d) => {
+    await axiosInstance
+      .signupPatient(d.username, d.name, d.password)
+      .then((res) => {
+        console.log(res);
+        navigate("/signin");
+      })
+      .catch((err) => {
+        console.log(err.response.data.error.message);
+      });
   };
 
   return (
     <div className="bg-bgColor flex flex-col">
+
       {/* Form Sign In */}
-      <div className="bg-bgColor flex justify-center py-32">
+      <div className="bg-bgColor flex justify-center py-16">
         <div className="h-3/4 flex max-w-3xl flex-col justify-center items-center gap-20">
           <Text variant="text-2xl" weight="semibold" className="italic">
             Let's begin your journey!
@@ -41,28 +54,28 @@ const Signup = () => {
           </Text>
           <form className="flex-col flex gap-3">
             <Controller
-              name="fullname"
+              name="username"
               control={control}
               defaultValue=""
               rules={{
-                required: "Full name is required!",
+                required: "Username is required!",
                 minLength: {
                   value: 2,
-                  message: "Full name should be at least 2 characters long.",
+                  message: "Username should be at least 2 characters long.",
                 },
               }}
               render={({ field }) => (
                 <div>
                   <InputForm
                     type="text"
-                    label="Full Name"
-                    name="fullname"
+                    label="Username"
+                    name="username"
                     value={field.value}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                  {errors.fullname && (
+                  {errors.username && (
                     <Text variant="text-xs" className="text-red-500 mt-3">
-                      {errors.fullname.message}
+                      {errors.username.message}
                     </Text>
                   )}
                 </div>
@@ -70,6 +83,35 @@ const Signup = () => {
             />
 
             <Controller
+              name="name"
+              control={control}
+              defaultValue=""
+              rules={{
+                required: "Name is required!",
+                minLength: {
+                  value: 2,
+                  message: "Name should be at least 2 characters long.",
+                },
+              }}
+              render={({ field }) => (
+                <div>
+                  <InputForm
+                    type="text"
+                    label="Name"
+                    name="name"
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {errors.name && (
+                    <Text variant="text-xs" className="text-red-500 mt-3">
+                      {errors.name.message}
+                    </Text>
+                  )}
+                </div>
+              )}
+            />
+
+            {/* <Controller
               name="email"
               control={control}
               defaultValue=""
@@ -97,7 +139,7 @@ const Signup = () => {
                   )}
                 </div>
               )}
-            />
+            /> */}
 
             <Controller
               name="password"

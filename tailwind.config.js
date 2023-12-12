@@ -17,7 +17,6 @@ module.exports = {
         tablet: "750px",
         desktop: "1440px",
       },
-    },
   },
   plugins: [require("daisyui"), require("@tailwindcss/forms")],
   daisyui: {
