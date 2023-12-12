@@ -4,12 +4,10 @@ import EmotionTag from "../components/Landing/EmotionTag";
 import StartIcon from "../assets/svg/StartIcon";
 import InfoContainer from "../components/Landing/InfoContainer";
 import Logo from "../assets/svg/logo";
-import NavBar from "../components/common/NavBar";
 
 const Landing = () => {
   return (
     <div className="flex flex-col bg-bgColor">
-      <NavBar />
       <div className="bg-bgColor p-20 flex justify-around">
         <div className="flex justify-center">
           <img

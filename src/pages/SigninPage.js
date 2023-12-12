@@ -5,9 +5,9 @@ import Text from "../components/common/Text";
 import { Controller, useForm } from "react-hook-form";
 import Checkbox from "../components/common/Checkbox";
 import Button from "../components/common/Button";
-import NavBar from "../components/common/NavBar";
 import * as axiosInstance from "../services/axiosService";
 import Cookies from "js-cookie";
+
 
 const Signin = () => {
   const {
@@ -32,8 +32,6 @@ const Signin = () => {
 
   return (
     <div className="flex flex-col bg-bgColor">
-      {/* Navigation Bar */}
-      <NavBar />
 
       {/* Form Sign In and Image */}
       <div className="flex justify-center py-16">
@@ -49,7 +47,9 @@ const Signin = () => {
             Welcome back!
           </Text>
           <form className="flex-col flex gap-6">
+            <Controller
             {/* <Controller
+
               name="email"
               control={control}
               defaultValue=""

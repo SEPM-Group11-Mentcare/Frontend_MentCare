@@ -7,7 +7,6 @@ import Checkbox from "../components/common/Checkbox";
 import Button from "../components/common/Button";
 import { ValidationSignup } from "../services/ValidationSignup";
 import ArrowIcon from "../assets/svg/ArrowIcon";
-import NavBar from "../components/common/NavBar";
 import * as axiosInstance from "../services/axiosService";
 import { useNavigate } from "react-router-dom";
 
@@ -36,8 +35,6 @@ const Signup = () => {
 
   return (
     <div className="bg-bgColor flex flex-col">
-      {/* Navigation bar */}
-      <NavBar />
 
       {/* Form Sign In */}
       <div className="bg-bgColor flex justify-center py-16">
