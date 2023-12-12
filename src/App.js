@@ -6,6 +6,7 @@ import Footer from "./components/common/Footer";
 import SignupPage from "./pages/SignupPage";
 import SigninPage from "./pages/SigninPage";
 import PatientDashboard from "./pages/PatientDashboard";
+import TherapistDashboard from "./pages/TherapistDashboard";
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
         <Route path="/signup" element={<SignupPage />}></Route>
         <Route path="/signin" element={<SigninPage />}></Route>
         <Route path="/patientdashboard" element={<PatientDashboard />}></Route>
+        <Route
+          path="/therapistdashboard"
+          element={<TherapistDashboard />}
+        ></Route>
       </Routes>
       {/* <Footer /> */}
     </div>
