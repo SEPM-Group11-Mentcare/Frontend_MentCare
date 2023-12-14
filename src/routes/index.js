@@ -9,6 +9,7 @@ import TherapistDashboard from "../pages/TherapistDashboard";
 import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
 import PatientLayout from "../components/Layout/PatientLayout";
 import TherapistLayout from "../components/Layout/TherapistLayout";
+import TherapistPage from "../pages/TherapistPage";
 
 // Public Routes
 const publicRoutes = [
@@ -25,6 +26,11 @@ const publicRoutes = [
     component: TherapistDashboard,
     layout: TherapistLayout,
   },
+  {
+    path: "patient/find",
+    component: TherapistPage,
+    layout: PatientLayout
+  }
 ];
 
 // Private Routes
