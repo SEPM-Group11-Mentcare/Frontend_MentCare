@@ -41,7 +41,7 @@ const Signup = () => {
           </Text>
           <form className="flex-col flex gap-3">
             <Controller
-              name="fullname"
+              name="name"
               control={control}
               defaultValue=""
               rules={{
@@ -56,13 +56,13 @@ const Signup = () => {
                   <InputForm
                     type="text"
                     label="Full Name"
-                    name="fullname"
+                    name="name"
                     value={field.value}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                  {errors.fullname && (
+                  {errors.name && (
                     <Text variant="text-xs" className="text-red-500 mt-3">
-                      {errors.fullname.message}
+                      {errors.name.message}
                     </Text>
                   )}
                 </div>
@@ -70,29 +70,29 @@ const Signup = () => {
             />
 
             <Controller
-              name="email"
+              name="username"
               control={control}
               defaultValue=""
               rules={{
-                required: "Email is required!",
-                pattern: {
-                  value:
-                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                  message: "Invalid email format",
-                },
+                required: "Username is required!",
+                // pattern: {
+                //   value:
+                //     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                //   message: "Invalid email format",
+                // },
               }}
               render={({ field }) => (
                 <div>
                   <InputForm
                     type="text"
-                    label="Email"
-                    name="email"
+                    label="Username"
+                    name="username"
                     value={field.value}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                  {errors.email && (
+                  {errors.username && (
                     <Text variant="text-xs" className="text-red-500 mt-3">
-                      {errors.email.message}
+                      {errors.username.message}
                     </Text>
                   )}
                 </div>

@@ -10,6 +10,7 @@ import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
 import PatientLayout from "../components/Layout/PatientLayout";
 import TherapistLayout from "../components/Layout/TherapistLayout";
 import TherapistPage from "../pages/TherapistPage";
+import BookingPage from "../pages/BookingPage";
 
 // Public Routes
 const publicRoutes = [
@@ -29,6 +30,11 @@ const publicRoutes = [
   {
     path: "patient/find",
     component: TherapistPage,
+    layout: PatientLayout
+  },
+  {
+    path: "patient/booking/:id",
+    component: BookingPage,
     layout: PatientLayout
   }
 ];

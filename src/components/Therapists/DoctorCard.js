@@ -8,9 +8,9 @@ import Button from "../common/Button";
 import Chip from "../common/Chip";
 import Text from "../common/Text";
 
-const DoctorCard = ({ img, name, experience, availableToday, price }) => {
+const DoctorCard = ({ img, name, experience, availableToday, price, detail}) => {
   return (
-    <div className="flex justify-between items-center border p-4 rounded-lg">
+    <div className="flex justify-between items-center border p-4 rounded-lg bg-white">
       <div className="flex gap-6 items-center">
         <div className="w-20 h-20 object-contain">
           <img className="rounded-md" src={img} alt="doctor" />
@@ -28,7 +28,10 @@ const DoctorCard = ({ img, name, experience, availableToday, price }) => {
         </div>
       </div>
 
-      <div>
+      {
+        !detail ? 
+       <>
+        <div>
         {availableToday ? (
           <Chip>Available Today</Chip>
         ) : (
@@ -39,7 +42,11 @@ const DoctorCard = ({ img, name, experience, availableToday, price }) => {
       <div className="flex flex-col items-center gap-2">
         <Text weight="semibold">{price} VND</Text>
         <Button>Book Appointment</Button>
-      </div>
+      </div> 
+      </>
+      :
+      null
+      }
     </div>
   );
 };
