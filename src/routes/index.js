@@ -10,7 +10,8 @@ import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
 import PatientLayout from "../components/Layout/PatientLayout";
 import TherapistLayout from "../components/Layout/TherapistLayout";
 import TherapistSignup from "../pages/TherapistSignup";
-
+import BookingPage from '../pages/BookingPage';
+import TherapistPage from "../pages/TherapistPage"
 // Public Routes
 const publicRoutes = [
   { path: "/", component: LandingPage, layout: HeaderFooterLayout },

@@ -157,34 +157,30 @@ const TherapistSignup = () => {
               )}
             />
             <Controller
-              name="email"
+              name="username"
               control={control}
               defaultValue=""
               rules={{
-                required: "Email is required!",
-                pattern: {
-                  value:
-                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                  message: "Invalid email format",
-                },
+                required: "Username is required!",
               }}
               render={({ field }) => (
                 <div>
                   <InputForm
                     type="text"
-                    label="Email"
-                    name="email"
+                    label="Username"
+                    name="username"
                     value={field.value}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                  {errors.email && (
+                  {errors.username && (
                     <Text variant="text-xs" className="text-red-500 mt-3">
-                      {errors.email.message}
+                      {errors.username.message}
                     </Text>
                   )}
                 </div>
               )}
             />
+
 
             <Controller
               name="password"
