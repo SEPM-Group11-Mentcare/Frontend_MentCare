@@ -17,7 +17,8 @@ module.exports = {
         tablet: "750px",
         desktop: "1440px",
       },
-  },
+    }, // Close the extend object
+  }, // Close the theme object
   plugins: [require("daisyui"), require("@tailwindcss/forms")],
   daisyui: {
     themes: ["light"],
