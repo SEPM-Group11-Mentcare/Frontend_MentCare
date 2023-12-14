@@ -9,11 +9,14 @@ import TherapistDashboard from "../pages/TherapistDashboard";
 import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
 import PatientLayout from "../components/Layout/PatientLayout";
 import TherapistLayout from "../components/Layout/TherapistLayout";
+import TherapistSignup from "../pages/TherapistSignup";
 
 // Public Routes
 const publicRoutes = [
   { path: "/", component: LandingPage, layout: HeaderFooterLayout },
   { path: "/signup", component: SignUpPage, layout: HeaderFooterLayout },
+  { path: "/signuptherapist", component: TherapistSignup, layout: HeaderFooterLayout },
+
   { path: "/signin", component: SignInPage, layout: HeaderFooterLayout },
   {
     path: "/patientdashboard",
