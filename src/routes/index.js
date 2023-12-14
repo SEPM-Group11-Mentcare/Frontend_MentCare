@@ -28,6 +28,16 @@ const publicRoutes = [
     component: TherapistDashboard,
     layout: TherapistLayout,
   },
+  {
+    path: "patient/find",
+    component: TherapistPage,
+    layout: PatientLayout
+  },
+  {
+    path: "patient/booking/:id",
+    component: BookingPage,
+    layout: PatientLayout
+  }
 ];
 
 // Private Routes
