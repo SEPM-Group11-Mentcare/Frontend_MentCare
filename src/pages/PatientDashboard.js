@@ -1,4 +1,5 @@
 import React from "react";
+import AppointmentRow from "../components/Patient/AppointmentRow";
 
 // Import layout
 import ContentLayout from "../components/Layout/ContentLayout";
@@ -17,11 +18,11 @@ function PatientDashboard() {
         <span className="text-2xl mb-2 font-semibold">All appointments</span>
 
         {/* Actions */}
-        <div className="flex flex-row items-center justify-between">
+        <div className="flex flex-row items-center justify-between mb-12">
           <span className="text-sm text-[#16C098]">Next Appointments</span>
 
           <div className="flex flex-row items-center">
-            <div className="join">
+            <div className="join mr-2">
               <button className="btn btn-square join-item rounded-md bg-[#F9FBFF] border-none">
                 <MagnifyingGlassIcon className="mx-2 my-2" />
               </button>
@@ -57,35 +58,49 @@ function PatientDashboard() {
               {/* head */}
               <thead>
                 <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Job</th>
-                  <th>Favorite Color</th>
+                  <th>Doctor</th>
+                  <th>Booking Date</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
+                <AppointmentRow
+                  doctor="Vo Thanh Thong"
+                  bookingdate="01/01/2024"
+                  amount="500"
+                  status="confirm"
+                />
                 {/* row 1 */}
-                <tr>
-                  <td>Cy Ganderton</td>
-                  <td>Quality Control Specialist</td>
-                  <td>Blue</td>
-                </tr>
+                <AppointmentRow
+                  doctor="Vo Thanh Thong"
+                  bookingdate="01/01/2024"
+                  amount="200"
+                  status="confirm"
+                />
                 {/* row 2 */}
-                <tr>
-                  <th>2</th>
-                  <td>Hart Hagerty</td>
-                  <td>Desktop Support Technician</td>
-                  <td>Purple</td>
-                </tr>
+                <AppointmentRow
+                  doctor="Vo Thanh Thong"
+                  bookingdate="01/01/2024"
+                  amount="999"
+                  status="deny"
+                />
                 {/* row 3 */}
-                <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>Tax Accountant</td>
-                  <td>Red</td>
-                </tr>
+                <AppointmentRow
+                  doctor="Vo Thanh Thong"
+                  bookingdate="01/01/2024"
+                  amount="100"
+                  status="confirm"
+                />
               </tbody>
             </table>
+            {/* <div className="join">
+              <button className="join-item btn btn-sm">1</button>
+              <button className="join-item btn btn-sm btn-active">2</button>
+              <button className="join-item btn btn-sm">3</button>
+              <button className="join-item btn btn-sm">4</button>
+            </div> */}
           </div>
         </div>
       </div>
