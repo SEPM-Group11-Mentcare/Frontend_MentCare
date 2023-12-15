@@ -7,8 +7,10 @@ import Checkbox from "../components/common/Checkbox";
 import Button from "../components/common/Button";
 import { ValidationSignup } from "../services/ValidationSignup";
 import ArrowIcon from "../assets/svg/ArrowIcon";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const {
     control,
     handleSubmit,
@@ -20,7 +22,10 @@ const Signup = () => {
   const onSubmit = (d) => {
     console.log(d);
   };
+  const onClickSwitchRole = () => {
+    navigate("/signuptherapist");
 
+  }
   return (
     <div className="bg-bgColor flex flex-col">
       {/* Form Sign In */}
@@ -159,6 +164,8 @@ const Signup = () => {
 
             <Button onClick={handleSubmit(onSubmit)}>Sign Up</Button>
           </form>
+          <Button onClick={onClickSwitchRole} className="bg-[#e5e7eb] text-black hover:bg-transparent">Sign up as Patient</Button>
+
 
           <div className="flex items-center">
             <hr className="flex-1 border-t border-gray-300" />

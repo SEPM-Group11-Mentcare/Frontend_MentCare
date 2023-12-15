@@ -4,6 +4,7 @@ import SignUpPage from "../pages/SignupPage";
 import SignInPage from "../pages/SigninPage";
 import PatientDashboard from "../pages/PatientDashboard";
 import TherapistDashboard from "../pages/TherapistDashboard";
+import AdminDashboard from "../pages/AdminDashboard";
 
 // Import Layout Components
 import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
@@ -12,6 +13,8 @@ import TherapistLayout from "../components/Layout/TherapistLayout";
 import TherapistSignup from "../pages/TherapistSignup";
 import BookingPage from '../pages/BookingPage';
 import TherapistPage from "../pages/TherapistPage"
+import AdminLayout from "../components/Layout/AdminLayout";
+
 // Public Routes
 const publicRoutes = [
   { path: "/", component: LandingPage, layout: HeaderFooterLayout },
@@ -28,6 +31,11 @@ const publicRoutes = [
     path: "therapistdashboard",
     component: TherapistDashboard,
     layout: TherapistLayout,
+  },
+  {
+    path: "/admindashboard",
+    component: AdminDashboard,
+    layout: AdminLayout,
   },
   {
     path: "patient/find",

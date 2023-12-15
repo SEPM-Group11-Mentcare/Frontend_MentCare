@@ -30,6 +30,8 @@ export const signupPatient = async (username, name, password) => {
   }
 };
 
+
+
 export const signin = async (username, password) => {
   const res = await axiosInstance.post("account/signin", {
     username,
@@ -44,3 +46,5 @@ export const signin = async (username, password) => {
     return err;
   }
 };
+
+export default axiosInstance

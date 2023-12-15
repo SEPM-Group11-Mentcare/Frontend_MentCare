@@ -7,8 +7,11 @@ import Checkbox from "../components/common/Checkbox";
 import Button from "../components/common/Button";
 import { ValidationSignup } from "../services/ValidationSignup";
 import ArrowIcon from "../assets/svg/ArrowIcon";
+import * as axiosInstance from "../services/auth";
+import { useNavigate } from "react-router-dom";
 
 const TherapistSignup = () => {
+  const navigate = useNavigate();
   const {
     control,
     handleSubmit,
@@ -17,8 +20,30 @@ const TherapistSignup = () => {
     mode: "onChange",
   });
 
-  const onSubmit = (d) => {
+  const onClickSwitchRole = () => {
+    navigate("/signup");
+
+  }
+  const onSubmit = async (d) => {
     console.log(d);
+    const role = "Therapist";
+    await axiosInstance
+      .signupTherapist(
+        d.username,
+        d.name,
+        d.password,
+        d.nationalID,
+        d.specialization,
+        d.pratisingCertNum
+      )
+
+      .then((res) => {
+        console.log("Signup successfully");
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -42,7 +67,7 @@ const TherapistSignup = () => {
           <form className="flex-col flex gap-3">
             {/* Fullname */}
             <Controller
-              name="fullname"
+              name="name"
               control={control}
               defaultValue=""
               rules={{
@@ -57,13 +82,67 @@ const TherapistSignup = () => {
                   <InputForm
                     type="text"
                     label="Full Name"
-                    name="fullname"
+                    name="name"
                     value={field.value}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                  {errors.fullname && (
+                  {errors.name && (
                     <Text variant="text-xs" className="text-red-500 mt-3">
-                      {errors.fullname.message}
+                      {errors.name.message}
+                    </Text>
+                  )}
+                </div>
+              )}
+            />
+            <Controller
+              name="username"
+              control={control}
+              defaultValue=""
+              rules={{
+                required: "Username is required!",
+              }}
+              render={({ field }) => (
+                <div>
+                  <InputForm
+                    type="text"
+                    label="Username"
+                    name="username"
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {errors.username && (
+                    <Text variant="text-xs" className="text-red-500 mt-3">
+                      {errors.username.message}
+                    </Text>
+                  )}
+                </div>
+              )}
+            />
+
+            <Controller
+              name="password"
+              control={control}
+              defaultValue=""
+              rules={{
+                required: "Password is required!",
+                pattern: {
+                  value: /^(?=.*[A-Z]).{8,}$/,
+                  message:
+                    "At least one uppercase letter and be at least 8 characters long.",
+                },
+              }}
+              render={({ field }) => (
+                <div>
+                  <InputForm
+                    type="password"
+                    label="Password"
+                    name="password"
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {errors.password && (
+                    <Text variant="text-xs" className="text-red-500 mt-3">
+                      {errors.password.message}
                     </Text>
                   )}
                 </div>
@@ -156,61 +235,6 @@ const TherapistSignup = () => {
                 </div>
               )}
             />
-            <Controller
-              name="username"
-              control={control}
-              defaultValue=""
-              rules={{
-                required: "Username is required!",
-              }}
-              render={({ field }) => (
-                <div>
-                  <InputForm
-                    type="text"
-                    label="Username"
-                    name="username"
-                    value={field.value}
-                    onChange={(e) => field.onChange(e.target.value)}
-                  />
-                  {errors.username && (
-                    <Text variant="text-xs" className="text-red-500 mt-3">
-                      {errors.username.message}
-                    </Text>
-                  )}
-                </div>
-              )}
-            />
-
-
-            <Controller
-              name="password"
-              control={control}
-              defaultValue=""
-              rules={{
-                required: "Password is required!",
-                pattern: {
-                  value: /^(?=.*[A-Z]).{8,}$/,
-                  message:
-                    "At least one uppercase letter and be at least 8 characters long.",
-                },
-              }}
-              render={({ field }) => (
-                <div>
-                  <InputForm
-                    type="password"
-                    label="Password"
-                    name="password"
-                    value={field.value}
-                    onChange={(e) => field.onChange(e.target.value)}
-                  />
-                  {errors.password && (
-                    <Text variant="text-xs" className="text-red-500 mt-3">
-                      {errors.password.message}
-                    </Text>
-                  )}
-                </div>
-              )}
-            />
 
             <Controller
               name="agree"
@@ -241,7 +265,9 @@ const TherapistSignup = () => {
             />
 
             <Button onClick={handleSubmit(onSubmit)}>Sign Up</Button>
+            
           </form>
+          <Button onClick={onClickSwitchRole} className="bg-[#e5e7eb] text-black hover:bg-transparent">Sign up as Patient</Button>
 
           <div className="flex items-center">
             <hr className="flex-1 border-t border-gray-300" />
