@@ -8,7 +8,8 @@ const ButtonVariants = cva(
   {
     variants: {
       variant: {
-        
+        roundOutline: 'btn hover:bg-[#2B50D8] bg-transparent border-[#2B50D8] hover:text-white text-[#2B50D8] text-sm rounded-[10px]',
+        redButton: 'btn bg-[#EA4B48] hover:bg-transparent hover:border-[#EA4B48] text-white hover:text-[#EA4B48] text-sm'
       },
       size: {
         default: 'h-10 py-2 px-4 text-sm',

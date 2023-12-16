@@ -4,6 +4,7 @@ import SignUpPage from "../pages/SignupPage";
 import SignInPage from "../pages/SigninPage";
 import PatientDashboard from "../pages/PatientDashboard";
 import TherapistDashboard from "../pages/TherapistDashboard";
+import PatientProfile from "../pages/PatientProfile";
 
 // Import Layout Components
 import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
@@ -15,6 +16,8 @@ const publicRoutes = [
   { path: "/", component: LandingPage, layout: HeaderFooterLayout },
   { path: "/signup", component: SignUpPage, layout: HeaderFooterLayout },
   { path: "/signin", component: SignInPage, layout: HeaderFooterLayout },
+
+  // Private routes actually 
   {
     path: "/patientdashboard",
     component: PatientDashboard,
@@ -25,6 +28,11 @@ const publicRoutes = [
     component: TherapistDashboard,
     layout: TherapistLayout,
   },
+  {
+    path: '/patientprofile',
+    component: PatientProfile,
+    layout: PatientLayout
+  }
 ];
 
 // Private Routes

@@ -40,6 +40,7 @@ const InputForm = ({
   type,
   value,
   className,
+  disabled
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -68,6 +69,7 @@ const InputForm = ({
         onChange={onChange}
         placeholder={placeholder}
         className={cn(InputFormVariants({ className, size }))}
+        disabled={disabled}
       />
 
       {type === "password" && (
