@@ -1,7 +1,6 @@
 import React from "react";
-import Status from "../common/Status";
-import ActionButton from "../common/ActionButton";
-import * as axiosInstance from "../../services/auth";
+import Chip from "../common/Chip";
+import Button from "../common/Button";
 
 function RequestRow({
   fullname,
@@ -9,31 +8,26 @@ function RequestRow({
   specialization,
   pratisingCertNum,
   status,
-  _id,
   onAccept,
   onDecline,
 }) {
-    const handleAcceptClick = () => {
-        onAccept(_id); // Call the onAccept prop with the _id
-      };
-    
-      const handleDeclineClick = () => {
-        onDecline(_id); // Call the onDecline prop with the _id
-      };
   return (
-    <tr>
+    <tr className="text-overflow: ellipsis">
       <td>{fullname}</td>
       <td>{nationalID}</td>
       <td>{specialization}</td>
-      <td>{pratisingCertNum}</td>
+      <td >{pratisingCertNum}</td>
       <td>
-        <Status status={status} />
+        <Chip color={status === "Pending" ? "yellow" : (status === "Approve") ? "" : "red"}>{status}</Chip>
       </td>
       <td>
-        <td className="p-0 flex gap-2">
-          <ActionButton action="accept" onClick={handleAcceptClick} />
-
-          <ActionButton action={"cancel"} onClick={handleDeclineClick} />
+        <td className="p-0 flex justify-center gap-4">
+          {status === "Pending" ? (
+            <>
+            <Button onClick={onAccept}>Approve</Button>
+            <Button onClick={onDecline} variant="red">Decline</Button>
+            </>
+          ) : null}
         </td>
       </td>
     </tr>

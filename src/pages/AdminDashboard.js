@@ -1,127 +1,75 @@
-import AppointmentRow from "../components/Patient/AppointmentRow";
 import RequestRow from "../components/Admin/RequestRow";
 // Import layout
 import ContentLayout from "../components/Layout/ContentLayout";
 import React, { useState, useEffect } from "react";
-import * as axiosInstance from "../services/auth";
-
-// Import Icons from Hero Icon
-import {
-  MagnifyingGlassIcon,
-  ChevronDownIcon,
-} from "@heroicons/react/24/outline";
+import * as axiosInstance from "../services/admin";
+import Text from "../components/common/Text";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import Dropdown from "../components/common/Dropdown";
 
 function AdminDashboard() {
-    const [therapistRequests, setTherapistRequests] = useState([]);
+  const [therapistRequests, setTherapistRequests] = useState([]);
+  const sortList = ["All", "Pending", "Approve", "Decline"];
+  const [sort, setSort] = useState(sortList[0]);
+  const onChange = (e) => {
+    setSort(e.target.value);
+  };
 
-    // Function to fetch therapist requests
-    const fetchTherapistRequests = async () => {
-      try {
-        // Fetch therapist requests from the backend API
-        const response = await axiosInstance.getTherapistRequestList(
-          "account/gettherapistrequest"
-        );
-    
-        // If the request is successful (status code 200), update the therapistRequests state
-        if (response.status === 200) {
-          setTherapistRequests(response.data);
-        }
-      } catch (error) {
-        // Log an error if fetching therapist requests fails
-        console.error("Error fetching therapist requests:", error);
-      }
-    };
-    
-    // Fetch therapist requests on initial component load
-    useEffect(() => {
-      fetchTherapistRequests();
-    }, []);
-    
-    // Function to handle accepting a therapist request
-    const handleAccept = async (_id) => {
-      try {
-        // Send a request to change the therapist status to "Approve"
-        const response = await axiosInstance.changeTherapistStatus(
-          _id,
-          "Approve"
-        );
-    
-        // If the status change request is successful, fetch therapist requests again to update the list
-        if (response.status === 200) {
-          fetchTherapistRequests();
-        }
-      } catch (error) {
-        // Log an error if accepting the request fails
-        console.error("Error accepting:", error);
-      }
-    };
-    
-    // Function to handle declining a therapist request
-    const handleDecline = async (_id) => {
-      try {
-        // Send a request to change the therapist status to "Decline"
-        const response = await axiosInstance.changeTherapistStatus(
-          _id,
-          "Decline"
-        );
-    
-        // If the status change request is successful, fetch therapist requests again to update the list
-        if (response.status === 200) {
-          fetchTherapistRequests();
-        }
-      } catch (error) {
-        // Log an error if declining the request fails
-        console.error("Error declining:", error);
-      }
-    };
-    
+  // Function to fetch therapist requests
+  const fetchTherapistRequests = async () => {
+    await axiosInstance
+      .getTherapistRequestList(sort)
+      .then((res) => {
+        console.log(res);
+        setTherapistRequests(res);
+      })
+      .catch((err) => {
+        console.log(err.response.data.error.message);
+      });
+  };
+
+  // Fetch therapist requests on initial component load
+  useEffect(() => {
+    fetchTherapistRequests();
+  }, [sort]);
+
+  const handleUpdate = async (_id, status) => {
+    await axiosInstance
+      .changeTherapistStatus(_id, status)
+      .then(() => {
+        fetchTherapistRequests();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
-    <ContentLayout title="RequestList">
-      <div className="bg-white w-full h-full rounded-md py-4 px-10">
-        {/* Title */}
-        <span className="text-2xl mb-2 font-semibold">
-          Therapist Request List
-        </span>
-
-        {/* Actions */}
-        <div className="flex flex-row items-center justify-between mb-12">
-          <span className="text-sm text-[#16C098]"></span>
-
-          <div className="flex flex-row items-center">
-            <div className="join mr-2">
-              <button className="btn btn-square join-item rounded-md bg-[#F9FBFF] border-none">
-                <MagnifyingGlassIcon className="mx-2 my-2" />
-              </button>
+    <ContentLayout title="Request List">
+      <div className="bg-white w-full h-full rounded-md py-4 px-10 flex flex-col gap-6">
+        <div className="flex flex-row items-center justify-between">
+          <Text variant="text-xl" weight="bold">
+            Doctors
+          </Text>
+          <div className="flex flex-row items-center gap-4">
+            <div className="flex justify-center items-center input input-bordered max-w-xs bg-[#F9FBFF] rounded-md border-none focus:outline-none focus:ring-primaryBlue text-sm">
+              <FontAwesomeIcon icon={faSearch} />
               <input
                 type="text"
                 placeholder="Search"
-                className="input input-bordered w-full max-w-xs join-item bg-[#F9FBFF] rounded-md border-none focus:outline-none text-sm"
+                className="border-0 bg-transparent focus:outline-none focus:ring-0"
               />
             </div>
-            <div className="dropdown dropdown-bottom dropdown-end">
-              <div tabIndex={0} role="button" className="btn bg-[#F9FBFF]">
-                Sort
-              </div>
-              <ul
-                tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <a>Newest</a>
-                </li>
-                <li>
-                  <a>Oldest</a>
-                </li>
-              </ul>
-            </div>
+
+            <Dropdown options={sortList} onChange={onChange} selected={sort} />
           </div>
         </div>
 
         {/* Table */}
         <div>
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table text-center">
               {/* head */}
               <thead>
                 <tr>
@@ -135,34 +83,19 @@ function AdminDashboard() {
               </thead>
               <tbody>
                 {/* Data */}
-                {/* <RequestRow
-                  fullname="John Doe"
-                  nationalID="1234567890"
-                  specialization="Psychiatry"
-                  pratisingCertNum="PCN123"
-                  status="Pending"
-                /> */}
-                {therapistRequests.map((request, index) => (
+                {therapistRequests.map((request) => (
                   <RequestRow
-                    key={index}
-                    fullname={request.name} // Assuming 'name' holds the full name
+                    fullname={request.name}
                     nationalID={request.nationalID}
                     specialization={request.specialization}
                     pratisingCertNum={request.pratisingCertNum}
                     status={request.status}
-                    _id={request._id}
-                    onAccept={() => handleAccept(request._id)}
-                    onDecline={() => handleDecline(request._id)}
+                    onAccept={() => handleUpdate(request._id, "Approve")}
+                    onDecline={() => handleUpdate(request._id, "Decline")}
                   />
                 ))}
               </tbody>
             </table>
-            {/* <div className="join">
-              <button className="join-item btn btn-sm">1</button>
-              <button className="join-item btn btn-sm btn-active">2</button>
-              <button className="join-item btn btn-sm">3</button>
-              <button className="join-item btn btn-sm">4</button>
-            </div> */}
           </div>
         </div>
       </div>

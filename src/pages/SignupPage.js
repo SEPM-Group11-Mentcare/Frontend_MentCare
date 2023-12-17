@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from "../components/common/Box";
 import InputForm from "../components/common/InputForm";
 import Text from "../components/common/Text";
 import { Controller, useForm } from "react-hook-form";
 import Checkbox from "../components/common/Checkbox";
 import Button from "../components/common/Button";
-import { useNavigate } from "react-router-dom";
 import * as axiosInstance from "../services/auth";
 
 const Signup = () => {

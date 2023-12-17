@@ -7,7 +7,8 @@ const ChipVariants = cva("px-3 py-1 border-[1px] rounded-md", {
   variants: {
     color: {
       green: "bg-[#A6E7D8] border-[#00B087] text-[#008767]",
-      red: "bg-[#FFC5C5] border-[#DF0404] text-[#DF0404]"
+      red: "bg-[#FFC5C5] border-[#DF0404] text-[#DF0404]",
+      yellow: "bg-[#fff3e0] border-[#F39C12] text-[#F39C12]"
     },
   }, 
   defaultVariants: {

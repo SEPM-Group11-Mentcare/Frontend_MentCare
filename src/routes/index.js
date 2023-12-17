@@ -23,17 +23,17 @@ const publicRoutes = [
 
   { path: "/signin", component: SignInPage, layout: HeaderFooterLayout },
   {
-    path: "/patientdashboard",
+    path: "/patient/dashboard",
     component: PatientDashboard,
     layout: PatientLayout,
   },
   {
-    path: "therapistdashboard",
+    path: "therapist/dashboard",
     component: TherapistDashboard,
     layout: TherapistLayout,
   },
   {
-    path: "/admindashboard",
+    path: "/admin/dashboard",
     component: AdminDashboard,
     layout: AdminLayout,
   },
