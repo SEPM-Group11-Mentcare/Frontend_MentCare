@@ -5,12 +5,10 @@ import Text from "../components/common/Text";
 import { Controller, useForm } from "react-hook-form";
 import Checkbox from "../components/common/Checkbox";
 import Button from "../components/common/Button";
-import { ValidationSignup } from "../services/ValidationSignup";
-import ArrowIcon from "../assets/svg/ArrowIcon";
 import { useNavigate } from "react-router-dom";
+import * as axiosInstance from "../services/auth";
 
 const Signup = () => {
-  const navigate = useNavigate();
   const {
     control,
     handleSubmit,
@@ -19,13 +17,16 @@ const Signup = () => {
     mode: "onChange",
   });
 
-  const onSubmit = (d) => {
-    console.log(d);
+  const onSubmit = async(d) => {
+    await axiosInstance.signup("patient", d.username, d.name, d.password)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err.response.data.error.message);
+    })
   };
-  const onClickSwitchRole = () => {
-    navigate("/signuptherapist");
 
-  }
   return (
     <div className="bg-bgColor flex flex-col">
       {/* Form Sign In */}
@@ -164,7 +165,7 @@ const Signup = () => {
 
             <Button onClick={handleSubmit(onSubmit)}>Sign Up</Button>
           </form>
-          <Button onClick={onClickSwitchRole} className="bg-[#e5e7eb] text-black hover:bg-transparent">Sign up as Patient</Button>
+          <Button href="/signuptherapist" className="bg-[#e5e7eb] text-black hover:bg-transparent">Sign up as Therapist</Button>
 
 
           <div className="flex items-center">

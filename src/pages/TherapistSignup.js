@@ -20,30 +20,14 @@ const TherapistSignup = () => {
     mode: "onChange",
   });
 
-  const onClickSwitchRole = () => {
-    navigate("/signup");
-
-  }
   const onSubmit = async (d) => {
-    console.log(d);
-    const role = "Therapist";
-    await axiosInstance
-      .signupTherapist(
-        d.username,
-        d.name,
-        d.password,
-        d.nationalID,
-        d.specialization,
-        d.pratisingCertNum
-      )
-
-      .then((res) => {
-        console.log("Signup successfully");
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    await axiosInstance.signup("therapist", d.username, d.name, d.password, d.nationalID, d.specialization, d.pratisingCertNum)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err.response.data.error.message);
+    })
   };
 
   return (

@@ -14,23 +14,6 @@ axiosInstance.interceptors.request.use(function (config) {
   return config;
 });
 
-export const signupPatient = async (username, name, password) => {
-  const res = await axiosInstance.post("account/signup/patient", {
-    username,
-    name,
-    password,
-  });
-  
-  try {
-    if (res.status === 200) {
-      return res.data;
-    }
-  } catch (err) {
-    return err;
-  }
-};
-
-
 
 export const signin = async (username, password) => {
   const res = await axiosInstance.post("account/signin", {
