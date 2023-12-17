@@ -31,7 +31,7 @@ const Signup = () => {
       {/* Form Sign In */}
       <div className="bg-bgColor flex justify-center py-32">
         <div className="h-3/4 flex max-w-3xl flex-col justify-center items-center gap-20">
-          <Text variant="text-2xl" weight="semibold" className="italic">
+          <Text variant="text-3xl" weight="semibold" className="italic">
             Let's begin your journey!
           </Text>
           <img

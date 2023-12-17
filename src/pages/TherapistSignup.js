@@ -49,9 +49,9 @@ const TherapistSignup = () => {
   return (
     <div className="bg-bgColor flex flex-col">
       {/* Form Sign In */}
-      <div className="bg-bgColor flex justify-center py-32">
-        <div className="flex max-w-3xl flex-col justify-end items-center gap-40">
-          <Text variant="text-4xl" weight="semibold" className="italic">
+      <div className="bg-bgColor flex justify-center py-20">
+        <div className="flex max-w-3xl flex-col justify-center mt-10 items-center gap-40">
+          <Text variant="text-3xl" weight="semibold" className="italic">
             Let's begin your journey!
           </Text>
           <img
@@ -267,7 +267,7 @@ const TherapistSignup = () => {
             <Button onClick={handleSubmit(onSubmit)}>Sign Up</Button>
             
           </form>
-          <Button onClick={onClickSwitchRole} className="bg-[#e5e7eb] text-black hover:bg-transparent">Sign up as Patient</Button>
+          <Button href="/signup" className="bg-[#e5e7eb] text-black hover:bg-transparent">Sign up as Patient</Button>
 
           <div className="flex items-center">
             <hr className="flex-1 border-t border-gray-300" />
