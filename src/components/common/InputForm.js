@@ -40,7 +40,11 @@ const InputForm = ({
   type,
   value,
   className,
-  disabled
+  disabled,
+  readOnly,
+  hidden,
+  accept,
+  id
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -64,12 +68,17 @@ const InputForm = ({
         </Text>
       </div>
       <input
+        id={id}
         type={inputType}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
         className={cn(InputFormVariants({ className, size }))}
         disabled={disabled}
+        accept={accept}
+        hidden={hidden}
+        readOnly={readOnly}
+
       />
 
       {type === "password" && (

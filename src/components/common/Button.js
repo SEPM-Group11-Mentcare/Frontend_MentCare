@@ -25,7 +25,7 @@ const ButtonVariants = cva(
     },
   })
 
-const Button = ({ children, variant, size, className, href, onMouseEnter, onMouseLeave, onClick, id }) => {
+const Button = ({ children, variant, size, className, href, onMouseEnter, onMouseLeave, onClick, id, type }) => {
   return (
     href ? (
       <Link
@@ -44,6 +44,7 @@ const Button = ({ children, variant, size, className, href, onMouseEnter, onMous
         onMouseLeave={onMouseLeave}
         onClick={onClick}
         id={id}
+        type="submit"
         >
         {children}
       </button>
