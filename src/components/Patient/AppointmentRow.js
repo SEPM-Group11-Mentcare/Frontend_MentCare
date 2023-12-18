@@ -1,18 +1,18 @@
 import React from "react";
 import Status from "../common/Status";
-import ActionButton from "../common/ActionButton";
+import Button from "../common/Button";
 
 function AppointmentRow({ doctor, bookingdate, amount, status }) {
   return (
     <tr>
       <td>{doctor}</td>
       <td>{bookingdate}</td>
-      <td>${amount}</td>
+      <td>{amount} VND</td>
       <td>
         <Status status={status} />
       </td>
       <td>
-        <ActionButton action={"cancel"} />
+        <Button>Cancel</Button>
       </td>
     </tr>
   );
