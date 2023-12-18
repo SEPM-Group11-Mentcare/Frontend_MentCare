@@ -32,7 +32,7 @@ function SideBar() {
   };
 
   return (
-    <div className="px-6 py-6 flex flex-col bg-white h-screen w-[280px] justify-between border-r-[#EFEFEF] border-2">
+    <div className="px-6 py-6 flex flex-col bg-white h-screen w-[280px] justify-between border-r-[#EFEFEF] border-r-2">
       {/* SideBar Content */}
       <div className="flex flex-col gap-10">
         {/* User Information */}
