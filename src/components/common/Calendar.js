@@ -53,14 +53,16 @@ const Calendar = () => {
 
     parsedDate.setHours(hours);
     parsedDate.setMinutes(minutes);
+    parsedDate.setSeconds(0);
+    parsedDate.setMilliseconds(0);
 
     return parsedDate;
   };
   const [selectedOption, setSelectedOption] = useState(new Date());
 
-  const onClick = (date, e) => {
-    const test = formatDateAndTime(date.date, e.target.textContent);
-    setSelectedOption(test);
+  const onClick = (e) => {
+    const date = new Date(e.target.value);
+    setSelectedOption(date);
   };
 
   const preWeek = () => {
@@ -74,6 +76,8 @@ const Calendar = () => {
     newDate.setDate(currentDate.getDate() + 7);
     setCurrentDate(newDate);
   };
+
+  console.log(selectedOption.getTime())
 
   return (
     <div className="flex flex-col gap-4">
@@ -123,7 +127,7 @@ const Calendar = () => {
 
               <div className="flex flex-col gap-3">
                 <Button
-                  onClick={(e) => onClick(date, e)}
+                  onClick={onClick}
                   variant={
                     selectedOption &&
                     selectedOption.getTime() ===
@@ -131,11 +135,12 @@ const Calendar = () => {
                       ? ""
                       : "gray"
                   }
+                  value={(formatDateAndTime(date.date, "9:00"))}
                 >
                   9:00
                 </Button>
-                <Button
-                  onClick={(e) => onClick(date, e)}
+                {/* <Button
+                  onClick={onClick}
                   variant={
                     selectedOption &&
                     selectedOption.getTime() ===
@@ -143,12 +148,13 @@ const Calendar = () => {
                       ? ""
                       : "gray"
                   }
+                  value={(formatDateAndTime(date.date, "12:00"))}
                 >
                   12:00
                 </Button>
 
                 <Button
-                  onClick={(e) => onClick(date, e)}
+                  onClick={onClick}
                   variant={
                     selectedOption &&
                     selectedOption.getTime() ===
@@ -156,9 +162,10 @@ const Calendar = () => {
                       ? ""
                       : "gray"
                   }
+                  value={(formatDateAndTime(date.date, "14:00"))}
                 >
                   14:00
-                </Button>
+                </Button> */}
               </div>
             </div>
           ))}
