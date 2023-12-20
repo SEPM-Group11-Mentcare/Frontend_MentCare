@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "../components/common/Box";
 import InputForm from "../components/common/InputForm";
 import Text from "../components/common/Text";
 import { Controller, useForm } from "react-hook-form";
 import Checkbox from "../components/common/Checkbox";
 import Button from "../components/common/Button";
+import { ValidationSignup } from "../services/ValidationSignup";
+import ArrowIcon from "../assets/svg/ArrowIcon";
 import * as axiosInstance from "../services/auth";
+import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const TherapistSignup = () => {
+  const navigate = useNavigate();
   const {
     control,
     handleSubmit,
@@ -16,8 +20,8 @@ const Signup = () => {
     mode: "onChange",
   });
 
-  const onSubmit = async(d) => {
-    await axiosInstance.signup("patient", d.username, d.name, d.password)
+  const onSubmit = async (d) => {
+    await axiosInstance.signup("therapist", d.username, d.name, d.password, d.nationalID, d.specialization, d.pratisingCertNum)
     .then((res) => {
       console.log(res);
     })
@@ -29,8 +33,8 @@ const Signup = () => {
   return (
     <div className="bg-bgColor flex flex-col">
       {/* Form Sign In */}
-      <div className="bg-bgColor flex justify-center py-32">
-        <div className="h-3/4 flex max-w-3xl flex-col justify-center items-center gap-20">
+      <div className="bg-bgColor flex justify-center py-20">
+        <div className="flex max-w-3xl flex-col justify-center mt-10 items-center gap-40">
           <Text variant="text-3xl" weight="semibold" className="italic">
             Let's begin your journey!
           </Text>
@@ -45,6 +49,7 @@ const Signup = () => {
             Sign Up
           </Text>
           <form className="flex-col flex gap-3">
+            {/* Fullname */}
             <Controller
               name="name"
               control={control}
@@ -73,18 +78,12 @@ const Signup = () => {
                 </div>
               )}
             />
-
             <Controller
               name="username"
               control={control}
               defaultValue=""
               rules={{
                 required: "Username is required!",
-                // pattern: {
-                //   value:
-                //     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                //   message: "Invalid email format",
-                // },
               }}
               render={({ field }) => (
                 <div>
@@ -133,6 +132,93 @@ const Signup = () => {
                 </div>
               )}
             />
+            {/* National ID */}
+            <Controller
+              name="nationalID"
+              control={control}
+              defaultValue=""
+              rules={{
+                required: "National ID is required!",
+                minLength: {
+                  value: 11,
+                  message: "National ID should be at least 11 characters long.",
+                },
+              }}
+              render={({ field }) => (
+                <div>
+                  <InputForm
+                    type="text"
+                    label="National ID"
+                    name="nationalID"
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {errors.nationalID && (
+                    <Text variant="text-xs" className="text-red-500 mt-3">
+                      {errors.nationalID.message}
+                    </Text>
+                  )}
+                </div>
+              )}
+            />
+            {/* Specialization */}
+            <Controller
+              name="specialization"
+              control={control}
+              defaultValue=""
+              rules={{
+                required: "Specialization is required!",
+                minLength: {
+                  value: 1,
+                  message: "Specialization cannot be empty",
+                },
+              }}
+              render={({ field }) => (
+                <div>
+                  <InputForm
+                    type="text"
+                    label="Specialization"
+                    name="specialization"
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {errors.specialization && (
+                    <Text variant="text-xs" className="text-red-500 mt-3">
+                      {errors.specialization.message}
+                    </Text>
+                  )}
+                </div>
+              )}
+            />
+            {/* pratisingCertNum */}
+            <Controller
+              name="pratisingCertNum"
+              control={control}
+              defaultValue=""
+              rules={{
+                required: "Practicing Certificate Number is required!",
+                minLength: {
+                  value: 1,
+                  message: "Practicing Certificate Number cannot be empty",
+                },
+              }}
+              render={({ field }) => (
+                <div>
+                  <InputForm
+                    type="text"
+                    label="Practicing Certificate Number"
+                    name="pratisingCertNum"
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.value)}
+                  />
+                  {errors.pratisingCertNum && (
+                    <Text variant="text-xs" className="text-red-500 mt-3">
+                      {errors.pratisingCertNum.message}
+                    </Text>
+                  )}
+                </div>
+              )}
+            />
 
             <Controller
               name="agree"
@@ -163,9 +249,9 @@ const Signup = () => {
             />
 
             <Button onClick={handleSubmit(onSubmit)}>Sign Up</Button>
+            
           </form>
-          <Button href="/signuptherapist" className="bg-[#e5e7eb] text-black hover:bg-transparent">Sign up as Therapist</Button>
-
+          <Button href="/signup" className="bg-[#e5e7eb] text-black hover:bg-transparent">Sign up as Patient</Button>
 
           <div className="flex items-center">
             <hr className="flex-1 border-t border-gray-300" />
@@ -190,4 +276,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default TherapistSignup;

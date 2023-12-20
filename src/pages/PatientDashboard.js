@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import AppointmentRow from "../components/Patient/AppointmentRow";
-
-// Import layout
 import ContentLayout from "../components/Layout/ContentLayout";
-
-// Import Icons from Hero Icon
-import {
-  MagnifyingGlassIcon,
-  ChevronDownIcon,
-} from "@heroicons/react/24/outline";
+import Dropdown from "../components/common/Dropdown";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 function PatientDashboard() {
+  const sortList = ["Newest", "Oldest"];
+  const [sort, setSort] = useState(sortList[0]);
+  const onChange = (e) => {
+    setSort(e.target.value);
+  };
   return (
     <ContentLayout title="Appointments">
       <div className="bg-white w-full h-full rounded-md py-4 px-10">
@@ -21,33 +21,16 @@ function PatientDashboard() {
         <div className="flex flex-row items-center justify-between mb-12">
           <span className="text-sm text-[#16C098]">Next Appointments</span>
 
-          <div className="flex flex-row items-center">
-            <div className="join mr-2">
-              <button className="btn btn-square join-item rounded-md bg-[#F9FBFF] border-none">
-                <MagnifyingGlassIcon className="mx-2 my-2" />
-              </button>
+          <div className="flex flex-row items-center gap-4">
+          <div className="flex justify-center items-center input input-bordered max-w-xs bg-[#F9FBFF] rounded-md border-none focus:outline-none focus:ring-primaryBlue text-sm">
+              <FontAwesomeIcon icon={faSearch} />
               <input
                 type="text"
                 placeholder="Search"
-                className="input input-bordered w-full max-w-xs join-item bg-[#F9FBFF] rounded-md border-none focus:outline-none text-sm"
+                className="border-0 bg-transparent focus:outline-none focus:ring-0"
               />
             </div>
-            <div className="dropdown dropdown-bottom dropdown-end">
-              <div tabIndex={0} role="button" className="btn bg-[#F9FBFF]">
-                Sort
-              </div>
-              <ul
-                tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <a>Newest</a>
-                </li>
-                <li>
-                  <a>Oldest</a>
-                </li>
-              </ul>
-            </div>
+            <Dropdown options={sortList} selected={sort} onChange={onChange}/>
           </div>
         </div>
 
