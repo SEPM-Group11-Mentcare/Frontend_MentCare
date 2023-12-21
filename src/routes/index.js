@@ -28,7 +28,7 @@ const publicRoutes = [
     layout: PatientLayout,
   },
   {
-    path: "therapist/dashboard",
+    path: "/therapist/dashboard",
     component: TherapistDashboard,
     layout: TherapistLayout,
   },

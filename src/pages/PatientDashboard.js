@@ -12,6 +12,7 @@ function PatientDashboard() {
     setSort(e.target.value);
   };
   return (
+    
     <ContentLayout title="Appointments">
       <div className="bg-white w-full h-full rounded-md py-4 px-10">
         {/* Title */}
