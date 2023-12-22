@@ -42,11 +42,11 @@ function TherapistDashboard() {
 
       <div className="bg-white w-full h-full rounded-md py-4 px-10">
         {/* Title */}
-        {/* <span className="text-2xl mb-2 font-semibold">All appointments</span> */}
+        
         <Button children="Upcoming" className="disable" />
         <Button
           children="Today"
-          className="mb-5 ml-5 bg-white text-gray-500 border-none"
+          className="mb-5 ml-5 bg-white text-gray-500 border-none shadow-none"
         />
         <hr />
 
