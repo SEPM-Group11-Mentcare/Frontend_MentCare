@@ -8,7 +8,7 @@ const ButtonVariants = cva(
   {
     variants: {
       variant: {
-        gray: "bg-[#E9E9E9] text-[#757575]"
+        gray: "bg-[#E9E9E9] text-[#757575]",
         red: "bg-[#EA4B48] hover:bg-transparent hover:border-[#EA4B48] hover:text-[#EA4B48] "
       },
       size: {

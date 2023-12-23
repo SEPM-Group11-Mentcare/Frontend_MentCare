@@ -14,6 +14,7 @@ import TherapistSignup from "../pages/TherapistSignup";
 import BookingPage from '../pages/BookingPage';
 import TherapistPage from "../pages/TherapistPage"
 import AdminLayout from "../components/Layout/AdminLayout";
+import TherapistProfile from "../pages/TherapistProfile";
 
 // Public Routes
 const publicRoutes = [
@@ -30,6 +31,11 @@ const publicRoutes = [
   {
     path: "therapist/dashboard",
     component: TherapistDashboard,
+    layout: TherapistLayout,
+  },
+  {
+    path: "therapist/profile",
+    component: TherapistProfile,
     layout: TherapistLayout,
   },
   {
