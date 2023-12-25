@@ -65,6 +65,7 @@ const Schedule = () => {
   };
 
   const onClick = (e) => {
+    console.log(e.target.value);
     const valueTime = new Date(e.target.value).getTime();
     const isValueInArray = availableTime.some(
       (time) => time.getTime() === valueTime

@@ -31,3 +31,15 @@ export const deleteSchedule = async(id) => {
     return err;
   }
 }
+
+export const getTherapists = async() => {
+  const res = await axiosInstance.get('/therapist/view')
+
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch(err) {
+    return err;
+  }
+}

@@ -1,5 +1,4 @@
 import {
-  faCertificate,
   faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,9 +7,9 @@ import Button from "../common/Button";
 import Chip from "../common/Chip";
 import Text from "../common/Text";
 
-const DoctorCard = ({ img, name, experience, availableToday, price, detail}) => {
+const DoctorCard = ({ img, name, specialization, availableToday, price, detail, id}) => {
   return (
-    <div className="flex justify-between items-center border p-4 rounded-lg bg-white">
+    <div className="grid grid-flow-col grid-cols-3 border p-4 rounded-lg bg-white">
       <div className="flex gap-6 items-center">
         <div className="w-20 h-20 object-contain">
           <img className="rounded-md" src={img} alt="doctor" />
@@ -18,12 +17,12 @@ const DoctorCard = ({ img, name, experience, availableToday, price, detail}) => 
 
         <div className="flex flex-col gap-2">
           <div className="flex gap-2 items-center">
-            <Text weight="semibold">Dr. {name}</Text>
+            <Text weight="semibold" variant="text-md">Dr. {name}</Text>
             <FontAwesomeIcon icon={faCircleCheck} color="#22C550" />
           </div>
           <div className="flex gap-2 items-center">
-            <FontAwesomeIcon icon={faCertificate} />
-            <Text>{experience} Years of Experience</Text>
+            <Text weight="semibold" variant="text-sm">Specialization: </Text>
+            <Text>{specialization}</Text>
           </div>
         </div>
       </div>
@@ -31,7 +30,7 @@ const DoctorCard = ({ img, name, experience, availableToday, price, detail}) => 
       {
         !detail ? 
        <>
-        <div>
+        <div className="flex justify-center items-center">
         {availableToday ? (
           <Chip>Available Today</Chip>
         ) : (
@@ -39,9 +38,11 @@ const DoctorCard = ({ img, name, experience, availableToday, price, detail}) => 
         )}
       </div>
 
-      <div className="flex flex-col items-center gap-2">
+      <div className="flex items-center justify-end">
+        <div className="flex flex-col gap-2 items-center">
         <Text weight="semibold">{price} VND</Text>
-        <Button>Book Appointment</Button>
+        <Button href={`/patient/booking/${id}`}>Book Appointment</Button>
+        </div>
       </div> 
       </>
       :

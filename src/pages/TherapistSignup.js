@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from "../components/common/Box";
 import InputForm from "../components/common/InputForm";
 import Text from "../components/common/Text";
 import { Controller, useForm } from "react-hook-form";
 import Checkbox from "../components/common/Checkbox";
 import Button from "../components/common/Button";
-import ArrowIcon from "../assets/svg/ArrowIcon";
 import * as axiosInstance from "../services/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -23,6 +22,7 @@ const TherapistSignup = () => {
     await axiosInstance.signup("therapist", d.username, d.name, d.password, d.nationalID, d.specialization, d.pratisingCertNum)
     .then((res) => {
       console.log(res);
+      navigate('/login');
     })
     .catch((err) => {
       console.log(err.response.data.error.message);
