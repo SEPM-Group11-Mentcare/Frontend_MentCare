@@ -4,11 +4,8 @@ import SignUpPage from "../pages/SignupPage";
 import SignInPage from "../pages/SigninPage";
 import PatientDashboard from "../pages/PatientDashboard";
 import TherapistDashboard from "../pages/TherapistDashboard";
-<<<<<<< HEAD
 import PatientProfile from "../pages/PatientProfile";
-=======
 import AdminDashboard from "../pages/AdminDashboard";
->>>>>>> main
 
 // Import Layout Components
 import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
@@ -39,13 +36,14 @@ const publicRoutes = [
     layout: TherapistLayout,
   },
   {
-<<<<<<< HEAD
-    path: '/patientprofile',
-    component: PatientProfile,
-=======
     path: "/admin/dashboard",
     component: AdminDashboard,
     layout: AdminLayout,
+  },
+  {
+    path: '/patient/profile',
+    component: PatientProfile,
+    layout: PatientLayout
   },
   {
     path: "patient/find",
@@ -55,7 +53,6 @@ const publicRoutes = [
   {
     path: "patient/booking/:id",
     component: BookingPage,
->>>>>>> main
     layout: PatientLayout
   }
 ];

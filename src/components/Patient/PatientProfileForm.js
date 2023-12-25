@@ -44,7 +44,7 @@ function PatientProfileForm({ user }) {
                         </div>
                         {/* Option button */}
                         <div className="flex flex-col gap-3">
-                            <Button variant='roundOutline' onClick={handleChooseAvatar}>
+                            <Button variant='primaryOutline' onClick={handleChooseAvatar}>
                                 <CameraIcon className="h-5 w-5" />
                                 Choose another avatar
                             </Button>
@@ -63,20 +63,11 @@ function PatientProfileForm({ user }) {
                                     </InputForm>
                                 )}
                             />
-
-                            <div className="flex gap-1">
-                                <Button size='lg' type='submit'>
-                                    Save
-                                </Button>
-                                <Button size='lg' variant='redButton' type='reset'>
-                                    Reset
-                                </Button>
-                            </div>
                         </div>
 
                     </div>
                     {/* User information */}
-                    <div className="w-full">
+                    <div className='w-full'>
                         <div>
                             <Controller
                                 name='userId'
@@ -108,13 +99,18 @@ function PatientProfileForm({ user }) {
                             <Controller
                                 name='dob'
                                 control={control}
-                                defaultValue="2003-11-17"
                                 render={({ field }) => (
                                     <InputForm type='date' label='Date of Birth' size='md' value={field.value} {...field}></InputForm>
                                 )}
                             />
-
-
+                        </div>
+                        <div className="mt-5 flex justify-end gap-1">
+                            <Button size='lg' variant='red' type='reset'>
+                                Reset
+                            </Button>
+                            <Button size='lg' type='submit'>
+                                Save
+                            </Button>
                         </div>
                     </div>
                 </div>
