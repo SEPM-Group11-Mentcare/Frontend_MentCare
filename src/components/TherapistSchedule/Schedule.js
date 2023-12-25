@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../common/Button";
 import InputForm from "../common/InputForm";
 import Text from "../common/Text";
@@ -9,11 +9,11 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { Controller, useForm } from "react-hook-form";
+import * as axiosInstance from "../../services/therapist";
 
 const Schedule = () => {
   const {
     control,
-    handleSubmit,
     formState: { errors },
   } = useForm({
     mode: "onChange",
@@ -36,6 +36,7 @@ const Schedule = () => {
     "23:00",
   ];
   const [availableTime, setAvailableTime] = useState([]);
+  const [selectedDate, setSelectedDate] = useState([])
 
   const [currentDate, setCurrentDate] = useState(new Date());
   const nextDay = () => {
@@ -65,30 +66,87 @@ const Schedule = () => {
 
   const onClick = (e) => {
     const valueTime = new Date(e.target.value).getTime();
-
-    const isValueInArray = availableTime.some((time) => time.getTime() === valueTime);
+    const isValueInArray = availableTime.some(
+      (time) => time.getTime() === valueTime
+    );
 
     if (isValueInArray) {
-
       setAvailableTime((prevAvailableTime) =>
         prevAvailableTime.filter((time) => time.getTime() !== valueTime)
       );
     } else {
-      setAvailableTime((prevAvailableTime) => [...prevAvailableTime, new Date(e.target.value)]);
+      setAvailableTime((prevAvailableTime) => [
+        ...prevAvailableTime,
+        new Date(e.target.value),
+      ]);
     }
   };
 
+  const handleUpdate = async(e) => {
+    await axiosInstance.deleteSchedule(e.target.value)
+    .then((res) => {
+      fetchData()
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
   const isValueInArray = (value) => {
     const valueTime = new Date(value).getTime();
-    const isValueInArray = availableTime.some((time) => time.getTime() === valueTime);
+    const isValueInArray = availableTime.some(
+      (time) => time.getTime() === valueTime
+    );
     return isValueInArray;
+  };
+
+  const isDateinBookedRange = (value) => {
+    const valueTime = new Date(value).getTime();
+    const isInArray = selectedDate.some((date) => new Date(date.dateTime).getTime() === valueTime)
+    return isInArray;
+  }
+
+  const checkStatus = (value, status) => {
+    return selectedDate.some(
+      (date) => new Date(date.dateTime).getTime() === new Date(value).getTime() && date.status === status
+    );
   };
 
   const reset = () => {
     setAvailableTime([]);
+  };
+
+  const onSubmit = async() => {
+    await axiosInstance.setSchedule(availableTime)
+    .then((res) => {
+      fetchData();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
 
-  
+  const findIdByValue = (targetValue) => {
+    const foundItem = selectedDate.find(item =>  new Date(item.dateTime).getTime() === new Date(targetValue).getTime());
+    return(foundItem ? foundItem._id : new Date(targetValue));
+  };
+
+  async function fetchData() {
+    await axiosInstance.getSchedule()
+    .then((res) => {
+      setSelectedDate(res);
+      reset();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+// console.log(selectedDate);
   return (
     <div className="flex flex-col gap-6 py-3">
       <div className="flex items-center">
@@ -144,19 +202,29 @@ const Schedule = () => {
         <div className="grid gap-6 grid-cols-5">
           {timeList.map((time) => (
             <Button
-              variant={isValueInArray(formatDateAndTime(currentDate, time)) ? "" : "gray"}
+              variant={
+                isDateinBookedRange(formatDateAndTime(currentDate, time)) ? "red" : 
+                isValueInArray(formatDateAndTime(currentDate, time))
+                  ? ""
+                  : "gray"
+              }
               size="lg"
-              value={formatDateAndTime(currentDate, time)}
-              onClick={onClick}
+              value={findIdByValue(formatDateAndTime(currentDate, time))}
+              onClick={checkStatus(formatDateAndTime(currentDate, time), "Free") ? handleUpdate : onClick}
+              disabled={
+                new Date(currentDate).getTime() < new Date().setHours(0, 0, 0, 0) 
+                || 
+                checkStatus(formatDateAndTime(currentDate, time), "Booked")
+              }
+              
             >
               {time}
-              
             </Button>
           ))}
         </div>
 
         <div className="flex justify-between gap-6">
-          <Button size="xl">Save</Button>
+          <Button size="xl" onClick={onSubmit}>Save</Button>
           <Button size="xl" variant="blueOutline" onClick={reset}>
             Reset
           </Button>

@@ -5,7 +5,6 @@ import Text from "../components/common/Text";
 import { Controller, useForm } from "react-hook-form";
 import Checkbox from "../components/common/Checkbox";
 import Button from "../components/common/Button";
-import { ValidationSignup } from "../services/ValidationSignup";
 import ArrowIcon from "../assets/svg/ArrowIcon";
 import * as axiosInstance from "../services/auth";
 import { useNavigate } from "react-router-dom";

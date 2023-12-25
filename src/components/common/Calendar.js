@@ -77,7 +77,6 @@ const Calendar = () => {
     setCurrentDate(newDate);
   };
 
-  console.log(selectedOption.getTime())
 
   return (
     <div className="flex flex-col gap-4">
