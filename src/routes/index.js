@@ -14,6 +14,7 @@ import TherapistSignup from "../pages/TherapistSignup";
 import BookingPage from '../pages/BookingPage';
 import TherapistPage from "../pages/TherapistPage"
 import AdminLayout from "../components/Layout/AdminLayout";
+import PatientMedicalRecord from "../pages/PatientMedicalRecord";
 
 // Public Routes
 const publicRoutes = [
@@ -46,7 +47,14 @@ const publicRoutes = [
     path: "patient/booking/:id",
     component: BookingPage,
     layout: PatientLayout
+  },
+  {
+    path: "patient/medicalrecord",
+    component: PatientMedicalRecord,
+    layout: PatientLayout
   }
+  
+
 ];
 
 // Private Routes
