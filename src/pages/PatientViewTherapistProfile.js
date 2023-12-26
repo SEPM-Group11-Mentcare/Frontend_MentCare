@@ -4,7 +4,7 @@ import Text from "../components/common/Text";
 import DoctorProfileCard from "../components/Therapists/DoctorProfileCard";
 import Timeline from "../components/Therapists/Timeline";
 
-function TherapistProfile() {
+function PatientViewTherapistProfile() {
 
 
 
@@ -14,7 +14,7 @@ function TherapistProfile() {
   return (
     <ContentLayout title="Doctor Profile" className="fixed">
       <div className="overflow-y-scroll h-full">
-        <DoctorProfileCard role="therapist" />
+        <DoctorProfileCard role="patient" />
         <div className="bg-white w-full h-full mt-20 border py-4 px-2 rounded-lg">
           <div className="grid grid-cols-2 gap-4 place-items-center">
             <div
@@ -78,4 +78,4 @@ function TherapistProfile() {
   );
 }
 
-export default TherapistProfile;
+export default PatientViewTherapistProfile;

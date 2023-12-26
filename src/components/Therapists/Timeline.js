@@ -1,8 +1,7 @@
 import React from "react";
 import Text from "../common/Text";
 
-const TimelineItem = ({ Title, Certificate, Time, type, Description }) => {
-  const isAward = type === "award";
+const TimelineItem = () => {
 
   return (
     <div className="flex flex-row">
@@ -26,28 +25,15 @@ const TimelineItem = ({ Title, Certificate, Time, type, Description }) => {
         </div>
         <div className="border-l-2 h-full border-gray-400"></div>
       </div>
-      {isAward ? (
-        <div className="flex flex-col group-hover:bg-white ml-2 rounded-xl my-2">
-          <div className="ml-4 text-sm text-blue-700">{Time}</div>
-          <div className="ml-4 text-xl font-medium">
-            <Text children={Title} weight="bold" />
-          </div>
-          {Certificate && (
-            <div className="ml-4 text-xs">{Certificate}</div>
-          )}
-          <div className="ml-4 text-xs">{Description}</div>
+
+      <div className="flex flex-col group-hover:bg-white ml-2 rounded-xl my-2">
+        <div className="ml-4 text-xl font-medium">
+          <Text children="Glowing Smiles Family Dendtal Clinic" weight="bold" />
         </div>
-      ) : (
-        <div className="flex flex-col group-hover:bg-white ml-2 rounded-xl my-2">
-          <div className="ml-4 text-xl font-medium">
-            <Text children={Title} weight="bold" />
-          </div>
-          {Certificate && (
-            <div className="ml-4 text-xs">{Certificate}</div>
-          )}
-          <div className="ml-4 text-sm text-gray-700">{Time}</div>
-        </div>
-      )}
+        <div className="ml-4 text-xs"> <Text children="BDS, MDS - Oral & Maxillofacial Surgery"  /></div>
+
+        <div className="ml-4 text-sm text-gray-700">2015-2019</div>
+      </div>
     </div>
   );
 };
