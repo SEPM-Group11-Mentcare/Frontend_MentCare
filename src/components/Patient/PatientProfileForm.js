@@ -2,14 +2,31 @@ import InputForm from '../common/InputForm'
 import Button from "../common/Button";
 import { useForm, Controller } from 'react-hook-form';
 import { CameraIcon } from "@heroicons/react/24/outline";
+import { updatePatientProfile } from '../../services/patient';
+import { useEffect } from 'react';
 
-function PatientProfileForm({ user }) {
+function PatientProfileForm({ profile }) {
     const { control, handleSubmit, setValue, watch } = useForm();
 
-    const onSubmit = (data) => {
-        console.log(data);
-        // Axios + backend handling logic 
-    }
+    const onSubmit = async (data) => {
+        try {
+            const updatedProfile = await updatePatientProfile(data);
+            console.log(updatedProfile);
+        }
+        catch (err) {
+            console.error('Error updating profile: ', err);
+        }
+    };
+
+    useEffect(() => {
+        if (profile) {
+            setValue({
+                name: profile.name || '',
+                username: profile.username || '',
+                dob: profile.dob || ''
+            })
+        }
+    }, [profile, setValue]);
 
     // Handle avatar change
     const handleAvatarChange = (e) => {
@@ -72,7 +89,7 @@ function PatientProfileForm({ user }) {
                             <Controller
                                 name='userId'
                                 control={control}
-                                defaultValue="#345"
+                                defaultValue={profile._id || '345'}
                                 render={({ field }) => (
                                     <InputForm label='User ID' value={field.value} className='w-lg' readOnly='true' {...field} ></InputForm>
                                 )}
@@ -81,7 +98,7 @@ function PatientProfileForm({ user }) {
                             <Controller
                                 name='username'
                                 control={control}
-                                defaultValue="nana@1711"
+                                defaultValue={profile.username || 'xian'}
                                 render={({ field }) => (
                                     <InputForm label='Username' size='md' value={field.value} {...field}></InputForm>
                                 )}
@@ -91,7 +108,7 @@ function PatientProfileForm({ user }) {
                             <Controller
                                 name='name'
                                 control={control}
-                                defaultValue="Nguyen Tran Ha Anh"
+                                defaultValue={profile.name || "Nguyen Tran Ha Anh"}
                                 render={({ field }) => (
                                     <InputForm label='Name' size='md' value={field.value} {...field}></InputForm>
                                 )}
@@ -99,6 +116,7 @@ function PatientProfileForm({ user }) {
                             <Controller
                                 name='dob'
                                 control={control}
+                                defaultValue={profile.dob || '2003-07-18'}
                                 render={({ field }) => (
                                     <InputForm type='date' label='Date of Birth' size='md' value={field.value} {...field}></InputForm>
                                 )}
