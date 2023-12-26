@@ -1,38 +1,32 @@
-import React, { useState } from "react";
-import { Editor } from "@tinymce/tinymce-react";
+import React from "react";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-export default function App() {
-  // State to hold the content from TinyMCE
-  const [editorContent, setEditorContent] = useState("Welcome to TinyMCE!");
-
-  //   Function to handle content change
-  const handleEditorChange = (content, editor) => {
-    setEditorContent(content);
-    console.log(content);
-  };
+function TextEditor() {
   return (
-    <Editor
-      apiKey="ycwu065ihoivclfp49ot4693nh71wal5dis2ss1ej05io6tb"
-      init={{
-        plugins:
-          "ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss",
-        toolbar:
-          "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
-        tinycomments_mode: "embedded",
-        tinycomments_author: "Author name",
-        mergetags_list: [
-          { value: "First.Name", title: "First Name" },
-          { value: "Email", title: "Email" },
-        ],
-        ai_request: (request, respondWith) =>
-          respondWith.string(() =>
-            Promise.reject("See docs to implement AI Assistant")
-          ),
-      }}
-      initialValue="Welcome to TinyMCE!"
-      onChange={(event) => {
-        handleEditorChange(event.target.value);
-      }}
-    />
+    <div>
+      <h2>Using CKEditor&nbsp;5 build in React</h2>
+      <CKEditor
+        editor={ClassicEditor}
+        data="<p>Hello from CKEditor&nbsp;5!</p>"
+        onReady={(editor) => {
+          // You can store the "editor" and use when it is needed.
+          console.log("Editor is ready to use!", editor);
+        }}
+        onChange={(event, editor) => {
+          const data = editor.getData();
+          console.log(data);
+          // console.log(event);
+        }}
+        // onBlur={(event, editor) => {
+        //   console.log("Blur.", editor);
+        // }}
+        // onFocus={(event, editor) => {
+        //   console.log("Focus.", editor);
+        // }}
+      />
+    </div>
   );
 }
+
+export default TextEditor;
