@@ -31,6 +31,8 @@ function SideBar() {
     console.log(d);
   };
 
+  const patientBaseRoute = '/patient';
+
   return (
     <div className="px-6 py-6 flex flex-col bg-white h-screen w-[280px] justify-between border-r-[#EFEFEF] border-r-2">
       {/* SideBar Content */}
@@ -68,18 +70,18 @@ function SideBar() {
 
         {/* Links */}
         <div>
-          <SideBarButton icon={SquaresPlusIcon} name={"Dashboard"} />
-          <SideBarButton icon={UserCircleIcon} name={"My Profiles"} />
-          <SideBarButton icon={CalendarDaysIcon} name={"Appointments"} />
-          <SideBarButton icon={DocumentTextIcon} name={"Medical Records"} />
-          <SideBarButton icon={FaceSmileIcon} name={"Self-assessment"} />
-          <SideBarButton icon={UserGroupIcon} name={"My Therapist Room"} />
-          <SideBarButton icon={BellIcon} name={"Notification"} />
+          <SideBarButton icon={SquaresPlusIcon} name={"Dashboard"} path={`${patientBaseRoute}/dashboard`}/>
+          <SideBarButton icon={UserCircleIcon} name={"My Profiles"} path={`${patientBaseRoute}/profile`} />
+          <SideBarButton icon={CalendarDaysIcon} name={"Appointments"} path={`${patientBaseRoute}/appointments`} />
+          <SideBarButton icon={DocumentTextIcon} name={"Medical Records"} path={`${patientBaseRoute}/records`} />
+          <SideBarButton icon={FaceSmileIcon} name={"Self-assessment"} path={`${patientBaseRoute}/selfhelp`} />
+          <SideBarButton icon={UserGroupIcon} name={"My Therapist Room"} path={`${patientBaseRoute}/rooms`} />
+          <SideBarButton icon={BellIcon} name={"Notification"} path={`${patientBaseRoute}/noti`} />
         </div>
       </div>
 
       {/* Log Out Button */}
-      <SideBarButton icon={ArrowRightOnRectangleIcon} name={"Logout"} />
+      <SideBarButton icon={ArrowRightOnRectangleIcon} name={"Logout"} path={`${patientBaseRoute}/logout`} />
     </div>
   );
 }
