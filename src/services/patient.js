@@ -1,5 +1,17 @@
 import axiosInstance from './axiosService';
 
+export const bookAppointment = async(therapist, schedule, note, accept, total) => {
+  const res = await axiosInstance.post('/patient/booking', {therapist, schedule, note, accept, total})
+
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch(err) {
+    return err;
+  }
+}
+
 export const getTherapist = async(id) => {
   const res = await axiosInstance.get(`/patient/therapist/${id}`)
 
@@ -35,3 +47,4 @@ export const getTherapistSchedule = async(id) => {
     return err;
   }
 }
+

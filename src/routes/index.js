@@ -54,7 +54,7 @@ const publicRoutes = [
     layout: PatientLayout,
   },
   {
-    path: "patient/checkout/:id",
+    path: "patient/checkout",
     component: CheckoutPage,
     layout: PatientLayout,
   },

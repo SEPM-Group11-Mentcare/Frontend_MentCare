@@ -64,7 +64,9 @@ const InputForm = ({
             <Text weight="semibold">{label}</Text>
           </div>
 
-          <input
+          {
+            type === "textarea" ? null : 
+            <input
             type={inputType}
             value={value}
             onChange={onChange}
@@ -72,6 +74,8 @@ const InputForm = ({
             className={cn(InputFormVariants({ className, size }))}
             defaultValue={defaultValue}
           />
+          }
+          
 
           {type === "password" && (
             <button
@@ -89,7 +93,9 @@ const InputForm = ({
               {label}
             </Text>
           </div>
-          <input
+          {
+            type === "textarea" ? <textarea className={cn(InputFormVariants({ className, size }))}></textarea> : 
+            <input
             type={inputType}
             value={value}
             onChange={onChange}
@@ -97,6 +103,7 @@ const InputForm = ({
             className={cn(InputFormVariants({ className, size }))}
             defaultValue={defaultValue}
           />
+          }
 
           {type === "password" && (
             <button

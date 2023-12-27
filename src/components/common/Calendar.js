@@ -8,7 +8,7 @@ import {
 import Text from "./Text";
 import Button from "./Button";
 
-const Calendar = ({ schedules }) => {
+const Calendar = ({ schedules, selectedOption, setSelectedOption }) => {
   const [weekDays, setWeekDays] = useState([
     {
       date: null,
@@ -45,8 +45,6 @@ const Calendar = ({ schedules }) => {
     });
     setWeekDays(week);
   }, [currentDate]);
-
-  const [selectedOption, setSelectedOption] = useState();
 
   const onClick = (e) => {
     setSelectedOption(e.target.value);
@@ -130,9 +128,11 @@ const Calendar = ({ schedules }) => {
                         new Date().setHours(0, 0, 0, 0)
                     }
                   >
-                    {new Date(schedule.dateTime)
-                      .toISOString()
-                      .substring(11, 16)}
+                    {new Date(schedule.dateTime).toLocaleTimeString("en-GB", {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      hour12: false,
+                    })}
                   </Button>
                 ) : null;
               })}

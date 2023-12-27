@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ContentLayout from "../components/Layout/ContentLayout";
 import InputForm from "../components/common/InputForm";
 import Button from "../components/common/Button";
@@ -7,6 +7,8 @@ import Text from "../components/common/Text";
 import Checkbox from "../components/common/Checkbox";
 import { Controller, useForm } from "react-hook-form";
 import CheckoutCard from "../components/Checkout/CheckoutCard";
+import { PatientContext } from "../context/patientContext"
+import * as axiosInstance from "../services/patient";
 
 function CheckoutPage() {
   const {
@@ -17,8 +19,17 @@ function CheckoutPage() {
     mode: "onChange",
   });
 
-  const onSubmit = (d) => {
+  const { bookingSession } = useContext(PatientContext);
+
+  const onSubmit = async(d) => {
     console.log(d);
+    await axiosInstance.bookAppointment(bookingSession.therapistInfo, bookingSession.session.id, d.notes, d.accept, 500000)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   };
   return (
     <ContentLayout title={"Checkout"}>
@@ -28,40 +39,60 @@ function CheckoutPage() {
             Checkout
           </Text>
           <form className="flex-col flex gap-6">
-            <div>
+            {/* <div> */}
               <Controller
                 name="notes"
                 control={control}
                 defaultValue=""
                 render={({ field }) => (
                   <InputForm
-                    type="text"
+                    type="textarea"
                     label="Notes"
                     name="notes"
                     value={field.value}
-                    placeholder={"Write some notes for your doctors..."}
+                    placeholder="Write some notes for your doctors..."
                     onChange={(e) => field.onChange(e.target.value)}
+                    className="h-60"
                   />
                 )}
               />
-            </div>
+            {/* </div> */}
+
+            {/* <div> */}
+              <Controller
+                name="accept"
+                control={control}
+                defaultValue={false}
+                render={({ field }) => (
+                  <Checkbox
+                    name="accept"
+                    value={field.value}
+                    onChange={(e) => field.onChange(e.target.checked)}
+                  >
+                    I accept Therapist to access to my medical record
+                  </Checkbox>
+                )}
+              />
+            {/* </div> */}
             <Button onClick={handleSubmit(onSubmit)}>
               Confirm and Checkout
             </Button>
           </form>
         </div>
-        <div className="w-2/6">
-          <CheckoutCard
-            doctorName="Ha Anh"
+        {/* <div className="w-2/6"> */}
+          {
+            bookingSession && <CheckoutCard
+            doctorName={bookingSession.therapistInfo.name}
             doctorExperience="20"
-            date="16 Nov 2023"
-            time="10:00 AM"
+            date={bookingSession.session.date}
+            time={bookingSession.session.time}
             consultingFee="100"
             bookingFee="10"
             videoCallFee="50"
             totalFee="160"
           />
-        </div>
+          }
+        {/* </div> */}
       </div>
     </ContentLayout>
   );
