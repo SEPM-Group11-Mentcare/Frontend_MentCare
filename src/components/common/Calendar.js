@@ -8,7 +8,7 @@ import {
 import Text from "./Text";
 import Button from "./Button";
 
-const Calendar = () => {
+const Calendar = ({ schedules }) => {
   const [weekDays, setWeekDays] = useState([
     {
       date: null,
@@ -53,14 +53,15 @@ const Calendar = () => {
 
     parsedDate.setHours(hours);
     parsedDate.setMinutes(minutes);
+    parsedDate.setSeconds(0);
+    parsedDate.setMilliseconds(0);
 
     return parsedDate;
   };
-  const [selectedOption, setSelectedOption] = useState(new Date());
+  const [selectedOption, setSelectedOption] = useState();
 
-  const onClick = (date, e) => {
-    const test = formatDateAndTime(date.date, e.target.textContent);
-    setSelectedOption(test);
+  const onClick = (e) => {
+    setSelectedOption(e.target.value);
   };
 
   const preWeek = () => {
@@ -87,7 +88,7 @@ const Calendar = () => {
             value={`${format(
               new Date(weekDays[0].date),
               "dd/MM/yyyy"
-            )} - ${format(new Date(weekDays[6].date), "dd/MM/yyyy")}`}
+            )}-${format(new Date(weekDays[6].date), "dd/MM/yyyy")}`}
             disabled
           />
         )}
@@ -96,7 +97,7 @@ const Calendar = () => {
       <div className="bg-white px-3 py-6">
         <div className="grid gap-4 grid-cols-7 text-center">
           {weekDays.map((date) => (
-            <div className="flex flex-col gap-6">
+            <div className=" flex flex-col justify-start gap-3">
               <div className="flex items-center gap-2">
                 {date.daysOfWeek === "Sun" ? (
                   <FontAwesomeIcon
@@ -121,45 +122,24 @@ const Calendar = () => {
                 ) : null}
               </div>
 
-              <div className="flex flex-col gap-3">
-                <Button
-                  onClick={(e) => onClick(date, e)}
-                  variant={
-                    selectedOption &&
-                    selectedOption.getTime() ===
-                      formatDateAndTime(date.date, "9:00").getTime()
-                      ? ""
-                      : "gray"
-                  }
-                >
-                  9:00
-                </Button>
-                <Button
-                  onClick={(e) => onClick(date, e)}
-                  variant={
-                    selectedOption &&
-                    selectedOption.getTime() ===
-                      formatDateAndTime(date.date, "12:00").getTime()
-                      ? ""
-                      : "gray"
-                  }
-                >
-                  12:00
-                </Button>
+              {schedules.map((schedule) => {
+                const scheduleDate = new Date(schedule.dateTime).setHours(
+                  0,
+                  0,
+                  0,
+                  0
+                );
+                const currentDate = new Date(date.date).setHours(0, 0, 0, 0);
 
-                <Button
-                  onClick={(e) => onClick(date, e)}
-                  variant={
-                    selectedOption &&
-                    selectedOption.getTime() ===
-                      formatDateAndTime(date.date, "14:00").getTime()
-                      ? ""
-                      : "gray"
-                  }
-                >
-                  14:00
-                </Button>
-              </div>
+                return scheduleDate === currentDate ? (
+                  <Button variant={selectedOption === schedule._id ? "" : "gray"} onClick={onClick} value={schedule._id} disabled={schedule.status === "Booked"}>
+                    {new Date(schedule.dateTime)
+                      .toISOString()
+                      .substring(11, 16)}
+                  </Button>
+                ) :
+                null;
+              })}
             </div>
           ))}
         </div>
