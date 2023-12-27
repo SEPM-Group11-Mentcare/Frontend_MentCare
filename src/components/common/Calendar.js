@@ -46,18 +46,6 @@ const Calendar = ({ schedules }) => {
     setWeekDays(week);
   }, [currentDate]);
 
-  const formatDateAndTime = (date, time) => {
-    const parsedDate = new Date(date);
-
-    const [hours, minutes] = time.split(":");
-
-    parsedDate.setHours(hours);
-    parsedDate.setMinutes(minutes);
-    parsedDate.setSeconds(0);
-    parsedDate.setMilliseconds(0);
-
-    return parsedDate;
-  };
   const [selectedOption, setSelectedOption] = useState();
 
   const onClick = (e) => {
@@ -129,16 +117,24 @@ const Calendar = ({ schedules }) => {
                   0,
                   0
                 );
-                const currentDate = new Date(date.date).setHours(0, 0, 0, 0);
+                const currDate = new Date(date.date).setHours(0, 0, 0, 0);
 
-                return scheduleDate === currentDate ? (
-                  <Button variant={selectedOption === schedule._id ? "" : "gray"} onClick={onClick} value={schedule._id} disabled={schedule.status === "Booked"}>
+                return scheduleDate === currDate ? (
+                  <Button
+                    variant={selectedOption === schedule._id ? "" : "gray"}
+                    onClick={onClick}
+                    value={schedule._id}
+                    disabled={
+                      schedule.status === "Booked" ||
+                      new Date(scheduleDate).getTime() <
+                        new Date().setHours(0, 0, 0, 0)
+                    }
+                  >
                     {new Date(schedule.dateTime)
                       .toISOString()
                       .substring(11, 16)}
                   </Button>
-                ) :
-                null;
+                ) : null;
               })}
             </div>
           ))}
