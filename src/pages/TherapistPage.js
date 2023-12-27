@@ -58,7 +58,7 @@ const TherapistPage = () => {
         <div className="flex gap-5 flex-col">
           {therapists.map((therapist) => (
             <DoctorCard
-              img="https://picsum.photos/200"
+              img="https://picsum.photos/200/500"
               name={therapist.name}
               specialization={therapist.specialization}
               availableToday={therapist.availableToday}
