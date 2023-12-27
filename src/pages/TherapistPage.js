@@ -1,17 +1,36 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dropdown from "../components/common/Dropdown";
 import Text from "../components/common/Text";
 import ContentLayout from "../components/Layout/ContentLayout";
 import DoctorCard from "../components/Therapists/DoctorCard";
+import * as axiosInstance from "../services/patient";
 
 const TherapistPage = () => {
-  const sortList = ["Newest", "Oldest"]
+  const sortList = ["All", "Available", "Unavailable"];
+  const [therapists, setTherapists] = useState([]);
   const [sort, setSort] = useState(sortList[0]);
   const onChange = (e) => {
     setSort(e.target.value);
   };
+
+  useEffect(() => {
+    async function fetchData() {
+      await axiosInstance
+        .getTherapists()
+        .then((res) => {
+          // console.log(res);
+          setTherapists(res.therapists);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <ContentLayout title="Therapists">
       <div className="bg-white w-full h-full rounded-md py-4 px-10 flex flex-col gap-6">
@@ -32,46 +51,21 @@ const TherapistPage = () => {
                 className="border-0 bg-transparent focus:outline-none focus:ring-0"
               />
             </div>
-            <Dropdown options={sortList} selected={sort} onChange={onChange}/>
+            <Dropdown options={sortList} selected={sort} onChange={onChange} />
           </div>
         </div>
 
         <div className="flex gap-5 flex-col">
-          <DoctorCard
-            img="https://picsum.photos/200"
-            name="John Doe"
-            experience="20"
-            availableToday={true}
-            price="500000"
-          />
-          <DoctorCard
-            img="https://picsum.photos/200"
-            name="John Doe"
-            experience="20"
-            availableToday={false}
-            price="500000"
-          />
-          <DoctorCard
-            img="https://picsum.photos/200"
-            name="John Doe"
-            experience="20"
-            availableToday={true}
-            price="500000"
-          />
-          <DoctorCard
-            img="https://picsum.photos/200"
-            name="John Doe"
-            experience="20"
-            availableToday={false}
-            price="500000"
-          />
-          <DoctorCard
-            img="https://picsum.photos/200"
-            name="John Doe"
-            experience="20"
-            availableToday={true}
-            price="500000"
-          />
+          {therapists.map((therapist) => (
+            <DoctorCard
+              img="https://picsum.photos/200/500"
+              name={therapist.name}
+              specialization={therapist.specialization}
+              availableToday={therapist.availableToday}
+              price="500000"
+              id={therapist._id}
+            />
+          ))}
         </div>
       </div>
     </ContentLayout>
