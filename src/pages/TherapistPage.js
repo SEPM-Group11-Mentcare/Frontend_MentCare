@@ -5,7 +5,7 @@ import Dropdown from "../components/common/Dropdown";
 import Text from "../components/common/Text";
 import ContentLayout from "../components/Layout/ContentLayout";
 import DoctorCard from "../components/Therapists/DoctorCard";
-import * as axiosInstance from "../services/therapist";
+import * as axiosInstance from "../services/patient";
 
 const TherapistPage = () => {
   const sortList = ["All", "Available", "Unavailable"];

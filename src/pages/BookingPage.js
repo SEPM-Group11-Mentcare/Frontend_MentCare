@@ -1,39 +1,53 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Button from "../components/common/Button";
 import Calendar from "../components/common/Calendar";
 import ContentLayout from "../components/Layout/ContentLayout";
 import DoctorCard from "../components/Therapists/DoctorCard";
-import * as axiosInstance from "../services/therapist";
+import * as axiosInstance from "../services/patient";
 
 const BookingPage = () => {
-  const [schedules, setSchedule] = useState([])
+  const [schedules, setSchedule] = useState([]);
+  const [therapist, setTherapist] = useState();
+  const { id } = useParams();
   useEffect(() => {
     async function fetchData() {
-      await axiosInstance.getSchedule()
-      .then((res) => {
-        console.log(res);
-        setSchedule(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      }) 
+      await axiosInstance
+        .getTherapistSchedule(id)
+        .then((res) => {
+          // console.log(res);
+          setSchedule(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+      await axiosInstance
+        .getTherapist(id)
+        .then((res) => {
+          console.log(res);
+          setTherapist(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-    fetchData()
-  }, [])
+    fetchData();
+  }, [id]);
 
   return (
     <ContentLayout title="Booking">
       <div className="flex flex-col gap-6">
-        <DoctorCard
-          img="https://picsum.photos/200"
-          name="John Doe"
-          experience="20"
-          availableToday={true}
-          price="500000"
-          detail={true}
-        />
+        {therapist && (
+          <DoctorCard
+            img="https://picsum.photos"
+            name={therapist.name}
+            specialization={therapist.specialization}
+            detail={true}
+          />
+        )}
 
-        <Calendar schedules={schedules}/>
+        <Calendar schedules={schedules} />
 
         <div className="flex justify-end">
           <Button>Proceed to Pay</Button>
