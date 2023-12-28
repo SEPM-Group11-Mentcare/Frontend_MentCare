@@ -18,7 +18,7 @@ function TherapistDashboard() {
   return (
     <ContentLayout title="Dashboard" className="fixed">
       <div className="overflow-y-auto h-full">
-        <div className="bg-white rounded-md gap-6 flex justify-around round-sm ">
+        <div className="bg-white rounded-md flex justify-between px-20 round-sm">
           <StatisticTherapistTag
             color="deeppink"
             imageUrl={require("../assets/images/therapistIcon1.png")}
@@ -45,8 +45,9 @@ function TherapistDashboard() {
           <Text children="Patient Appointment" weight="bold" />
         </div>
 
-        <div className="bg-white w-full h-full rounded-md py-4 px-10">
+        <div className="bg-white w-full h-full rounded-md p-5">
           {/* Title */}
+          <div className="flex justify-end">
           <Button
             children="Upcoming"
             className={
@@ -67,10 +68,12 @@ function TherapistDashboard() {
           />
 
           <hr />
+          </div>
+          
           {/* Table */}
           <div>
-            <div className="overflow-x-auto">
-              <table className="table">
+            <div className="overflow-x-auto ">
+              <table className="table text-center">
                 {/* head */}
                 <thead>
                   <tr>
@@ -89,20 +92,7 @@ function TherapistDashboard() {
                         className="text-black"
                       />
                     </th>
-                    <th>
-                      <Text
-                        children="Purpose"
-                        weight="bold"
-                        className="text-black"
-                      />
-                    </th>
-                    <th>
-                      <Text
-                        children="Type"
-                        weight="bold"
-                        className="text-black"
-                      />
-                    </th>
+                    
                     <th>
                       <Text
                         children="Paid"
@@ -110,7 +100,11 @@ function TherapistDashboard() {
                         className="text-black"
                       />
                     </th>
-                    <th></th>
+                    <th><Text
+                        children="Action"
+                        weight="bold"
+                        className="text-black"
+                      /></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -123,7 +117,7 @@ function TherapistDashboard() {
                         id="#PT0016"
                         purpose="General"
                         type="Old Patient"
-                        amount="150"
+                        amount="150.000"
                         bookingdate="11 Nov 2019"
                         bookingtime="10:00 AM"
                       />
@@ -133,7 +127,7 @@ function TherapistDashboard() {
                         id="#PT0016"
                         purpose="General"
                         type="Old Patient"
-                        amount="150"
+                        amount="150.000"
                         bookingdate="11 Nov 2019"
                         bookingtime="10:00 AM"
                       />
@@ -143,7 +137,7 @@ function TherapistDashboard() {
                         id="#PT0016"
                         purpose="General"
                         type="Old Patient"
-                        amount="150"
+                        amount="150.000"
                         bookingdate="11 Nov 2019"
                         bookingtime="10:00 AM"
                       />
@@ -153,7 +147,7 @@ function TherapistDashboard() {
                         id="#PT0016"
                         purpose="General"
                         type="Old Patient"
-                        amount="150"
+                        amount="150.000"
                         bookingdate="11 Nov 2019"
                         bookingtime="10:00 AM"
                       />
@@ -163,7 +157,7 @@ function TherapistDashboard() {
                         id="#PT0016"
                         purpose="General"
                         type="Old Patient"
-                        amount="150"
+                        amount="150.000"
                         bookingdate="11 Nov 2019"
                         bookingtime="10:00 AM"
                       />
@@ -173,7 +167,7 @@ function TherapistDashboard() {
                         id="#PT0016"
                         purpose="General"
                         type="Old Patient"
-                        amount="150"
+                        amount="150.000"
                         bookingdate="11 Nov 2019"
                         bookingtime="10:00 AM"
                       />
@@ -183,7 +177,7 @@ function TherapistDashboard() {
                         id="#PT0016"
                         purpose="General"
                         type="Old Patient"
-                        amount="150"
+                        amount="150.000"
                         bookingdate="11 Nov 2019"
                         bookingtime="10:00 AM"
                       />
@@ -196,7 +190,7 @@ function TherapistDashboard() {
                       id="#PT0016"
                       purpose="General"
                       type="New Patient"
-                      amount="150"
+                      amount="150.000"
                       bookingdate="11 Nov 2019"
                       bookingtime="10:00 AM"
                     />
