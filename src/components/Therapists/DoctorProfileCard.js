@@ -39,14 +39,14 @@ const DoctorProfileCard = ({ role }) => {
             />
             <Text className="text-sky-500">Dentist</Text>
           </div>
-          <div className="flex gap-2 items-center text-gray-500">
+          {/* <div className="flex gap-2 items-center text-gray-500">
             <DoctorStar />
             <DoctorStar />
             <DoctorStar />
             <DoctorStar />
             <DoctorStar />
             <Text weight="bold">(35)</Text>
-          </div>
+          </div> */}
           <div className="flex gap-2 items-center text-gray-500">
             <Text className="border-solid border-2 p-1 rounded-md text-black">
               Dental Fillings
