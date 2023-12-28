@@ -53,6 +53,11 @@ const publicRoutes = [
     path: "patient/booking/:id",
     component: BookingPage,
     layout: PatientLayout
+  },
+  {
+    path: "patient/medicalrecord",
+    component: PatientMedicalRecord,
+    layout: PatientLayout
   }
   
 
