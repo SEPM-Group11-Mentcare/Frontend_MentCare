@@ -6,6 +6,7 @@ import PatientDashboard from "../pages/PatientDashboard";
 import TherapistDashboard from "../pages/TherapistDashboard";
 import AdminDashboard from "../pages/AdminDashboard";
 import PatientJournal from "../pages/PatientJournal";
+import PatientJournalList from "../pages/PatientJournalList";
 
 // Import Layout Components
 import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
@@ -48,8 +49,13 @@ const publicRoutes = [
     layout: PatientLayout,
   },
   {
-    path: "patient/journal",
+    path: "patient/journals/:id",
     component: PatientJournal,
+    layout: PatientLayout,
+  },
+  {
+    path: "patient/journals",
+    component: PatientJournalList,
     layout: PatientLayout,
   },
   {
