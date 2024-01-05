@@ -7,7 +7,7 @@ import { useForm, Controller } from "react-hook-form";
 import Button from "../common/Button";
 import * as axiosInstance from "../../services/journal";
 
-function TextEditor({ initialContent }) {
+function TextEditor() {
   const { journalID } = useParams();
   const [journalData, setJournalData] = useState(null);
   const [content, setContent] = useState("");
@@ -20,7 +20,6 @@ function TextEditor({ initialContent }) {
     const fetchData = async () => {
       try {
         const response = await axiosInstance.getJournalById(journalID);
-        console.log("Response: ", response);
         setChosenEmoji(response.mood);
         setJournalData(response);
       } catch (error) {
@@ -28,7 +27,7 @@ function TextEditor({ initialContent }) {
       }
     };
 
-    if (journalID) {
+    if (journalID !== "new") {
       fetchData();
     }
   }, [journalID]);
@@ -40,20 +39,27 @@ function TextEditor({ initialContent }) {
 
   const onSubmit = async (data) => {
     // Combine data from the form and CKEditor
-    const updatedJournalData = {
+    const journalDataAPI = {
       journalTitle: data.title,
       journalText: content,
       mood: chosenEmoji,
       userId: "user1",
     };
 
+    console.log(journalDataAPI);
+
     // Make an API request to update the journal
     try {
-      const updatedJournal = await axiosInstance.updateJournal(
-        journalID,
-        updatedJournalData
-      );
-      console.log("Journal updated successfully:", updatedJournal);
+      if (journalID !== "new") {
+        const updatedJournal = await axiosInstance.updateJournal(
+          journalID,
+          journalDataAPI
+        );
+        console.log("Journal updated successfully:", updatedJournal);
+      } else {
+        const newJournal = await axiosInstance.createJournal(journalDataAPI);
+        console.log("Journal created successfully:", newJournal);
+      }
     } catch (error) {
       console.error("Error updating journal:", error);
     }
@@ -65,21 +71,29 @@ function TextEditor({ initialContent }) {
       className="overflow-auto flex flex-col h-[800px]"
     >
       {/* Title of The Journal */}
-      {journalData && (
+      {journalData ? (
         <span className="text-2xl font-semibold mb-4">
           Title: {journalData.journalTitle}
+        </span>
+      ) : (
+        <span className="text-2xl font-semibold mb-4">
+          Title: Please Enter Your Title Into Below Input
         </span>
       )}
       {/* Use Controller to integrate input with React Hook Form */}
       <Controller
         name="title"
         control={control}
-        // defaultValue={"Enter New Title"}
+        defaultValue={""}
         render={({ field }) => (
           <input
             {...field}
             type="text"
-            placeholder={journalData && journalData.journalTitle}
+            placeholder={
+              journalData
+                ? journalData.journalTitle
+                : "Please Enter Journal Title"
+            }
             className="border-[#CCCED1] border-solid border-[1px]"
           />
         )}

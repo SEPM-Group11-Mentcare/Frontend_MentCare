@@ -2,7 +2,7 @@ import axiosInstance from "./axiosService";
 
 export const createJournal = async (journal) => {
   try {
-    const res = await axiosInstance.post("/journals", { journal });
+    const res = await axiosInstance.post("/journals", journal);
     return res.data;
   } catch (err) {
     return err;

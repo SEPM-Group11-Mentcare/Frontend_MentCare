@@ -12,6 +12,7 @@ function JournalRow({
   handleDelete,
 }) {
   const formattedDate = new Date(createdDate).toLocaleDateString("en-GB");
+
   return (
     <tr>
       <td>{number}</td>

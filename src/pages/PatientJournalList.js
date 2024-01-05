@@ -60,7 +60,7 @@ function PatientJournalList() {
 
         {/* Actions */}
         <div className="flex flex-row items-center justify-between mb-12 mt-3">
-          <Button href={"/patient/journal"}>Create A Journal</Button>
+          <Button href={"/patient/journals/new"}>Create A Journal</Button>
 
           <div className="flex flex-row items-center gap-4">
             <div className="flex justify-center items-center input input-bordered max-w-xs bg-[#F9FBFF] rounded-md border-none focus:outline-none focus:ring-primaryBlue text-sm">
