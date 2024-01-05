@@ -1,4 +1,5 @@
 import React from "react";
+import RedirectButton from '../common/RedirectButton';
 
 function ContentLayout({ title, children }) {
   return (
@@ -6,6 +7,7 @@ function ContentLayout({ title, children }) {
       <span className="text-4xl font-semibold mb-8 pb-2 border-strokeColor border-b-2">
         {title}
       </span>
+      <RedirectButton/>
       {children}
     </div>
   );

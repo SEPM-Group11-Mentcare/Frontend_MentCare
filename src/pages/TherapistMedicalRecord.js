@@ -5,6 +5,7 @@ import InputForm from "../components/common/InputForm";
 import Button from "../components/common/Button";
 import { Controller, useForm } from "react-hook-form";
 import MedicalRecordInfo from "../components/Therapists/MedicalRecordInfo";
+import RedirectButton from "../components/common/RedirectButton";
 
 const TherapistMedicalRecord = () => {
   const {
@@ -22,6 +23,7 @@ const TherapistMedicalRecord = () => {
 
   return (
     <ContentLayout title="Medical Record" className="fixed">
+      {/* <RedirectButton /> */}
       <div className="overflow-y-auto h-full">
         <div className="bg-white w-full rounded-md py-4 px-10 shadow">
           <form className="flex-col flex gap-1 py-5 px-10">
@@ -34,9 +36,8 @@ const TherapistMedicalRecord = () => {
 
             {/* Meeting Summary */}
             <div className="py-10">
-            <MedicalRecordInfo/>
+              <MedicalRecordInfo />
             </div>
-           
 
             <Text children="Meeting Summary" weight="bold" />
             <Controller
