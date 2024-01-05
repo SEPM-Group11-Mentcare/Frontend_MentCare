@@ -49,7 +49,7 @@ const publicRoutes = [
     layout: PatientLayout,
   },
   {
-    path: "patient/journals/:id",
+    path: "patient/journals/:journalID",
     component: PatientJournal,
     layout: PatientLayout,
   },

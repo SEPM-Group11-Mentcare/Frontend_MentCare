@@ -32,6 +32,7 @@ export const updateJournal = async (id, updatedJournal) => {
     const res = await axiosInstance.put(`/journals/${id}`, {
       journal: updatedJournal,
     });
+    console.log(res);
     return res.data;
   } catch (err) {
     return err;

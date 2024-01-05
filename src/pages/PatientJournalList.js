@@ -8,14 +8,16 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import * as axiosInstance from "../services/journal";
 
 function PatientJournalList() {
-  const sortList = ["Newest", "Oldest"];
-  const [sort, setSort] = useState(sortList[0]);
+  // const sortList = ["Newest", "Oldest"];
+  // const [sort, setSort] = useState(sortList[0]);
   const [journals, setJournals] = useState([]);
+
+  console.log(journals);
 
   useEffect(() => {
     async function fetchData() {
       await axiosInstance
-        .getJournalsByUserId("user789")
+        .getJournalsByUserId("user1")
         .then((res) => {
           setJournals(res);
         })
@@ -46,9 +48,9 @@ function PatientJournalList() {
     }
   };
 
-  const onChange = (e) => {
-    setSort(e.target.value);
-  };
+  // const onChange = (e) => {
+  //   setSort(e.target.value);
+  // };
 
   return (
     <ContentLayout title="Journal List">
@@ -69,7 +71,7 @@ function PatientJournalList() {
                 className="border-0 bg-transparent focus:outline-none focus:ring-0"
               />
             </div>
-            <Dropdown options={sortList} selected={sort} onChange={onChange} />
+            {/* <Dropdown options={sortList} selected={sort} onChange={onChange} /> */}
           </div>
         </div>
 
@@ -80,6 +82,7 @@ function PatientJournalList() {
               {/* head */}
               <thead>
                 <tr>
+                  <th></th>
                   <th>Journal</th>
                   <th>Created Date</th>
                   <th>Mood</th>
@@ -88,10 +91,13 @@ function PatientJournalList() {
               </thead>
               <tbody>
                 {journals &&
-                  journals.map((journal) => (
+                  journals.map((journal, index) => (
                     <JournalRow
+                      number={index + 1}
                       key={journal._id}
-                      journal={journal.journalText}
+                      journalID={journal._id}
+                      journalTitle={journal.journalTitle}
+                      journalText={journal.journalText}
                       mood={journal.mood}
                       createdDate={journal.createdDate}
                       handleDelete={() => handleDeleteJournal(journal._id)}
