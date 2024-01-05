@@ -53,7 +53,7 @@ const TherapistMedicalRecord = () => {
               render={({ field }) => (
                 <div>
                   <InputForm
-                    type="text"
+                    type="textarea"
                     className="bg-gray-100 h-32"
                     name="summary"
                     value={field.value}

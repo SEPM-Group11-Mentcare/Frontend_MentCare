@@ -7,36 +7,41 @@ import MedicalRecordInfo from "../components/Therapists/MedicalRecordInfo";
 import { Controller, useForm } from "react-hook-form";
 
 function PatientMedicalRecord() {
-    const dummyData = {
-        meetingSummary: `Patient attended the session expressing concerns about recent stress levels impacting daily life. Discussed coping strategies and relaxation techniques.`,
-        prescription: `Prescribed medication:
+  const dummyData = {
+    meetingSummary: `Patient attended the session expressing concerns about recent stress levels impacting daily life. Discussed coping strategies and relaxation techniques.`,
+    prescription: `Prescribed medication:
         - Medicine X: Take 1 tablet in the morning and 1 tablet in the evening after meals for 14 days.
         - Medicine Y: Apply cream twice daily to the affected area.`,
-        diagnostic: `Diagnostic notes:
+    diagnostic: `Diagnostic notes:
         - Blood Pressure: Normal (120/80 mmHg)
         - Temperature: Slight fever (99.5°F)
         - Symptoms: Mild headache, sore throat.`,
-        advises: `Advises given to the patient:
+    advises: `Advises given to the patient:
         - Rest well, ensure 7-8 hours of sleep per night.
         - Hydrate adequately, drink at least 8 glasses of water daily.
         - Follow prescribed medication schedule strictly.`,
-      };
+  };
   return (
     <ContentLayout title="Medical Record" className="fixed">
       <div className="overflow-y-auto h-full">
         <div className="bg-white w-full h-full rounded-md py-4 px-10 shadow">
-        <Text className="absolute top-10 right-16 text-gray-400">ID12131213123123</Text>
-
+        <Text className="absolute top-21 right-20  text-gray-400">
+              #ID12131213123123
+            </Text>
           <form>
-
+          
             <Text
               children="Appointment Record #1"
               weight="bold"
               variant="text-3xl"
-              className="flex justify-center"
+              className="flex justify-center mt-10"
             />
-            <div  className="mt-5">
-            <MedicalRecordInfo/>
+            
+            
+            <div className="mt-5">
+            
+              <MedicalRecordInfo />
+              
             </div>
             <div className="flex flex-col gap-5 mt-10">
               {/* Meeting Summary */}
