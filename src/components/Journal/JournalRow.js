@@ -18,7 +18,7 @@ function JournalRow({
       <td>{journalTitle}</td>
       <td>{formattedDate}</td>
       <td>
-        <span className="text-2xl">{mood}</span>
+        <span className="text-4xl">{mood}</span>
       </td>
       <td className="flex flex-row gap-3">
         <Button href={`/patient/journals/${journalID}`}>Edit</Button>
