@@ -74,7 +74,7 @@ const TherapistMedicalRecord = () => {
               render={({ field }) => (
                 <div>
                   <InputForm
-                    type="text"
+                    type="textarea"
                     className="bg-gray-100 h-32"
                     name="prescription"
                     value={field.value}
@@ -94,7 +94,7 @@ const TherapistMedicalRecord = () => {
               render={({ field }) => (
                 <div>
                   <InputForm
-                    type="text"
+                    type="textarea"
                     className="bg-gray-100 h-32"
                     name="diagnostic"
                     value={field.value}
@@ -114,7 +114,7 @@ const TherapistMedicalRecord = () => {
               render={({ field }) => (
                 <div>
                   <InputForm
-                    type="text"
+                    type="textarea"
                     className="bg-gray-100 h-32"
                     name="advises"
                     value={field.value}
