@@ -1,5 +1,6 @@
 import React from "react";
 import RedirectButton from '../common/RedirectButton';
+import Breadcrumbs from "../common/Breadcrumbs";
 
 function ContentLayout({ title, children }) {
   return (
@@ -7,7 +8,11 @@ function ContentLayout({ title, children }) {
       <span className="text-4xl font-semibold mb-8 pb-2 border-strokeColor border-b-2">
         {title}
       </span>
-      <RedirectButton/>
+      <div className="pb-5">
+      <Breadcrumbs/>
+      </div>
+      
+      {/* <RedirectButton/> */}
       {children}
     </div>
   );
