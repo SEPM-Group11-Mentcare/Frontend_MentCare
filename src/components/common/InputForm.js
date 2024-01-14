@@ -94,7 +94,7 @@ const InputForm = ({
             </Text>
           </div>
           {
-            type === "textarea" ? <textarea  value={value} onChange={onChange} className={cn(InputFormVariants({ className, size }))}></textarea> : 
+            type === "textarea" ? <textarea value={value} onChange={onChange} className={cn(InputFormVariants({ className, size }))}></textarea> : 
             <input
             type={inputType}
             value={value}
