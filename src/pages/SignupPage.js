@@ -6,6 +6,7 @@ import { Controller, useForm } from "react-hook-form";
 import Checkbox from "../components/common/Checkbox";
 import Button from "../components/common/Button";
 import * as axiosInstance from "../services/auth";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const {
@@ -16,10 +17,13 @@ const Signup = () => {
     mode: "onChange",
   });
 
+  const navigate = useNavigate()
+
   const onSubmit = async(d) => {
     await axiosInstance.signup("patient", d.username, d.name, d.password)
     .then((res) => {
       console.log(res);
+      navigate('/login')
     })
     .catch((err) => {
       console.log(err.response.data.error.message);
@@ -80,11 +84,6 @@ const Signup = () => {
               defaultValue=""
               rules={{
                 required: "Username is required!",
-                // pattern: {
-                //   value:
-                //     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                //   message: "Invalid email format",
-                // },
               }}
               render={({ field }) => (
                 <div>
