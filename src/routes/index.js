@@ -16,8 +16,10 @@ import TherapistSignup from "../pages/TherapistSignup";
 import BookingPage from "../pages/BookingPage";
 import TherapistPage from "../pages/TherapistPage";
 import AdminLayout from "../components/Layout/AdminLayout";
+import TherapistMedicalRecord from "../pages/TherapistMedicalRecord";
 import TherapistSchedule from "../pages/TherapistSchedule";
 import TherapistAppointment from "../pages/TherapistAppointment";
+import PatientMedicalRecord from "../pages/PatientMedicalRecord";
 
 // Public Routes
 const publicRoutes = [
@@ -41,6 +43,11 @@ const publicRoutes = [
     layout: TherapistLayout,
   },
   {
+    path: "therapist/medicalrecord/create",
+    component: TherapistMedicalRecord,
+    layout: TherapistLayout
+  },
+  {
     path: "/admin/dashboard",
     component: AdminDashboard,
     layout: AdminLayout,
@@ -53,9 +60,10 @@ const publicRoutes = [
   {
     path: "/patient/booking/:id",
     component: BookingPage,
-    layout: PatientLayout,
+    layout: PatientLayout
   },
   {
+
     path: "/patient/checkout",
     component: CheckoutPage,
     layout: PatientLayout,
@@ -74,7 +82,15 @@ const publicRoutes = [
     path: "/admin/appointments",
     component: AdminApointment,
     layout: AdminLayout
+  },
+  {
+    path: "patient/medicalrecord/",
+    component: PatientMedicalRecord,
+    layout: PatientLayout
   }
+  
+  
+
 ];
 
 // Private Routes
