@@ -43,3 +43,15 @@ export const getTherapists = async () => {
     return err;
   }
 };
+
+export const getRequestList = async () => {
+  const res = await axiosInstance.get('/therapist/requests')
+
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch (err) {
+    return err;
+  }
+}

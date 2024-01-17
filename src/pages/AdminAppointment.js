@@ -21,12 +21,12 @@ function AdminAppointment() {
     await axiosInstance
       .getAppointments(sort)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setAppointments(res);
         // setTherapistRequests(res);
       })
       .catch((err) => {
-        console.log(err.response.data.error.message);
+        console.log(err);
       });
   };
 
@@ -38,7 +38,8 @@ function AdminAppointment() {
   const handleUpdate = async (_id, status) => {
     await axiosInstance
       .changeAppointmentStatus(_id, status)
-      .then(() => {
+      .then((res) => {
+        console.log(res);
         fetchAppointments();
       })
       .catch((err) => {

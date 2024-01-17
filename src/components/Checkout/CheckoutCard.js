@@ -39,16 +39,18 @@ function CheckoutCard({
             <FontAwesomeIcon icon={faCircleCheck} color="#22C550" />
           </div>
           <div className="flex gap-2 items-center">
-            <FontAwesomeIcon icon={faCertificate} />
-            <Text>{doctorExperience} Years of Experience</Text>
+            {/* <FontAwesomeIcon icon={faCertificate} /> */}
+            {/* <Text>{doctorExperience} Years of Experience</Text> */}
           </div>
         </div>
       </div>
 
       {/* Booking Date */}
-      <div>
+      <div className="flex gap-8">
         <span className="text-[#757575]">
           <strong className="text-black">Date</strong> {date}{" "}
+        </span>
+        <span className="text-[#757575]">
           <strong className="text-black">Time</strong> {time}
         </span>
       </div>
