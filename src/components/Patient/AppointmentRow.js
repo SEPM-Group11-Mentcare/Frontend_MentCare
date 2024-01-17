@@ -28,7 +28,7 @@ function AppointmentRow({
       </td>
       <td>
         {
-          status === "Pending" ? <Button variant="red">Cancel</Button> : null
+          status === "Pending" ? <Button variant="red" onClick={handleCancel}>Cancel</Button> : null
         }
       </td>
     </tr>

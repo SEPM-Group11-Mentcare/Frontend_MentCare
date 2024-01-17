@@ -11,7 +11,8 @@ import {
   UserGroupIcon,
   BellIcon,
   ArrowRightOnRectangleIcon,
-  UsersIcon
+  UsersIcon,
+  DocumentPlusIcon
 } from "@heroicons/react/24/outline";
 
 // Import Components
@@ -73,7 +74,7 @@ function SideBar() {
         <div>
           <SideBarButton icon={SquaresPlusIcon} name={"Dashboard"} path={`${patientBaseRoute}/dashboard`}/>
           <SideBarButton icon={UserCircleIcon} name={"My Profiles"} path={`${patientBaseRoute}/profile`} />
-          <SideBarButton icon={UsersIcon} name={"Therapists"} path={`${patientBaseRoute}/find`}/>
+          <SideBarButton icon={DocumentPlusIcon} name={"Booking"} path={`${patientBaseRoute}/booking`}/>
           <SideBarButton icon={CalendarDaysIcon} name={"Appointments"} path={`${patientBaseRoute}/appointments`} />
           <SideBarButton icon={DocumentTextIcon} name={"Medical Records"} path={`${patientBaseRoute}/records`} />
           <SideBarButton icon={FaceSmileIcon} name={"Self-assessment"} path={`${patientBaseRoute}/selfhelp`} />

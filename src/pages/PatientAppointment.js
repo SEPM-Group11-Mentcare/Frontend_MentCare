@@ -13,17 +13,28 @@ function PatientAppointment() {
   const onChange = (e) => {
     setSort(e.target.value);
   };
+  async function fetchData() {
+    await axiosInstance.getAppointments(sort)
+    .then((res) => {
+      // console.log(res);
+      setAppointments(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+  const handleCancel = async(id) => {
+    await axiosInstance.cancelAppointment(id)
+    .then((res) => {
+      console.log(res);
+      fetchData();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
     useEffect(() => {
-      async function fetchData() {
-        await axiosInstance.getAppointments(sort)
-        .then((res) => {
-          // console.log(res);
-          setAppointments(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-      }
       fetchData()
     }, [sort]);
 
@@ -74,6 +85,7 @@ function PatientAppointment() {
                     // accept={appointment.accept}
                     amount={appointment.total}
                     status={appointment.status}
+                    handleCancel={() => handleCancel(appointment.id)}
                     />
                   ))
                 }

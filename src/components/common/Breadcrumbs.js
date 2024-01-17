@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function Breadcrumbs() {
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   let currentLink = '';
   const crumbs = location.pathname.split('/')
@@ -15,9 +15,10 @@ export default function Breadcrumbs() {
       return (
         <li key={crumb} className={`text-sm ${isLastCrumb ? 'font-semibold' : 'font-normal'} breadcrumb`}>
           {isLastCrumb ? (
-            crumb
+            crumb.toUpperCase()
           ) : (
-            <Link to={currentLink}>{crumb}</Link>
+            crumb === "patient" || crumb === "therapist" || crumb === "admin" ? <Link to={`${currentLink}/dashboard`}>HOME</Link> :
+            <Link to={currentLink}>{crumb.toUpperCase()}</Link>
           )}
         </li>
       );
@@ -26,9 +27,6 @@ export default function Breadcrumbs() {
   return (
     <div className="breadcrumbs">
       <ul className="flex items-center space-x-2">
-        <li className="text-sm font-normal breadcrumb">
-          <Link to="/">Home</Link>
-        </li>
         {crumbs}
       </ul>
     </div>

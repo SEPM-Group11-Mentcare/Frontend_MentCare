@@ -51,7 +51,6 @@ const publicRoutes = [
     layout: TherapistLayout,
   },
   {
-
     path: "therapist/medicalrecord/create",
     component: TherapistMedicalRecord,
     layout: TherapistLayout
@@ -67,7 +66,7 @@ const publicRoutes = [
     layout: AdminLayout,
   },
   {
-    path: "/patient/find",
+    path: "/patient/booking",
     component: TherapistPage,
     layout: PatientLayout,
   },

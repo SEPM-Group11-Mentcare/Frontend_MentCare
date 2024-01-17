@@ -60,3 +60,14 @@ export const getAppointments = async(status) => {
   }
 }
 
+export const cancelAppointment = async(appointmentID) => {
+  const res = await axiosInstance.put(`/patient/appointment`, {appointmentID})
+
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch(err) {
+    return err;
+  }
+}
