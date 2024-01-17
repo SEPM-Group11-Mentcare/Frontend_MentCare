@@ -48,3 +48,15 @@ export const getTherapistSchedule = async(id) => {
   }
 }
 
+export const getAppointments = async(status) => {
+  const res = await axiosInstance.get(`/patient/appointments/?status=${status}`)
+
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch(err) {
+    return err;
+  }
+}
+

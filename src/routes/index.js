@@ -22,6 +22,7 @@ import PatientViewTherapistProfile from "../pages/PatientViewTherapistProfile";
 import TherapistSchedule from "../pages/TherapistSchedule";
 import TherapistAppointment from "../pages/TherapistAppointment";
 import PatientMedicalRecord from "../pages/PatientMedicalRecord";
+import PatientAppointment from "../pages/PatientAppointment";
 
 // Public Routes
 const publicRoutes = [
@@ -37,6 +38,11 @@ const publicRoutes = [
   {
     path: "/patient/dashboard",
     component: PatientDashboard,
+    layout: PatientLayout,
+  },
+  {
+    path: "/patient/appointments",
+    component: PatientAppointment,
     layout: PatientLayout,
   },
   {
