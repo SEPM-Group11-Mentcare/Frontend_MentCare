@@ -23,13 +23,13 @@ function CheckoutPage() {
 
   const onSubmit = async(d) => {
     console.log(d);
-    await axiosInstance.bookAppointment(bookingSession.therapistInfo, bookingSession.session.id, d.notes, d.accept, 500000)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+    // await axiosInstance.bookAppointment(bookingSession.therapistInfo, bookingSession.session.id, d.notes, d.accept, 500000)
+    // .then((res) => {
+    //   console.log(res);
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // })
   };
   return (
     <ContentLayout title={"Checkout"}>
