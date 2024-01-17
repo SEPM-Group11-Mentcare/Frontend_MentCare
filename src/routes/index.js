@@ -6,6 +6,7 @@ import PatientDashboard from "../pages/PatientDashboard";
 import TherapistDashboard from "../pages/TherapistDashboard";
 import AdminDashboard from "../pages/AdminDashboard";
 import CheckoutPage from "../pages/CheckoutPage";
+import AdminApointment from "../pages/AdminAppointment"
 
 // Import Layout Components
 import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
@@ -17,6 +18,7 @@ import TherapistPage from "../pages/TherapistPage";
 import AdminLayout from "../components/Layout/AdminLayout";
 import TherapistMedicalRecord from "../pages/TherapistMedicalRecord";
 import TherapistSchedule from "../pages/TherapistSchedule";
+import TherapistAppointment from "../pages/TherapistAppointment";
 import PatientMedicalRecord from "../pages/PatientMedicalRecord";
 
 // Public Routes
@@ -36,7 +38,7 @@ const publicRoutes = [
     layout: PatientLayout,
   },
   {
-    path: "therapist/dashboard",
+    path: "/therapist/dashboard",
     component: TherapistDashboard,
     layout: TherapistLayout,
   },
@@ -51,14 +53,35 @@ const publicRoutes = [
     layout: AdminLayout,
   },
   {
-    path: "patient/find",
+    path: "/patient/find",
     component: TherapistPage,
     layout: PatientLayout,
   },
   {
-    path: "patient/booking/:id",
+    path: "/patient/booking/:id",
     component: BookingPage,
     layout: PatientLayout
+  },
+  {
+
+    path: "/patient/checkout",
+    component: CheckoutPage,
+    layout: PatientLayout,
+  },
+  {
+    path: "/therapist/schedule",
+    component: TherapistSchedule,
+    layout: TherapistLayout
+  },
+  {
+    path: "/therapist/appointments",
+    component: TherapistAppointment,
+    layout: TherapistLayout
+  },
+  {
+    path: "/admin/appointments",
+    component: AdminApointment,
+    layout: AdminLayout
   },
   {
     path: "patient/medicalrecord/",

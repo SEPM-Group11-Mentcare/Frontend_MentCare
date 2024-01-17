@@ -31,7 +31,7 @@ function SideBar() {
         <div>
           <SideBarButton icon={SquaresPlusIcon} name={"Dashboard"} path={`${therapistBaseRoute}/dashboard`} />
           <SideBarButton icon={UserCircleIcon} name={"My Profiles"} path={`${therapistBaseRoute}/profile`}/>
-          <SideBarButton icon={CalendarDaysIcon} name={"Appointments"} path={`${therapistBaseRoute}/profile`} />
+          <SideBarButton icon={CalendarDaysIcon} name={"Appointments"} path={`${therapistBaseRoute}/appointments`} />
           <SideBarButton icon={DocumentTextIcon} name={"Patient Records"} path={`${therapistBaseRoute}/records`} />
           <SideBarButton icon={UserGroupIcon} name={"My Therapist Room"} path={`${therapistBaseRoute}/rooms`} />
           <SideBarButton icon={BellIcon} name={"Notification"} path={`${therapistBaseRoute}/noti`} />
