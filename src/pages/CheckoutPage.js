@@ -23,17 +23,17 @@ function CheckoutPage() {
 
   const onSubmit = async(d) => {
     console.log(d);
-    // await axiosInstance.bookAppointment(bookingSession.therapistInfo, bookingSession.session.id, d.notes, d.accept, 500000)
-    // .then((res) => {
-    //   console.log(res);
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // })
+    await axiosInstance.bookAppointment(bookingSession.therapistInfo, bookingSession.session.id, d.notes, d.accept, 500000)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   };
   return (
     <ContentLayout title={"Checkout"}>
-      <div className="flex flex-row gap-8 bg-white px-8 py-8 rounded-md border-[#F0F0F0] border-[1px] border-solid">
+      <div className="flex flex-row gap-8 bg-white justify-around px-8 py-8 rounded-md border-[#F0F0F0] border-[1px] border-solid">
         <div className="w-4/6">
           <Text variant="text-lg" weight="semibold" className="text-center">
             Checkout
