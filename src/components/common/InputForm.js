@@ -46,6 +46,7 @@ const InputForm = ({
   id,
   defaultValue,
   labelType,
+  ref
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -100,6 +101,7 @@ const InputForm = ({
               accept={accept}
               hidden={hidden}
               readOnly={readOnly}
+              ref={ref}
             />
           )}
 
@@ -137,6 +139,7 @@ const InputForm = ({
               accept={accept}
               hidden={hidden}
               readOnly={readOnly}
+              ref={ref}
             />
           )}
 

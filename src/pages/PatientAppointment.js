@@ -48,7 +48,7 @@ function PatientAppointment() {
           {/* <span className="text-sm text-[#16C098]">Next Appointments</span> */}
           <span className="text-2xl mb-2 font-semibold">All appointments</span>
 
-          {/* <div className="flex flex-row items-center gap-4"> */}
+          <div className="flex flex-row items-center gap-4">
           <div className="flex justify-center items-center input input-bordered max-w-xs bg-[#F9FBFF] rounded-md border-none focus:outline-none focus:ring-primaryBlue text-sm">
               <FontAwesomeIcon icon={faSearch} />
               <input
@@ -58,7 +58,7 @@ function PatientAppointment() {
               />
             </div>
             <Dropdown options={sortList} selected={sort} onChange={onChange}/>
-          {/* </div> */}
+          </div>
         </div>
 
         {/* Table */}

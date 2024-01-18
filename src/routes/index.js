@@ -96,6 +96,11 @@ const publicRoutes = [
     layout: PatientLayout,
   },
   {
+    path: "patient/records",
+    component: PatientMedicalRecord,
+    layout: PatientLayout
+  },
+  {
     path: "patient/:id",
     component: PatientViewTherapistProfile,
     layout: PatientLayout
@@ -121,11 +126,7 @@ const publicRoutes = [
     component: AdminApointment,
     layout: AdminLayout
   },
-  {
-    path: "patient/medicalrecord/",
-    component: PatientMedicalRecord,
-    layout: PatientLayout
-  }
+ 
   
 ];
 
