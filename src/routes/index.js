@@ -27,6 +27,7 @@ import TherapistSchedule from "../pages/TherapistSchedule";
 import TherapistAppointment from "../pages/TherapistAppointment";
 import PatientMedicalRecord from "../pages/PatientMedicalRecord";
 import PatientAppointment from "../pages/PatientAppointment";
+import PatientRecordAccessList from "../pages/PatientRecordAccessList";
 
 // Public Routes
 const publicRoutes = [
@@ -129,6 +130,11 @@ const publicRoutes = [
   {
     path: "patient/medicalrecordlist/",
     component: PatientMedicalRecordList,
+    layout: PatientLayout,
+  },
+  {
+    path: "patient/recordaccesslist/",
+    component: PatientRecordAccessList,
     layout: PatientLayout,
   },
 ];
