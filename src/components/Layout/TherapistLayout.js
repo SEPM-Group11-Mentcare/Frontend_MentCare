@@ -3,7 +3,7 @@ import SideBar from "../Therapist/Sidebar";
 
 function TherapistLayout({ children }) {
   return (
-    <div  className="flex flex-row">
+    <div className="flex flex-row">
       <SideBar />
       {children}
     </div>
