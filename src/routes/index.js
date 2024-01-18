@@ -9,7 +9,8 @@ import AdminDashboard from "../pages/AdminDashboard";
 import PatientJournal from "../pages/PatientJournal";
 import PatientJournalList from "../pages/PatientJournalList";
 import CheckoutPage from "../pages/CheckoutPage";
-import AdminApointment from "../pages/AdminAppointment"
+import AdminApointment from "../pages/AdminAppointment";
+import PatientMedicalRecordList from "../pages/PatientMedicalRecordList";
 
 // Import Layout Components
 import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
@@ -39,7 +40,7 @@ const publicRoutes = [
 
   { path: "/signin", component: SignInPage, layout: HeaderFooterLayout },
 
-  // Private routes actually 
+  // Private routes actually
   {
     path: "/patient/dashboard",
     component: PatientDashboard,
@@ -58,7 +59,7 @@ const publicRoutes = [
   {
     path: "therapist/medicalrecord/create",
     component: TherapistMedicalRecord,
-    layout: TherapistLayout
+    layout: TherapistLayout,
   },
   {
     path: "therapist/profile",
@@ -71,9 +72,9 @@ const publicRoutes = [
     layout: AdminLayout,
   },
   {
-    path: '/patient/profile',
+    path: "/patient/profile",
     component: PatientProfile,
-    layout: PatientLayout
+    layout: PatientLayout,
   },
   {
     path: "/patient/booking",
@@ -98,10 +99,9 @@ const publicRoutes = [
   {
     path: "patient/therapistProfile",
     component: PatientViewTherapistProfile,
-    layout: PatientLayout
+    layout: PatientLayout,
   },
   {
-
     path: "/patient/checkout",
     component: CheckoutPage,
     layout: PatientLayout,
@@ -109,24 +109,28 @@ const publicRoutes = [
   {
     path: "/therapist/schedule",
     component: TherapistSchedule,
-    layout: TherapistLayout
+    layout: TherapistLayout,
   },
   {
     path: "/therapist/appointments",
     component: TherapistAppointment,
-    layout: TherapistLayout
+    layout: TherapistLayout,
   },
   {
     path: "/admin/appointments",
     component: AdminApointment,
-    layout: AdminLayout
+    layout: AdminLayout,
   },
   {
     path: "patient/medicalrecord/",
     component: PatientMedicalRecord,
-    layout: PatientLayout
-  }
-  
+    layout: PatientLayout,
+  },
+  {
+    path: "patient/medicalrecordlist/",
+    component: PatientMedicalRecordList,
+    layout: PatientLayout,
+  },
 ];
 
 // Private Routes
