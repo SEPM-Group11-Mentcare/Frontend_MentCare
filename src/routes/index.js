@@ -5,6 +5,8 @@ import SignInPage from "../pages/SigninPage";
 import PatientDashboard from "../pages/PatientDashboard";
 import TherapistDashboard from "../pages/TherapistDashboard";
 import AdminDashboard from "../pages/AdminDashboard";
+import PatientJournal from "../pages/PatientJournal";
+import PatientJournalList from "../pages/PatientJournalList";
 import CheckoutPage from "../pages/CheckoutPage";
 import AdminApointment from "../pages/AdminAppointment"
 
@@ -71,9 +73,19 @@ const publicRoutes = [
     layout: PatientLayout,
   },
   {
+    path: "patient/journals/:journalID",
+    component: PatientJournal,
+    layout: PatientLayout,
+  },
+  {
+    path: "patient/journals",
+    component: PatientJournalList,
+    layout: PatientLayout,
+  },
+  {
     path: "/patient/booking/:id",
     component: BookingPage,
-    layout: PatientLayout
+    layout: PatientLayout,
   },
   {
     path: "patient/therapistProfile",
