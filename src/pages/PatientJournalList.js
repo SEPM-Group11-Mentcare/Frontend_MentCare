@@ -48,10 +48,6 @@ function PatientJournalList() {
     }
   };
 
-  // const onChange = (e) => {
-  //   setSort(e.target.value);
-  // };
-
   return (
     <ContentLayout title="Journal List">
       <div className="bg-white w-full h-full rounded-md py-4 px-10">
