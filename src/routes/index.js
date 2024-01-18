@@ -4,6 +4,7 @@ import SignUpPage from "../pages/SignupPage";
 import SignInPage from "../pages/SigninPage";
 import PatientDashboard from "../pages/PatientDashboard";
 import TherapistDashboard from "../pages/TherapistDashboard";
+import PatientProfile from "../pages/PatientProfile";
 import AdminDashboard from "../pages/AdminDashboard";
 import PatientJournal from "../pages/PatientJournal";
 import PatientJournalList from "../pages/PatientJournalList";
@@ -37,6 +38,8 @@ const publicRoutes = [
   },
 
   { path: "/signin", component: SignInPage, layout: HeaderFooterLayout },
+
+  // Private routes actually 
   {
     path: "/patient/dashboard",
     component: PatientDashboard,
@@ -66,6 +69,11 @@ const publicRoutes = [
     path: "/admin/dashboard",
     component: AdminDashboard,
     layout: AdminLayout,
+  },
+  {
+    path: '/patient/profile',
+    component: PatientProfile,
+    layout: PatientLayout
   },
   {
     path: "/patient/booking",

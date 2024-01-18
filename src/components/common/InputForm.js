@@ -39,6 +39,11 @@ const InputForm = ({
   type,
   value,
   className,
+  disabled,
+  readOnly,
+  hidden,
+  accept,
+  id
   defaultValue,
   labelType,
 }) => {
@@ -58,6 +63,25 @@ const InputForm = ({
 
   return (
     <div className="relative">
+      <div className="label w-full">
+        <Text variant="text-sm" weight="semibold" className="label-text">
+          {label}
+        </Text>
+      </div>
+      <input
+        id={id}
+        type={inputType}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className={cn(InputFormVariants({ className, size }))}
+        disabled={disabled}
+        accept={accept}
+        hidden={hidden}
+        readOnly={readOnly}
+
+      />
+
       {labelType === "up" ? (
         <div className="flex gap-6">
           <div className="label ">
@@ -67,12 +91,16 @@ const InputForm = ({
           {
             type === "textarea" ? null : 
             <input
-            type={inputType}
-            value={value}
-            onChange={onChange}
-            placeholder={placeholder}
-            className={cn(InputFormVariants({ className, size }))}
-            defaultValue={defaultValue}
+            id={id}
+        type={inputType}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className={cn(InputFormVariants({ className, size }))}
+        disabled={disabled}
+        accept={accept}
+        hidden={hidden}
+        readOnly={readOnly}
           />
           }
           
