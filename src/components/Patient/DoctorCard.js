@@ -23,7 +23,7 @@ const DoctorCard = ({
 
         <div className="flex flex-col gap-2">
           <div className="flex gap-2 items-center">
-            <Text weight="semibold" variant="text-md">
+            <Text weight="semibold" variant="text-md" href={`/patient/${id}`}>
               Dr. {name}
             </Text>
             <FontAwesomeIcon icon={faCircleCheck} color="#22C550" />

@@ -63,7 +63,7 @@ const InputForm = ({
 
   return (
     <div className="relative">
-      <div className="label w-full">
+      {/* <div className="label w-full">
         <Text variant="text-sm" weight="semibold" className="label-text">
           {label}
         </Text>
@@ -79,7 +79,7 @@ const InputForm = ({
         accept={accept}
         hidden={hidden}
         readOnly={readOnly}
-      />
+      /> */}
 
       {labelType === "up" ? (
         <div className="flex gap-6">
@@ -132,6 +132,10 @@ const InputForm = ({
               placeholder={placeholder}
               className={cn(InputFormVariants({ className, size }))}
               defaultValue={defaultValue}
+              // disabled={disabled}
+              accept={accept}
+              hidden={hidden}
+              readOnly={readOnly}
             />
           )}
 
