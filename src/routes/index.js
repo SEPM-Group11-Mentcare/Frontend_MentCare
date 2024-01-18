@@ -58,12 +58,12 @@ const publicRoutes = [
     layout: TherapistLayout,
   },
   {
-    path: "therapist/medicalrecord/create",
+    path: "/therapist/medicalrecord/create",
     component: TherapistMedicalRecord,
     layout: TherapistLayout,
   },
   {
-    path: "therapist/profile",
+    path: "/therapist/profile",
     component: TherapistProfile,
     layout: TherapistLayout,
   },
@@ -83,12 +83,12 @@ const publicRoutes = [
     layout: PatientLayout,
   },
   {
-    path: "patient/journals/:journalID",
+    path: "/patient/journals/:journalID",
     component: PatientJournal,
     layout: PatientLayout,
   },
   {
-    path: "patient/journals",
+    path: "/patient/journals",
     component: PatientJournalList,
     layout: PatientLayout,
   },
@@ -98,12 +98,12 @@ const publicRoutes = [
     layout: PatientLayout,
   },
   {
-    path: "patient/records",
+    path: "/patient/records",
     component: PatientMedicalRecord,
     layout: PatientLayout
   },
   {
-    path: "patient/:id",
+    path: "/patient/therapistprofile/:id",
     component: PatientViewTherapistProfile,
     layout: PatientLayout,
   },
@@ -127,18 +127,18 @@ const publicRoutes = [
     component: AdminApointment,
     layout: AdminLayout,
   },
+  // {
+  //   path: "patient/medicalrecord",
+  //   component: PatientMedicalRecord,
+  //   layout: PatientLayout,
+  // },
   {
-    path: "patient/medicalrecord/",
-    component: PatientMedicalRecord,
-    layout: PatientLayout,
-  },
-  {
-    path: "patient/medicalrecordlist/",
+    path: "/patient/medicalrecordlist",
     component: PatientMedicalRecordList,
     layout: PatientLayout,
   },
   {
-    path: "patient/recordaccesslist/",
+    path: "/patient/recordaccesslist",
     component: PatientRecordAccessList,
     layout: PatientLayout,
   },
