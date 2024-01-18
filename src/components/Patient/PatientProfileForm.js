@@ -7,11 +7,22 @@ import { useEffect, useRef, useState } from "react";
 
 function PatientProfileForm({ profile }) {
   const { control, handleSubmit, setValue, watch } = useForm();
+//   console.log(profile);
 
   const onSubmit = async (data) => {
+      console.log(data);
     try {
-      const updatedProfile = await updatePatientProfile(data);
-      console.log(updatedProfile);
+        const formData = new FormData();
+        formData.append("username", data.username);
+        formData.append("name", data.name);
+        formData.append("dob", data.dob);
+        formData.append("avatar", data.avatar);
+
+      const updatedProfile = await updatePatientProfile(formData)
+      .catch((err) => {
+          console.log(err)
+      })
+    //   console.log(updatedProfile);
     } catch (err) {
       console.error("Error updating profile: ", err);
     }
@@ -19,11 +30,15 @@ function PatientProfileForm({ profile }) {
 
   useEffect(() => {
     if (profile) {
-      setValue({
-        name: profile.name || "",
-        username: profile.username || "",
-        dob: profile.dob || "",
-      });
+    //   setValue({
+    //     name: profile.name,
+    //     username: profile.username,
+    //     dob: profile.dob,
+    //   });
+    setValue("name", profile.name);
+    setValue("username", profile.username);
+    setValue("dob", profile.dob);
+    setValue("avatar", profile.file);
     }
   }, [profile, setValue]);
 

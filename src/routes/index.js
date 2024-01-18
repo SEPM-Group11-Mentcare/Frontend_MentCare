@@ -41,18 +41,6 @@ const publicRoutes = [
   },
 
   { path: "/signin", component: SignInPage, layout: HeaderFooterLayout },
-
-  // Private routes actually
-  {
-    path: "/patient/dashboard",
-    component: PatientDashboard,
-    layout: PatientLayout,
-  },
-  {
-    path: "/patient/appointments",
-    component: PatientAppointment,
-    layout: PatientLayout,
-  },
   {
     path: "/therapist/dashboard",
     component: TherapistDashboard,
@@ -72,6 +60,35 @@ const publicRoutes = [
     path: "/admin/dashboard",
     component: AdminDashboard,
     layout: AdminLayout,
+  },
+  {
+    path: "/therapist/schedule",
+    component: TherapistSchedule,
+    layout: TherapistLayout,
+  },
+  {
+    path: "/therapist/appointments",
+    component: TherapistAppointment,
+    layout: TherapistLayout,
+  },
+  {
+    path: "/admin/appointments",
+    component: AdminApointment,
+    layout: AdminLayout,
+  },
+];
+
+// Private Routes
+const privateRoutes = [
+  {
+    path: "/patient/dashboard",
+    component: PatientDashboard,
+    layout: PatientLayout,
+  },
+  {
+    path: "/patient/appointments",
+    component: PatientAppointment,
+    layout: PatientLayout,
   },
   {
     path: "/patient/profile",
@@ -99,11 +116,6 @@ const publicRoutes = [
     layout: PatientLayout,
   },
   {
-    path: "/patient/records",
-    component: PatientMedicalRecord,
-    layout: PatientLayout
-  },
-  {
     path: "/patient/therapistprofile/:id",
     component: PatientViewTherapistProfile,
     layout: PatientLayout,
@@ -114,27 +126,12 @@ const publicRoutes = [
     layout: PatientLayout,
   },
   {
-    path: "/therapist/schedule",
-    component: TherapistSchedule,
-    layout: TherapistLayout,
+    path: "patient/records/:id",
+    component: PatientMedicalRecord,
+    layout: PatientLayout,
   },
   {
-    path: "/therapist/appointments",
-    component: TherapistAppointment,
-    layout: TherapistLayout,
-  },
-  {
-    path: "/admin/appointments",
-    component: AdminApointment,
-    layout: AdminLayout,
-  },
-  // {
-  //   path: "patient/medicalrecord",
-  //   component: PatientMedicalRecord,
-  //   layout: PatientLayout,
-  // },
-  {
-    path: "/patient/medicalrecordlist",
+    path: "/patient/records",
     component: PatientMedicalRecordList,
     layout: PatientLayout,
   },
@@ -144,13 +141,10 @@ const publicRoutes = [
     layout: PatientLayout,
   },
   {
-    path: "patient/mytherapistroom/",
+    path: "patient/rooms",
     component: PatientMyTherapistRoom,
     layout: PatientLayout,
   },
 ];
-
-// Private Routes
-const privateRoutes = [];
 
 export { publicRoutes, privateRoutes };

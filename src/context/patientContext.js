@@ -5,7 +5,7 @@ export const PatientContext = createContext(null);
 
 const PatientProvider = ({children}) => {
   const [bookingSession, setBookingSession] = useState()
-
+  
   const patientList = {
     bookingSession,
     setBookingSession
