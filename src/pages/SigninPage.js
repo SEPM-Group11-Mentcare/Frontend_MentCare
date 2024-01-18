@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from "../components/common/Box";
 import InputForm from "../components/common/InputForm";
 import Text from "../components/common/Text";
 import { Controller, useForm } from "react-hook-form";
-import Checkbox from "../components/common/Checkbox";
 import Button from "../components/common/Button";
+import * as axiosInstance from "../services/auth";
+import Cookies from "js-cookie";
 
 const Signin = () => {
   const {
@@ -15,8 +16,15 @@ const Signin = () => {
     mode: "onChange",
   });
 
-  const onSubmit = (d) => {
-    console.log(d);
+  const onSubmit = async(d) => {
+    await axiosInstance.signin(d.username, d.password)
+    .then((res) => {
+      console.log(res);
+      Cookies.set("token", res.token);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   };
 
   return (
@@ -35,30 +43,25 @@ const Signin = () => {
             Welcome back!
           </Text>
           <form className="flex-col flex gap-6">
-            <Controller
-              name="email"
+          <Controller
+              name="username"
               control={control}
               defaultValue=""
               rules={{
-                required: "Email is required!",
-                pattern: {
-                  value:
-                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                  message: "Invalid email format",
-                },
+                required: "Username is required!",
               }}
               render={({ field }) => (
                 <div>
                   <InputForm
                     type="text"
-                    label="Email"
-                    name="email"
+                    label="Username"
+                    name="username"
                     value={field.value}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
-                  {errors.email && (
+                  {errors.username && (
                     <Text variant="text-xs" className="text-red-500 mt-3">
-                      {errors.email.message}
+                      {errors.username.message}
                     </Text>
                   )}
                 </div>

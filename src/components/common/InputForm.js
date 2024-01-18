@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { cva } from "class-variance-authority";
 import { cn } from "../../utils/cn";
-import { Link } from "react-router-dom";
 import EyeIcon from "../../assets/svg/EyeIcon";
 import EyeSlashIcon from "../../assets/svg/EyeSlashIcon";
 import Text from "./Text";
@@ -45,6 +44,8 @@ const InputForm = ({
   hidden,
   accept,
   id
+  defaultValue,
+  labelType,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -81,13 +82,66 @@ const InputForm = ({
 
       />
 
-      {type === "password" && (
-        <button
-          className="absolute bottom-0 right-4 transform -translate-y-1/2"
-          onClick={togglePasswordVisibility}
-        >
-          {showPassword ? <EyeIcon /> : <EyeSlashIcon />}
-        </button>
+      {labelType === "up" ? (
+        <div className="flex gap-6">
+          <div className="label ">
+            <Text weight="semibold">{label}</Text>
+          </div>
+
+          {
+            type === "textarea" ? null : 
+            <input
+            id={id}
+        type={inputType}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className={cn(InputFormVariants({ className, size }))}
+        disabled={disabled}
+        accept={accept}
+        hidden={hidden}
+        readOnly={readOnly}
+          />
+          }
+          
+
+          {type === "password" && (
+            <button
+              className="absolute bottom-0 right-4 transform -translate-y-1/2"
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? <EyeIcon /> : <EyeSlashIcon />}
+            </button>
+          )}
+        </div>
+      ) : (
+        <>
+          <div className="label w-full">
+            <Text variant="text-sm" weight="semibold" className="label-text">
+              {label}
+            </Text>
+          </div>
+          {
+            type === "textarea" ? <textarea value={value} onChange={onChange} className={cn(InputFormVariants({ className, size }))}></textarea> : 
+            <input
+            type={inputType}
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+            className={cn(InputFormVariants({ className, size }))}
+            defaultValue={defaultValue}
+          />
+          }
+
+          {type === "password" && (
+            <button
+              className="absolute bottom-0 right-4 transform -translate-y-1/2"
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? <EyeIcon /> : <EyeSlashIcon />}
+            </button>
+          )}
+        </>
       )}
     </div>
   );

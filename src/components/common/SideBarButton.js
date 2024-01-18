@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import Text from "./Text";
 
-function SideBarButton({ icon: Icon, name }) {
+function SideBarButton({ icon: Icon, name, path }) {
+  // States for active side bar buttons
+  const [isActive, setIsActive] = useState(false);
+
   return (
-    <div className="group flex flex-row gap-5 px-4 py-4 rounded-lg hover:bg-[#2B4FD8] hover:cursor-pointer">
+    <NavLink to={path}
+      className={({ isActive }) => `group flex flex-row gap-5 px-4 py-4 rounded-lg hover:bg-[#2B4FD8] hover:cursor-pointer
+        ${isActive ? setIsActive(true) : setIsActive(false)}`}
+      style={{ background: isActive ? '#2B4FD8' : '' }}
+    >
       {/* Dynamic Icon */}
-      {Icon && <Icon className="h-5 w-5 group-hover:text-white" />}
+      {Icon && <Icon className={`h-5 w-5 group-hover:text-white ${isActive? 'text-white': ''}`} />}
 
       {/* Button Text */}
-      <span className="text-base font-normal group-hover:text-white">
+      <Text className={`group-hover:text-white ${isActive ? 'text-white' : ''}`}>
         {name}
-      </span>
-    </div>
+      </Text>
+    </NavLink>
   );
 }
 
