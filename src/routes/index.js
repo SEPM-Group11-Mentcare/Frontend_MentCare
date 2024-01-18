@@ -11,12 +11,6 @@ import PatientJournalList from "../pages/PatientJournalList";
 import CheckoutPage from "../pages/CheckoutPage";
 import AdminApointment from "../pages/AdminAppointment";
 import PatientMedicalRecordList from "../pages/PatientMedicalRecordList";
-
-// Import Layout Components
-import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
-import PatientLayout from "../components/Layout/PatientLayout";
-import TherapistLayout from "../components/Layout/TherapistLayout";
-import TherapistSignup from "../pages/TherapistSignup";
 import BookingPage from "../pages/BookingPage";
 import TherapistPage from "../pages/TherapistList";
 import AdminLayout from "../components/Layout/AdminLayout";
@@ -28,6 +22,13 @@ import TherapistAppointment from "../pages/TherapistAppointment";
 import PatientMedicalRecord from "../pages/PatientMedicalRecord";
 import PatientAppointment from "../pages/PatientAppointment";
 import PatientRecordAccessList from "../pages/PatientRecordAccessList";
+import PatientMyTherapistRoom from "../pages/PatientMyTherapistRoom";
+
+// Import Layout Components
+import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
+import PatientLayout from "../components/Layout/PatientLayout";
+import TherapistLayout from "../components/Layout/TherapistLayout";
+import TherapistSignup from "../pages/TherapistSignup";
 
 // Public Routes
 const publicRoutes = [
@@ -135,6 +136,11 @@ const publicRoutes = [
   {
     path: "patient/recordaccesslist/",
     component: PatientRecordAccessList,
+    layout: PatientLayout,
+  },
+  {
+    path: "patient/mytherapistroom/",
+    component: PatientMyTherapistRoom,
     layout: PatientLayout,
   },
 ];
