@@ -8,7 +8,9 @@ const ButtonVariants = cva(
   {
     variants: {
       variant: {
-        red: "bg-[#EA4B48] hover:bg-transparent hover:border-[#EA4B48] hover:text-[#EA4B48]",
+        gray: "bg-[#E9E9E9] text-[#757575]",
+        red: "bg-[#EA4B48] hover:bg-transparent hover:border-[#EA4B48] hover:text-[#EA4B48] ",
+        blueOutline: "bg-transparent border-[#2B50D8] hover:bg-[#2B50D8] text-[#2B50D8] hover:text-white"
       },
       size: {
         default: "h-10 py-2 px-4 text-sm",
@@ -25,39 +27,32 @@ const ButtonVariants = cva(
   }
 );
 
-const Button = ({
-  children,
-  variant,
-  size,
-  className,
-  href,
-  onMouseEnter,
-  onMouseLeave,
-  onClick,
-  id,
-}) => {
-  return href ? (
-    <Link
-      className={cn(ButtonVariants({ variant, size, className }))}
-      to={href}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onClick={onClick}
-      id={id}
-    >
-      {children}
-    </Link>
-  ) : (
-    <button
-      className={cn(ButtonVariants({ variant, size, className }))}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onClick={onClick}
-      id={id}
-    >
-      {children}
-    </button>
-  );
+
+const Button = ({ children, variant, size, className, href, onMouseEnter, onMouseLeave, onClick, id, value, disabled }) => {
+  return (
+    href ? (
+      <Link
+        className={cn(ButtonVariants({ variant, size, className }))}
+        to={href}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onClick={onClick}
+        id={id}
+      >
+        {children}
+      </Link>
+    ) : (
+      <button className={cn(ButtonVariants({ variant, size, className }))}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onClick={onClick}
+        id={id}
+        value={value}
+        disabled={disabled}
+        >
+        {children}
+      </button>
+    ));
 };
 
 export default Button;

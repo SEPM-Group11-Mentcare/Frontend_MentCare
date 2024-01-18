@@ -5,31 +5,26 @@ import { format } from "date-fns";
 import { cn } from "../../utils/cn";
 
 function AppointmentRow({
+  patient,
   therapist,
   dateTime,
-  // accept,
-  amount,
+  accept,
   status,
-  handleCancel
+  handleUpdate
 }) {
   return (
     <tr className="text-overflow: ellipsis">
-      <td>{therapist}</td>
+      <td>{patient}</td>
       <td>{format(new Date(dateTime), "dd MMM yyyy")}</td>
       <td >{new Date(dateTime).toLocaleTimeString("en-GB", {
             hour: "2-digit",
             minute: "2-digit",
             hour12: false,
           })}</td>
-        {/* <td className={cn(accept ? "text-green-500"  : "text-red-500")}>{accept ? "Accepted" : "Declined"}</td> */}
-        <td>{amount}</td>
+        <td className={cn(accept ? "text-green-500"  : "text-red-500")}>{accept ? "Accepted" : "Declined"}</td>
+
       <td>
-      <Chip color={status === "Pending" ? "yellow" : (status === "Confirmed") ? "" : "red"}>{status}</Chip>
-      </td>
-      <td>
-        {
-          status === "Pending" ? <Button variant="red" onClick={handleCancel}>Cancel</Button> : null
-        }
+        <Chip>{status === "Confirmed" ? "Upcoming" : status}</Chip>
       </td>
     </tr>
   );

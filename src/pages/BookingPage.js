@@ -1,55 +1,84 @@
-import React, { useEffect, useState } from "react";
+import { format } from "date-fns";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Button from "../components/common/Button";
+import Calendar from "../components/common/Calendar";
 import ContentLayout from "../components/Layout/ContentLayout";
 import DoctorCard from "../components/Therapists/DoctorCard";
+import { PatientContext } from "../context/patientContext";
+import * as axiosInstance from "../services/patient";
+import * as axiosInstanceSchedule from "../services/schedule";
 
 const BookingPage = () => {
-  const [weekDays, setWeekDays] = useState([]);
+  const [schedules, setSchedule] = useState([]);
+  const [therapist, setTherapist] = useState();
+  const [selectedOption, setSelectedOption] = useState();
+  const { id } = useParams();
+  const { setBookingSession } = useContext(PatientContext);
+  const navigate = useNavigate();
+  const handleProceed = async() => {
+    await axiosInstanceSchedule.getScheduleTime(selectedOption)
+    .then((res) => {
+      setBookingSession({
+        therapistInfo: therapist,
+        session: {
+          id: res._id,
+          date: format(new Date(res.dateTime), "dd MMM yyyy"),
+          time: new Date(res.dateTime).toLocaleTimeString("en-GB", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+          })
+        }
+      })
+      navigate('/patient/checkout')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
 
   useEffect(() => {
-    // Get the current date
-    const currentDate = new Date();
+    async function fetchData() {
+      await axiosInstance
+        .getTherapistSchedule(id)
+        .then((res) => {
+          setSchedule(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 
-    // Calculate the start date of the week (Sunday)
-    const startDate = new Date(currentDate);
-    startDate.setDate(currentDate.getDate() - currentDate.getDay());
-
-    // Calculate the end date of the week (Saturday)
-    const endDate = new Date(currentDate);
-    endDate.setDate(currentDate.getDate() + (6 - currentDate.getDay()));
-
-    // Create an array to store the days of the week
-    const daysOfWeek = [];
-
-    // Iterate through the days of the week
-    for (
-      let date = startDate;
-      date <= endDate;
-      date.setDate(date.getDate() + 1)
-    ) {
-      daysOfWeek.push(new Date(date)); // Create a new Date object to avoid reference issues
+      await axiosInstance
+        .getTherapist(id)
+        .then((res) => {
+          // console.log(res);
+          setTherapist(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
+    fetchData();
+  }, [id]);
 
-    // Set the array of days in the state
-    setWeekDays(daysOfWeek);
-  }, []);
   return (
     <ContentLayout title="Booking">
-      <DoctorCard
-        img="https://picsum.photos/200"
-        name="John Doe"
-        experience="20"
-        availableToday={true}
-        price="500000"
-        detail={true}
-      />
+      <div className="flex flex-col gap-6">
+        {therapist && (
+          <DoctorCard
+            img="https://picsum.photos/200"
+            name={therapist.name}
+            specialization={therapist.specialization}
+            detail={true}
+          />
+        )}
 
-      <div>
-        <h3>Days of the Week</h3>
-        <ul>
-          {weekDays.map((day, index) => (
-            <li key={index}>{day.toDateString()}</li>
-          ))}
-        </ul>
+        <Calendar schedules={schedules} selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+
+        <div className="flex justify-end">
+          <Button onClick={handleProceed}>Proceed to Pay</Button>
+        </div>
       </div>
     </ContentLayout>
   );
