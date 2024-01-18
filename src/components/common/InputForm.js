@@ -79,7 +79,6 @@ const InputForm = ({
         accept={accept}
         hidden={hidden}
         readOnly={readOnly}
-
       /> */}
 
       {labelType === "up" ? (
