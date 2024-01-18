@@ -1,18 +1,35 @@
 import React from "react";
-import Status from "../common/Status";
+import Chip from "../common/Chip";
 import Button from "../common/Button";
+import { format } from "date-fns";
+import { cn } from "../../utils/cn";
 
-function AppointmentRow({ doctor, bookingdate, amount, status }) {
+function AppointmentRow({
+  therapist,
+  dateTime,
+  // accept,
+  amount,
+  status,
+  handleCancel
+}) {
   return (
-    <tr>
-      <td>{doctor}</td>
-      <td>{bookingdate}</td>
-      <td>{amount} VND</td>
+    <tr className="text-overflow: ellipsis">
+      <td>{therapist}</td>
+      <td>{format(new Date(dateTime), "dd MMM yyyy")}</td>
+      <td >{new Date(dateTime).toLocaleTimeString("en-GB", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+          })}</td>
+        {/* <td className={cn(accept ? "text-green-500"  : "text-red-500")}>{accept ? "Accepted" : "Declined"}</td> */}
+        <td>{amount}</td>
       <td>
-        <Status status={status} />
+      <Chip color={status === "Pending" ? "yellow" : (status === "Confirmed") ? "" : "red"}>{status}</Chip>
       </td>
       <td>
-        <Button>Cancel</Button>
+        {
+          status === "Pending" ? <Button variant="red" onClick={handleCancel}>Cancel</Button> : null
+        }
       </td>
     </tr>
   );
