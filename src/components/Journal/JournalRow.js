@@ -21,7 +21,7 @@ function JournalRow({
       <td>
         <span className="text-4xl">{mood}</span>
       </td>
-      <td className="flex flex-row gap-3">
+      <td className="flex flex-row gap-3 justify-center">
         <Button href={`/patient/journals/${journalID}`}>Edit</Button>
         <Button variant={"red"} onClick={handleDelete}>
           Delete

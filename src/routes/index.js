@@ -17,7 +17,7 @@ import PatientLayout from "../components/Layout/PatientLayout";
 import TherapistLayout from "../components/Layout/TherapistLayout";
 import TherapistSignup from "../pages/TherapistSignup";
 import BookingPage from "../pages/BookingPage";
-import TherapistPage from "../pages/TherapistPage";
+import TherapistPage from "../pages/TherapistList";
 import AdminLayout from "../components/Layout/AdminLayout";
 import TherapistMedicalRecord from "../pages/TherapistMedicalRecord";
 import TherapistProfile from "../pages/TherapistProfile";
@@ -96,7 +96,7 @@ const publicRoutes = [
     layout: PatientLayout,
   },
   {
-    path: "patient/therapistProfile",
+    path: "patient/:id",
     component: PatientViewTherapistProfile,
     layout: PatientLayout
   },

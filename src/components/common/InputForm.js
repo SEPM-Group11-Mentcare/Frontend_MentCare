@@ -43,7 +43,7 @@ const InputForm = ({
   readOnly,
   hidden,
   accept,
-  id
+  id,
   defaultValue,
   labelType,
 }) => {
@@ -63,7 +63,7 @@ const InputForm = ({
 
   return (
     <div className="relative">
-      <div className="label w-full">
+      {/* <div className="label w-full">
         <Text variant="text-sm" weight="semibold" className="label-text">
           {label}
         </Text>
@@ -80,7 +80,7 @@ const InputForm = ({
         hidden={hidden}
         readOnly={readOnly}
 
-      />
+      /> */}
 
       {labelType === "up" ? (
         <div className="flex gap-6">
@@ -88,22 +88,20 @@ const InputForm = ({
             <Text weight="semibold">{label}</Text>
           </div>
 
-          {
-            type === "textarea" ? null : 
+          {type === "textarea" ? null : (
             <input
-            id={id}
-        type={inputType}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        className={cn(InputFormVariants({ className, size }))}
-        disabled={disabled}
-        accept={accept}
-        hidden={hidden}
-        readOnly={readOnly}
-          />
-          }
-          
+              id={id}
+              type={inputType}
+              value={value}
+              onChange={onChange}
+              placeholder={placeholder}
+              className={cn(InputFormVariants({ className, size }))}
+              disabled={disabled}
+              accept={accept}
+              hidden={hidden}
+              readOnly={readOnly}
+            />
+          )}
 
           {type === "password" && (
             <button
@@ -121,17 +119,26 @@ const InputForm = ({
               {label}
             </Text>
           </div>
-          {
-            type === "textarea" ? <textarea value={value} onChange={onChange} className={cn(InputFormVariants({ className, size }))}></textarea> : 
+          {type === "textarea" ? (
+            <textarea
+              value={value}
+              onChange={onChange}
+              className={cn(InputFormVariants({ className, size }))}
+            ></textarea>
+          ) : (
             <input
-            type={inputType}
-            value={value}
-            onChange={onChange}
-            placeholder={placeholder}
-            className={cn(InputFormVariants({ className, size }))}
-            defaultValue={defaultValue}
-          />
-          }
+              type={inputType}
+              value={value}
+              onChange={onChange}
+              placeholder={placeholder}
+              className={cn(InputFormVariants({ className, size }))}
+              defaultValue={defaultValue}
+              // disabled={disabled}
+              accept={accept}
+              hidden={hidden}
+              readOnly={readOnly}
+            />
+          )}
 
           {type === "password" && (
             <button

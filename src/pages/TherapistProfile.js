@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ContentLayout from "../components/Layout/ContentLayout";
 import Text from "../components/common/Text";
-import DoctorProfileCard from "../components/Therapists/DoctorProfileCard";
+import DoctorProfileCard from "../components/Therapist/DoctorProfileCard";
 import Timeline from "../components/Therapists/Timeline";
 
 function TherapistProfile() {

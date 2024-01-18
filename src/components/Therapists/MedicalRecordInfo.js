@@ -5,7 +5,7 @@ import Button from "../common/Button";
 import Chip from "../common/Chip";
 import Text from "../common/Text";
 
-const MedicalRecordInfo = ({}) => {
+const MedicalRecordInfo = () => {
   return (
     <>
       <div className="flex flex-row justify-between items-center rounded-lg bg-white">

@@ -89,7 +89,8 @@ function PatientProfileForm({ profile }) {
                             <Controller
                                 name='userId'
                                 control={control}
-                                defaultValue={profile._id || '345'}
+                                defaultValue={"345"}
+                                // defaultValue={profile._id || '345'}
                                 render={({ field }) => (
                                     <InputForm label='User ID' value={field.value} className='w-lg' readOnly='true' {...field} ></InputForm>
                                 )}
@@ -98,9 +99,9 @@ function PatientProfileForm({ profile }) {
                             <Controller
                                 name='username'
                                 control={control}
-                                defaultValue={profile.username || 'xian'}
+                                // defaultValue={profile.username || 'xian'}
                                 render={({ field }) => (
-                                    <InputForm label='Username' size='md' value={field.value} {...field}></InputForm>
+                                    <InputForm label='Username' size='md' value={field.value} readOnly='true' {...field}></InputForm>
                                 )}
                             />
                         </div>
@@ -108,7 +109,7 @@ function PatientProfileForm({ profile }) {
                             <Controller
                                 name='name'
                                 control={control}
-                                defaultValue={profile.name || "Nguyen Tran Ha Anh"}
+                                // defaultValue={profile.name || "Nguyen Tran Ha Anh"}
                                 render={({ field }) => (
                                     <InputForm label='Name' size='md' value={field.value} {...field}></InputForm>
                                 )}
@@ -116,7 +117,7 @@ function PatientProfileForm({ profile }) {
                             <Controller
                                 name='dob'
                                 control={control}
-                                defaultValue={profile.dob || '2003-07-18'}
+                                // defaultValue={profile.dob || '2003-07-18'}
                                 render={({ field }) => (
                                     <InputForm type='date' label='Date of Birth' size='md' value={field.value} {...field}></InputForm>
                                 )}

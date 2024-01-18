@@ -60,11 +60,11 @@ function SideBar() {
                   placeholder="Find a Therapist..."
                   onChange={(e) => field.onChange(e.target.value)}
                 />
-                {errors.email && (
+                {/* {errors.email && (
                   <span variant="text-xs" className="text-red-500 mt-3">
                     {errors.email.message}
                   </span>
-                )}
+                )} */}
               </div>
             )}
           />
@@ -77,7 +77,7 @@ function SideBar() {
           <SideBarButton icon={DocumentPlusIcon} name={"Booking"} path={`${patientBaseRoute}/booking`}/>
           <SideBarButton icon={CalendarDaysIcon} name={"Appointments"} path={`${patientBaseRoute}/appointments`} />
           <SideBarButton icon={DocumentTextIcon} name={"Medical Records"} path={`${patientBaseRoute}/records`} />
-          <SideBarButton icon={FaceSmileIcon} name={"Self-assessment"} path={`${patientBaseRoute}/selfhelp`} />
+          <SideBarButton icon={FaceSmileIcon} name={"Self-assessment"} path={`${patientBaseRoute}/journals`} />
           <SideBarButton icon={UserGroupIcon} name={"My Therapist Room"} path={`${patientBaseRoute}/rooms`} />
           <SideBarButton icon={BellIcon} name={"Notification"} path={`${patientBaseRoute}/noti`} />
         </div>

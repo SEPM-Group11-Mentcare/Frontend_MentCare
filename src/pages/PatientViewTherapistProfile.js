@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ContentLayout from "../components/Layout/ContentLayout";
 import Text from "../components/common/Text";
-import DoctorProfileCard from "../components/Therapists/DoctorProfileCard";
+import DoctorProfileCard from "../components/Therapist/DoctorProfileCard";
 import Timeline from "../components/Therapists/Timeline";
+import { useParams } from 'react-router-dom';
+import * as axiosInstance from "../services/patient"
 
 function PatientViewTherapistProfile() {
   const [showOverview, setShowOverview] = useState(true);
+  const { id } = useParams()
+  // console.log(id);
+  useEffect(() => {
+    async function fetchData() {
+      await axiosInstance.getTherapist(id)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
 
+    fetchData()
+  }, [id])
   return (
     <ContentLayout title="Doctor Profile" className="fixed">
       <div className="overflow-y-scroll h-full">
