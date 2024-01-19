@@ -5,7 +5,9 @@ import VideoCall from "../components/VideoCall/VideoCall";
 function PatientVideoCall() {
   return (
     <ContentLayout title={"Video Call"}>
-      <VideoCall />
+      <div className="bg-white w-full h-full rounded-md py-4 px-10 flex justify-center items-center">
+        <VideoCall />
+      </div>
     </ContentLayout>
   );
 }
