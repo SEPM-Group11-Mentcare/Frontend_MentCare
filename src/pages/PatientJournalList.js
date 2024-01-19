@@ -10,15 +10,16 @@ import * as axiosInstance from "../services/journal";
 function PatientJournalList() {
   // const sortList = ["Newest", "Oldest"];
   // const [sort, setSort] = useState(sortList[0]);
-  const [journals, setJournals] = useState([]);
+  const [journals, setJournals] = useState();
 
   // console.log(journals);
 
   useEffect(() => {
     async function fetchData() {
       await axiosInstance
-        .getJournalsByUserId("user1")
+        .getJournalsByUserId()
         .then((res) => {
+          console.log(res);
           setJournals(res);
         })
         .catch((err) => {

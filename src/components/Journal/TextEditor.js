@@ -6,6 +6,7 @@ import Picker from "emoji-picker-react";
 import { useForm, Controller } from "react-hook-form";
 import Button from "../common/Button";
 import * as axiosInstance from "../../services/journal";
+import Text from "../common/Text";
 
 function TextEditor() {
   const { journalID } = useParams();
@@ -13,7 +14,7 @@ function TextEditor() {
   const [content, setContent] = useState("");
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const [showIconPicker, setShowIconPicker] = useState(false);
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit, formState: { errors }, watch } = useForm();
 
   useEffect(() => {
     // Fetch journal data based on journalID
@@ -43,10 +44,7 @@ function TextEditor() {
       journalTitle: data.title,
       journalText: content,
       mood: chosenEmoji,
-      userId: "user1",
     };
-
-    console.log(journalDataAPI);
 
     // Make an API request to update the journal
     try {
@@ -57,8 +55,10 @@ function TextEditor() {
         );
         console.log("Journal updated successfully:", updatedJournal);
       } else {
-        const newJournal = await axiosInstance.createJournal(journalDataAPI);
-        console.log("Journal created successfully:", newJournal);
+        await axiosInstance.createJournal(journalDataAPI)
+        .then((res) => {
+          console.log(res);
+        })
       }
     } catch (error) {
       console.error("Error updating journal:", error);
@@ -81,11 +81,16 @@ function TextEditor() {
         </span>
       )}
       {/* Use Controller to integrate input with React Hook Form */}
+      
       <Controller
         name="title"
         control={control}
         defaultValue={""}
+        rules={{
+          required: "Title is required!",
+        }}
         render={({ field }) => (
+          <div className="flex flex-col">
           <input
             {...field}
             type="text"
@@ -96,6 +101,13 @@ function TextEditor() {
             }
             className="border-[#CCCED1] border-solid border-[1px]"
           />
+          {/* <div>123</div> */}
+          {errors.title && (
+                    <Text variant="text-xs" className="text-red-500 mt-3">
+                      {errors.title.message}
+                    </Text>
+                  )}
+          </div>
         )}
       />
 
@@ -133,9 +145,10 @@ function TextEditor() {
 
       {/* Patient Editor */}
       <span className="text-xl font-semibold my-4">Patient Journal</span>
-      <div className="">
         {/* CKEditor configuration remains the same */}
-        <CKEditor
+
+       
+          <CKEditor
           editor={ClassicEditor}
           data={journalData ? journalData.journalText : ""}
           onChange={(event, editor) => {
@@ -143,7 +156,17 @@ function TextEditor() {
             setContent(editorData);
           }}
         />
-      </div>
+        
+      
+
+        {/* <CKEditor
+          editor={ClassicEditor}
+          data={journalData ? journalData.journalText : ""}
+          onChange={(event, editor) => {
+            const editorData = editor.getData();
+            setContent(editorData);
+          }}
+        /> */}
 
       <div className="w-full flex justify-end mt-3">
         <Button type="submit">Save</Button>

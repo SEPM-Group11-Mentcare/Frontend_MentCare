@@ -4,7 +4,7 @@ import { ReactComponent as DefaultAvatar } from "../../assets/images/avatar.svg"
 // Import Components
 import Text from "./Text";
 
-function UserInformation({ imgSrc, userName, userEmail }) {
+function UserInformation({ imgSrc, userName, role }) {
   return (
     <div className="flex flex-row">
       {/* User Image */}
@@ -19,10 +19,10 @@ function UserInformation({ imgSrc, userName, userEmail }) {
       )}
 
       {/* User Name & User Email */}
-      <div className="flex flex-col max-w-[160px] gap-1">
+      <div className="flex flex-col max-w-[160px] gap-1 justify-center">
         {/* variant="text-4xl" weight="bold" className="text-[#2B50D8]" */}
-        <Text className="truncate text-base font-bold">{userName}</Text>
-        <Text className="truncate text-sm font-normal ">{userEmail}</Text>
+        <Text className="truncate text-base font-bold">{role === "therapist" ? "Therapist" : "Patient" }</Text>
+        <Text className="truncate text-base">{userName}</Text>
       </div>
     </div>
   );
