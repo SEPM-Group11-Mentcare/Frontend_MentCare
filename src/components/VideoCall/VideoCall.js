@@ -39,7 +39,7 @@ function ParticipantView(props) {
   }, [micStream, micOn]);
 
   return (
-    <div>
+    <div className="grid grid-flow-row grid-cols-2 grid-rows-2">
       <audio ref={micRef} autoPlay playsInline muted={isLocal} />
       {webcamOn && (
         <ReactPlayer
@@ -66,7 +66,7 @@ function MeetingView() {
   const [joined, setJoined] = useState(null);
   //Get the method which will be used to join the meeting.
   //We will also get the participants list to display all participants
-  const { join, participants } = useMeeting({
+  const { join, participants, leave } = useMeeting({
     //callback for when meeting is joined successfully
     onMeetingJoined: () => {
       setJoined("JOINED");
@@ -76,17 +76,29 @@ function MeetingView() {
     setJoined("JOINING");
     join();
   };
+  const leaveMeeting = () => {
+    leave();
+    setJoined(null);
+  };
 
   return (
     <div className="container">
       {joined && joined == "JOINED" ? (
         <div>
-          {[...participants.keys()].map((participantId) => (
-            <ParticipantView
-              participantId={participantId}
-              key={participantId}
-            />
-          ))}
+          <div>
+            {[...participants.keys()].map((participantId) => (
+              <ParticipantView
+                participantId={participantId}
+                key={participantId}
+              />
+            ))}
+          </div>
+          <button
+            onClick={leaveMeeting}
+            className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
+          >
+            Leave Meeting
+          </button>
         </div>
       ) : joined && joined == "JOINING" ? (
         <p>Joining the meeting...</p>
