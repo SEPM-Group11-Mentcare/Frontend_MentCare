@@ -27,7 +27,11 @@ const Signin = () => {
       console.log(res);
       Cookies.set("token", res.token);
       fetchData();
-      navigate("/patient/dashboard");
+      if (res.role === "patient") {
+        navigate("/patient/dashboard");
+      } else if (res.role === "therapist") {
+        navigate("/therapist/dashboard");
+      }
       
     })
     .catch((err) => {

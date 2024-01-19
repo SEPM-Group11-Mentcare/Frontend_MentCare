@@ -29,12 +29,10 @@ function SideBar() {
 
         {/* Links */}
         <div>
-          <SideBarButton icon={SquaresPlusIcon} name={"Dashboard"} path={`${therapistBaseRoute}/dashboard`} />
+        <SideBarButton icon={SquaresPlusIcon} name={"Appointments"} path={`${therapistBaseRoute}/appointments`} />
+          <SideBarButton icon={CalendarDaysIcon} name={"Schedule"} path={`${therapistBaseRoute}/schedule`} />
           <SideBarButton icon={UserCircleIcon} name={"My Profiles"} path={`${therapistBaseRoute}/profile`}/>
-          <SideBarButton icon={CalendarDaysIcon} name={"Appointments"} path={`${therapistBaseRoute}/appointments`} />
-          <SideBarButton icon={DocumentTextIcon} name={"Patient Records"} path={`${therapistBaseRoute}/records`} />
-          <SideBarButton icon={UserGroupIcon} name={"My Therapist Room"} path={`${therapistBaseRoute}/rooms`} />
-          <SideBarButton icon={BellIcon} name={"Notification"} path={`${therapistBaseRoute}/noti`} />
+          <SideBarButton icon={DocumentTextIcon} name={"Patient Records"} path={`${therapistBaseRoute}/patients`} />
         </div>
       </div>
 

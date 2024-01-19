@@ -55,3 +55,15 @@ export const getRequestList = async () => {
     return err;
   }
 }
+
+export const getPatientList = async() => {
+  const res = await axiosInstance.get("/therapist/patients")
+
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch (err) {
+    return err;
+  }
+}
