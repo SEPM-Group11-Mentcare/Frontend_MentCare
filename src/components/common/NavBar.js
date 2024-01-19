@@ -21,7 +21,9 @@ function NavBar() {
             <Link to={"/"}>
               <button className="btn btn-ghost">Home</button>
             </Link>
-            <button className="btn btn-ghost">Doctors</button>
+            <Link to={"/patient/videocall"}>
+              <button className="btn btn-ghost">Doctors</button>
+            </Link>
             <button className="btn btn-ghost">About Us</button>
             <button className="btn btn-ghost">Pricing</button>
             <button className="btn btn-ghost">Contact</button>
