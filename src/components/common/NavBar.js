@@ -21,10 +21,12 @@ function NavBar() {
             <Link to={"/"}>
               <button className="btn btn-ghost">Home</button>
             </Link>
-            <Link to={"/patient/videocall"}>
+            <Link to={"/patient/appointments"}>
               <button className="btn btn-ghost">Doctors</button>
             </Link>
-            <button className="btn btn-ghost">About Us</button>
+            <Link to={"/therapist/appointments"}>
+              <button className="btn btn-ghost">About Us</button>
+            </Link>
             <button className="btn btn-ghost">Pricing</button>
             <button className="btn btn-ghost">Contact</button>
           </div>
