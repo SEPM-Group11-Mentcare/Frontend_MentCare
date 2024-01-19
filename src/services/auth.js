@@ -24,3 +24,15 @@ export const signup = async(role, username, name, password, nationalID, speciali
   }
 }
 
+export const getProfile = async() => {
+  const res = await axiosInstance.get("account/profile");
+
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch(err) {
+    return err;
+  }
+}
+

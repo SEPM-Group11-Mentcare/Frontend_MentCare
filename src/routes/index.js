@@ -42,30 +42,18 @@ const publicRoutes = [
   },
 
   { path: "/signin", component: SignInPage, layout: HeaderFooterLayout },
-
-  // Private routes actually
-  {
-    path: "/patient/dashboard",
-    component: PatientDashboard,
-    layout: PatientLayout,
-  },
-  {
-    path: "/patient/appointments",
-    component: PatientAppointment,
-    layout: PatientLayout,
-  },
   {
     path: "/therapist/dashboard",
     component: TherapistDashboard,
     layout: TherapistLayout,
   },
   {
-    path: "therapist/medicalrecord/create",
+    path: "/therapist/medicalrecord/create",
     component: TherapistMedicalRecord,
     layout: TherapistLayout,
   },
   {
-    path: "therapist/profile",
+    path: "/therapist/profile",
     component: TherapistProfile,
     layout: TherapistLayout,
   },
@@ -73,41 +61,6 @@ const publicRoutes = [
     path: "/admin/dashboard",
     component: AdminDashboard,
     layout: AdminLayout,
-  },
-  {
-    path: "/patient/profile",
-    component: PatientProfile,
-    layout: PatientLayout,
-  },
-  {
-    path: "/patient/booking",
-    component: TherapistPage,
-    layout: PatientLayout,
-  },
-  {
-    path: "patient/journals/:journalID",
-    component: PatientJournal,
-    layout: PatientLayout,
-  },
-  {
-    path: "patient/journals",
-    component: PatientJournalList,
-    layout: PatientLayout,
-  },
-  {
-    path: "/patient/booking/:id",
-    component: BookingPage,
-    layout: PatientLayout,
-  },
-  {
-    path: "patient/:id",
-    component: PatientViewTherapistProfile,
-    layout: PatientLayout,
-  },
-  {
-    path: "/patient/checkout",
-    component: CheckoutPage,
-    layout: PatientLayout,
   },
   {
     path: "/therapist/schedule",
@@ -124,23 +77,72 @@ const publicRoutes = [
     component: AdminApointment,
     layout: AdminLayout,
   },
+];
+
+// Private Routes
+const privateRoutes = [
   {
-    path: "patient/medicalrecord/",
+    path: "/patient/dashboard",
+    component: PatientDashboard,
+    layout: PatientLayout,
+  },
+  {
+    path: "/patient/appointments",
+    component: PatientAppointment,
+    layout: PatientLayout,
+  },
+  {
+    path: "/patient/profile",
+    component: PatientProfile,
+    layout: PatientLayout,
+  },
+  {
+    path: "/patient/booking",
+    component: TherapistPage,
+    layout: PatientLayout,
+  },
+  {
+    path: "/patient/journals/:journalID",
+    component: PatientJournal,
+    layout: PatientLayout,
+  },
+  {
+    path: "/patient/journals",
+    component: PatientJournalList,
+    layout: PatientLayout,
+  },
+  {
+    path: "/patient/booking/:id",
+    component: BookingPage,
+    layout: PatientLayout,
+  },
+  {
+    path: "/patient/therapistprofile/:id",
+    component: PatientViewTherapistProfile,
+    layout: PatientLayout,
+  },
+  {
+    path: "/patient/checkout",
+    component: CheckoutPage,
+    layout: PatientLayout,
+  },
+  {
+    path: "patient/records/:id",
     component: PatientMedicalRecord,
     layout: PatientLayout,
   },
   {
-    path: "patient/medicalrecordlist/",
+    path: "/patient/records",
     component: PatientMedicalRecordList,
     layout: PatientLayout,
   },
   {
-    path: "patient/recordaccesslist/",
+    path: "/patient/recordaccesslist",
     component: PatientRecordAccessList,
     layout: PatientLayout,
   },
   {
-    path: "patient/mytherapistroom/",
+    path: "patient/rooms",
     component: PatientMyTherapistRoom,
     layout: PatientLayout,
   },
@@ -150,8 +152,5 @@ const publicRoutes = [
     layout: PatientLayout,
   },
 ];
-
-// Private Routes
-const privateRoutes = [];
 
 export { publicRoutes, privateRoutes };

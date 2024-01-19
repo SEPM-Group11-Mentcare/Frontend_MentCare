@@ -9,7 +9,7 @@ import Text from "../common/Text";
 import DoctorStar from "../../assets/svg/DoctorStar";
 import CashIcon from "../../assets/svg/CashIcon";
 
-const DoctorProfileCard = ({ role }) => {
+const DoctorProfileCard = ({ role, therapist }) => {
   const isTherapist = role === "therapist";
 
   return (
@@ -21,16 +21,19 @@ const DoctorProfileCard = ({ role }) => {
 
         <div className="flex flex-col gap-2">
           <div className="flex gap-2 items-center">
-            <Text weight="semibold">Dr. John Doe</Text>
+            <Text weight="semibold">Dr. {therapist.name}</Text>
             <FontAwesomeIcon icon={faCircleCheck} color="#22C550" />
           </div>
-          <div className="flex gap-2 items-center text-gray-500">
-            {/* <FontAwesomeIcon icon={faCertificate} /> */}
+          <div className="flex gap-2 items-center">
+            <Text weight="semibold">Specialist: </Text>
+            <Text>{therapist.specialization}</Text>
+          </div>
+          {/* <div className="flex gap-2 items-center text-gray-500">
             <Text>
               BDS, MDS - Oral & Maxillofacial Surgery
             </Text>
-          </div>
-          <div className="flex gap-2 items-center text-gray-500">
+          </div> */}
+          {/* <div className="flex gap-2 items-center text-gray-500">
             <img
               src={require("../../assets/images/doctorSpecialist1.png")}
               alt="Specialist"
@@ -38,7 +41,7 @@ const DoctorProfileCard = ({ role }) => {
               height={"19px"}
             />
             <Text className="text-sky-500">Dentist</Text>
-          </div>
+          </div> */}
           {/* <div className="flex gap-2 items-center text-gray-500">
             <DoctorStar />
             <DoctorStar />
@@ -47,14 +50,14 @@ const DoctorProfileCard = ({ role }) => {
             <DoctorStar />
             <Text weight="bold">(35)</Text>
           </div> */}
-          <div className="flex gap-2 items-center text-gray-500">
+          {/* <div className="flex gap-2 items-center text-gray-500">
             <Text className="border-solid border-2 p-1 rounded-md text-black">
               Dental Fillings
             </Text>
             <Text className="border-solid border-2 p-1 rounded-md text-black">
               Teeth Whitening
             </Text>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -66,7 +69,7 @@ const DoctorProfileCard = ({ role }) => {
         {isTherapist ? (
           <Button>Edit Profile</Button>
         ) : (
-          <Button>Book Appointment</Button>
+          <Button href={`/patient/booking/${therapist._id}`}>Book Appointment</Button>
         )}
       </div>
     </div>

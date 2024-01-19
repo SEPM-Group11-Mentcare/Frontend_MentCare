@@ -5,16 +5,29 @@ import DoctorProfileCard from "../components/Therapist/DoctorProfileCard";
 import Timeline from "../components/Therapists/Timeline";
 import { useParams } from 'react-router-dom';
 import * as axiosInstance from "../services/patient"
+import Calendar from "../components/common/Calendar";
 
 function PatientViewTherapistProfile() {
   const [showOverview, setShowOverview] = useState(true);
+  const [therapist, setTherapist] = useState();
+  const [schedule, setSchedule] = useState();
   const { id } = useParams()
   // console.log(id);
   useEffect(() => {
     async function fetchData() {
+      await axiosInstance
+        .getTherapistSchedule(id)
+        .then((res) => {
+          setSchedule(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
       await axiosInstance.getTherapist(id)
       .then((res) => {
         console.log(res);
+        setTherapist(res);
       })
       .catch((err) => {
         console.log(err);
@@ -26,7 +39,7 @@ function PatientViewTherapistProfile() {
   return (
     <ContentLayout title="Doctor Profile" className="fixed">
       <div className="overflow-y-scroll h-full">
-        <DoctorProfileCard role="patient" />
+        { therapist && <DoctorProfileCard role="patient" therapist={therapist}/>}
         <div className="bg-white w-full h-full mt-20 border py-4 px-2 rounded-lg">
           <div className="grid grid-cols-2 gap-4 place-items-center">
             <div
@@ -74,8 +87,9 @@ function PatientViewTherapistProfile() {
             </>
           ) : (
             <div className="flex flex-col mt-5 pl-10">
-              <Text children="Business Hours Content" weight="bold" />
+              {/* <Text children="Business Hours Content" weight="bold" /> */}
               {/* Add the bussiness hour */}
+              <Calendar schedules={schedule}/>
             </div>
           )}
         </div>

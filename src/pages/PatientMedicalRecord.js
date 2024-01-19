@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ContentLayout from "../components/Layout/ContentLayout";
 import Text from "../components/common/Text";
 import InputForm from "../components/common/InputForm";
 import Button from "../components/common/Button";
 import MedicalRecordInfo from "../components/Therapists/MedicalRecordInfo";
 import { Controller, useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
+import * as axiosInstance from "../services/medicalRecord";
 
 function PatientMedicalRecord() {
   const dummyData = {
@@ -21,17 +23,37 @@ function PatientMedicalRecord() {
         - Hydrate adequately, drink at least 8 glasses of water daily.
         - Follow prescribed medication schedule strictly.`,
   };
+
+  const [medicalRecord, setMedicalRecord] = useState();
+  const { id } = useParams();
+  // console.log(id);
+  useEffect(() => {
+    async function fetchData() {
+      await axiosInstance.getMedicalRecordDetail(id)
+      .then((res) => {
+        // console.log(res)
+        setMedicalRecord(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+    fetchData();
+  }, [id])
   return (
     <ContentLayout title="Medical Record" className="fixed">
       <div className="overflow-y-auto h-full">
         <div className="bg-white w-full h-full rounded-md py-4 px-10 shadow">
-        <Text className="absolute top-21 right-20  text-gray-400">
-              #ID12131213123123
-            </Text>
-          <form>
+        {
+          medicalRecord && <Text className="absolute top-21 right-20  text-gray-400">
+          #ID{medicalRecord._id.toUpperCase()}
+        </Text>
+        }
+          {
+            medicalRecord && <div>
           
             <Text
-              children="Appointment Record #1"
+              children="Medical Record"
               weight="bold"
               variant="text-3xl"
               className="flex justify-center mt-10"
@@ -39,34 +61,34 @@ function PatientMedicalRecord() {
             
             
             <div className="mt-5">
-            
-              <MedicalRecordInfo />
+               <MedicalRecordInfo medicalRecord={medicalRecord}/>
               
             </div>
             <div className="flex flex-col gap-5 mt-10">
               {/* Meeting Summary */}
               <div className="w-full flex flex-col">
                 <Text children="Meeting Summary" weight="bold" />
-                <Text children={dummyData.meetingSummary} />
+                <Text children={medicalRecord.meetingSummary} />
               </div>
               {/* Prescription */}
               <div className="w-full flex flex-col">
                 <Text children="Prescription" weight="bold" />
-                <Text children={dummyData.prescription} />
+                <Text children={medicalRecord.prescription} />
               </div>
               {/* Diagnostic */}
               <div className="w-full flex flex-col">
                 <Text children="Diagnostic" weight="bold" />
-                <Text children={dummyData.diagnostic} />
+                <Text children={medicalRecord.diagnostic} />
               </div>
               {/* Advises */}
               <div className="w-full flex flex-col">
                 <Text children="Advises" weight="bold" />
-                <Text children={dummyData.advises} />
+                <Text children={medicalRecord.advice} />
               </div>
             </div>
             <div className="flex justify-center mt-5"></div>
-          </form>
+          </div>
+          }
         </div>
       </div>
     </ContentLayout>
