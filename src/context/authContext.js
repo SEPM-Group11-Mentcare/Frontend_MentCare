@@ -16,11 +16,11 @@ const AuthProvider = ({ children }) => {
         })
         .catch((err) => {
           setUserInfo(null);
-          // console.log(err);
+          console.log(err);
         });
     } catch (err) {
       setUserInfo(null);
-      // console.log(err);
+      console.log(err);
     }
   }
 
