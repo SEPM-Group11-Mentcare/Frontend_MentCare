@@ -5,6 +5,7 @@ import {
   useParticipant,
 } from "@videosdk.live/react-sdk";
 import ReactPlayer from "react-player";
+import Button from "../common/Button";
 
 // PaticipantView
 function ParticipantView(props) {
@@ -39,7 +40,7 @@ function ParticipantView(props) {
   }, [micStream, micOn]);
 
   return (
-    <div className="grid grid-flow-row grid-cols-2 grid-rows-2">
+    <div className="w-full h-full">
       <audio ref={micRef} autoPlay playsInline muted={isLocal} />
       {webcamOn && (
         <ReactPlayer
@@ -50,8 +51,9 @@ function ParticipantView(props) {
           muted={true}
           playing={true}
           url={videoStream}
-          height={"300px"}
-          width={"300px"}
+          // className="w-1/2 h-1/2"
+          width="100%"
+          height="100%"
           onError={(err) => {
             console.log(err, "participant video error");
           }}
@@ -82,10 +84,10 @@ function MeetingView() {
   };
 
   return (
-    <div className="container">
+    <div className="container w-full h-full">
       {joined && joined == "JOINED" ? (
         <div>
-          <div>
+          <div className="grid grid-cols-2 gap-5">
             {[...participants.keys()].map((participantId) => (
               <ParticipantView
                 participantId={participantId}
@@ -103,7 +105,10 @@ function MeetingView() {
       ) : joined && joined == "JOINING" ? (
         <p>Joining the meeting...</p>
       ) : (
-        <button onClick={joinMeeting}>Join the meeting</button>
+        <div className="w-full h-full flex items-center justify-center">
+          {/* <button onClick={joinMeeting}>Join the meeting</button> */}
+          <Button onClick={joinMeeting}>Join the meeting</Button>
+        </div>
       )}
     </div>
   );
@@ -119,7 +124,9 @@ const VideoCall = () => {
       }}
       token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJlOGY0MWU4Zi1hNzBlLTRjY2EtOTI4YS1jNGRmMGJjM2NiYzMiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTcwNTY0NTY1OSwiZXhwIjoxNzA1NzMyMDU5fQ.Gp-A_G7-oKvIa7_539mqUxMvwi5S92cTN0UGXBf1tOA"
     >
-      <MeetingView />
+      <div className="w-full h-full flex items-center justify-center">
+        <MeetingView />
+      </div>
     </MeetingProvider>
   );
 };
