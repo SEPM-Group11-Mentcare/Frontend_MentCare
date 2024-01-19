@@ -36,3 +36,14 @@ export const getProfile = async() => {
   }
 }
 
+export const signout = async() => {
+  const res = await axiosInstance.post("account/signout");
+
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch(err) {
+    return err;
+  }
+}

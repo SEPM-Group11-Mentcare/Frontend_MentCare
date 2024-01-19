@@ -17,9 +17,6 @@ const DoctorCard = ({
   return (
     <div className="flex flex-row justify-between items-center border p-4 rounded-lg bg-white">
       <div className="flex gap-6 items-center w-3/6">
-        <div className="w-20 h-20 object-contain">
-          <img className="rounded-md w-20 h-20" src={img} alt="doctor" />
-        </div>
 
         <div className="flex flex-col gap-2">
           <div className="flex gap-2 items-center">

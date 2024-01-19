@@ -1,102 +1,118 @@
+import axiosInstance from "./axiosService";
 
-import axiosInstance from './axiosService';
-
-export const bookAppointment = async(therapist, schedule, note, accept, total) => {
-  const res = await axiosInstance.post('/patient/booking', {therapist, schedule, note, accept, total})
-
-  try {
-    if (res.status === 200) {
-      return res.data;
-    }
-  } catch(err) {
-    return err;
-  }
-}
-
-export const getTherapist = async(id) => {
-  const res = await axiosInstance.get(`/patient/therapist/${id}`)
-
-  try {
-    if (res.status === 200) {
-      return res.data;
-    }
-  } catch(err) {
-    return err;
-  }
-}
-
-export const getTherapists = async() => {
-  const res = await axiosInstance.get('/patient/view')
+export const bookAppointment = async (
+  therapist,
+  schedule,
+  note,
+  accept,
+  total
+) => {
+  const res = await axiosInstance.post("/patient/booking", {
+    therapist,
+    schedule,
+    note,
+    accept,
+    total,
+  });
 
   try {
     if (res.status === 200) {
       return res.data;
     }
-  } catch(err) {
+  } catch (err) {
     return err;
   }
-}
+};
 
-export const getTherapistSchedule = async(id) => {
-  const res = await axiosInstance.get(`/patient/schedule/${id}`)
+export const getTherapist = async (id) => {
+  const res = await axiosInstance.get(`/patient/therapist/${id}`);
 
   try {
     if (res.status === 200) {
       return res.data;
     }
-  } catch(err) {
+  } catch (err) {
     return err;
   }
-}
+};
 
-export const getAppointments = async(status) => {
-  const res = await axiosInstance.get(`/patient/appointments/?status=${status}`)
+export const getTherapists = async () => {
+  const res = await axiosInstance.get("/patient/view");
 
   try {
     if (res.status === 200) {
       return res.data;
     }
-  } catch(err) {
+  } catch (err) {
     return err;
   }
-}
+};
 
-export const cancelAppointment = async(appointmentID) => {
-  const res = await axiosInstance.put(`/patient/appointment`, {appointmentID})
+export const getTherapistSchedule = async (id) => {
+  const res = await axiosInstance.get(`/patient/schedule/${id}`);
 
   try {
     if (res.status === 200) {
       return res.data;
     }
-  } catch(err) {
+  } catch (err) {
     return err;
   }
-}
+};
+
+export const getAppointments = async (status) => {
+  const res = await axiosInstance.get(
+    `/patient/appointments/?status=${status}`
+  );
+
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch (err) {
+    return err;
+  }
+};
+
+export const cancelAppointment = async (appointmentID) => {
+  const res = await axiosInstance.put(`/patient/appointment`, {
+    appointmentID,
+  });
+
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch (err) {
+    return err;
+  }
+};
 
 export const getPatientProfile = async () => {
-    try {
-        const res = await axiosInstance.get('patient/profile');
-        if (res.status === 200) {
-            return res.data;
-        }
+  try {
+    const res = await axiosInstance.get("patient/profile");
+    if (res.status === 200) {
+      return res.data;
     }
-    catch (err) {
-        console.error('Error fetching patient profile: ', err);
-        throw err;
-    }
-}
+  } catch (err) {
+    console.error("Error fetching patient profile: ", err);
+    throw err;
+  }
+};
 
-export const updatePatientProfile = async (data) => {
-    try {
-        const res = await axiosInstance.put('patient/profile', data, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
-        if (res.status === 200) {
-            return res.data;
-        }
+export const updatePatientProfile = async (id, username, name, dob) => {
+  try {
+    const res = await axiosInstance.put("patient/profile", {
+      id,
+      username,
+      name,
+      dob,
+    });
+    if (res.status === 200) {
+      return res.data;
     }
-    catch (err) {
-        console.error('Error fetching patient profile: ', err);
-        throw err;
-    }
-}
+  } catch (err) {
+    console.error("Error fetching patient profile: ", err);
+    throw err;
+  }
+};

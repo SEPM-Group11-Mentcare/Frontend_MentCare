@@ -18,7 +18,7 @@ const Signin = () => {
     mode: "onChange",
   });
 
-  const { fetchData } = useContext(AuthContext);
+  const { fetchData, setRole } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onSubmit = async(d) => {
@@ -27,10 +27,11 @@ const Signin = () => {
       console.log(res);
       Cookies.set("token", res.token);
       fetchData();
+      setRole(res.role);
       if (res.role === "patient") {
-        navigate("/patient/dashboard");
+        navigate("/patient/appointments");
       } else if (res.role === "therapist") {
-        navigate("/therapist/dashboard");
+        navigate("/therapist/appointments");
       }
       
     })
