@@ -55,3 +55,27 @@ export const getRequestList = async () => {
     return err;
   }
 }
+
+export const getPatientList = async() => {
+  const res = await axiosInstance.get("/therapist/patients")
+
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch (err) {
+    return err;
+  }
+}
+
+export const updateProfile = async(id, username, name, dob, nationalID, pratisingCertNum, specialization, price, aboutme, experience) => {
+  const res = await axiosInstance.put("/therapist/profile", {id, username, name, dob, nationalID, pratisingCertNum, specialization, price, aboutme, experience})
+
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch (err) {
+    return err;
+  }
+}

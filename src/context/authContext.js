@@ -12,15 +12,15 @@ const AuthProvider = ({ children }) => {
         .getProfile()
         .then((res) => {
           setUserInfo(res);
-          // console.log(res);
+          console.log(res);
         })
         .catch((err) => {
           setUserInfo(null);
-          // console.log(err);
+          console.log(err);
         });
     } catch (err) {
       setUserInfo(null);
-      // console.log(err);
+      console.log(err);
     }
   }
 

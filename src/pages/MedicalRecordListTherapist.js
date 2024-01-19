@@ -1,19 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Text from "../components/common/Text";
 import ContentLayout from "../components/Layout/ContentLayout";
 import MedicalRow from "../components/Patient/MedicalRow";
 import * as axiosInstance from "../services/medicalRecord";
-import { AuthContext } from "../context/authContext";
+import { useParams } from "react-router-dom";
 
-function PatientMedicalRecordList() {
+function MedicalRecordListTherapist() {
   const [medicalRecords, setMedicalRecords] = useState();
-  const { userInfo } = useContext(AuthContext);
-  
+  const { id } = useParams();
+
   useEffect(() => {
     async function fetchData() {
-      await axiosInstance.getMedicalRecords(userInfo._id)
+      await axiosInstance.getMedicalRecords(id)
       .then((res) => {
         // console.log(res);
         setMedicalRecords(res);
@@ -24,7 +24,7 @@ function PatientMedicalRecordList() {
     }
 
     fetchData();
-  }, [])
+  }, [id])
 
   return (
     <ContentLayout title={"Medical Record List"}>
@@ -69,7 +69,7 @@ function PatientMedicalRecordList() {
                   date={data.date}
                   therapistName={data.therapist}
                   className={className}
-                  href={`/patient/records/${data._id}`}
+                  href={`/therapist/records/${id}/${data._id}`}
                 />
               );
             })}
@@ -80,4 +80,4 @@ function PatientMedicalRecordList() {
   );
 }
 
-export default PatientMedicalRecordList;
+export default MedicalRecordListTherapist;
