@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import React from "react";
 import Button from "../common/Button";
 
@@ -6,10 +7,10 @@ function MedicalRow({ number, recordID, date, therapistName, className }) {
     <tr className={`${className}`}>
       <th>{number}</th>
       <td>{recordID}</td>
-      <td>{date}</td>
+      <td>{format(new Date(date), "dd/MM/yyyy")}</td>
       <td>{therapistName}</td>
       <td>
-        <Button className="bg-green-500">View</Button>
+        <Button href={`/patient/records/${recordID}`} className="bg-green-500">View</Button>
       </td>
     </tr>
   );

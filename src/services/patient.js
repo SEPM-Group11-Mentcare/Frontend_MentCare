@@ -88,7 +88,9 @@ export const getPatientProfile = async () => {
 
 export const updatePatientProfile = async (data) => {
     try {
-        const res = await axiosInstance.put('patient/profile', data);
+        const res = await axiosInstance.put('patient/profile', data, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
         if (res.status === 200) {
             return res.data;
         }

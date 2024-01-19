@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Box from "../components/common/Box";
 import InputForm from "../components/common/InputForm";
 import Text from "../components/common/Text";
@@ -6,6 +6,8 @@ import { Controller, useForm } from "react-hook-form";
 import Button from "../components/common/Button";
 import * as axiosInstance from "../services/auth";
 import Cookies from "js-cookie";
+import { AuthContext } from "../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
   const {
@@ -16,11 +18,17 @@ const Signin = () => {
     mode: "onChange",
   });
 
+  const { fetchData } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const onSubmit = async(d) => {
     await axiosInstance.signin(d.username, d.password)
     .then((res) => {
       console.log(res);
       Cookies.set("token", res.token);
+      fetchData();
+      navigate("/patient/dashboard");
+      
     })
     .catch((err) => {
       console.log(err);
