@@ -116,3 +116,29 @@ export const updatePatientProfile = async (id, username, name, dob) => {
     throw err;
   }
 };
+
+export const getAccessList = async() => {
+  const res = await axiosInstance.get("patient/access");
+  
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch (err) {
+    console.error("Error fetching patient profile: ", err);
+    throw err;
+  }
+}
+
+export const removeAccess = async(id) => {
+  const res = await axiosInstance.put(`patient/removeaccess/${id}`)
+
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch (err) {
+    console.error("Error fetching patient profile: ", err);
+    throw err;
+  }
+}
