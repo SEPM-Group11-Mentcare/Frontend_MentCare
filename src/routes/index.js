@@ -147,7 +147,7 @@ const privateRoutes = [
     layout: PatientLayout,
   },
   {
-    path: "patient/videocall/",
+    path: "videocall/",
     component: PatientVideoCall,
     layout: PatientLayout,
   },
