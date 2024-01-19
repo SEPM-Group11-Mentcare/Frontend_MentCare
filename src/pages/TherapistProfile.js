@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ContentLayout from "../components/Layout/ContentLayout";
 import Text from "../components/common/Text";
 import DoctorProfileCard from "../components/Therapist/DoctorProfileCard";
 import Timeline from "../components/Therapists/Timeline";
+import { AuthContext } from "../context/authContext";
 
 function TherapistProfile() {
   const [showOverview, setShowOverview] = useState(true);
-
+  const { userInfo } = useContext(AuthContext);
   return (
     <ContentLayout title="Doctor Profile" className="fixed">
       <div className="overflow-y-scroll h-full">
-        <DoctorProfileCard role="therapist" />
+        {userInfo && <DoctorProfileCard role="therapist" therapist={userInfo}/>}
         <div className="bg-white w-full h-full mt-20 border py-4 px-2 rounded-lg">
           <div className="grid grid-cols-2 gap-4 place-items-center">
             <div

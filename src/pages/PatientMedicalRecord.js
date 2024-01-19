@@ -46,7 +46,7 @@ function PatientMedicalRecord() {
         <div className="bg-white w-full h-full rounded-md py-4 px-10 shadow">
         {
           medicalRecord && <Text className="absolute top-21 right-20  text-gray-400">
-          #ID{medicalRecord._id.toUpperCase()}
+          Medical record ID: {medicalRecord._id.toUpperCase()}
         </Text>
         }
           {

@@ -29,6 +29,8 @@ import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
 import PatientLayout from "../components/Layout/PatientLayout";
 import TherapistLayout from "../components/Layout/TherapistLayout";
 import TherapistSignup from "../pages/TherapistSignup";
+import MedicalRecordListTherapist from "../pages/MedicalRecordListTherapist";
+import PatientList from "../pages/PatientList";
 
 // Public Routes
 const publicRoutes = [
@@ -44,6 +46,21 @@ const publicRoutes = [
   {
     path: "/therapist/dashboard",
     component: TherapistDashboard,
+    layout: TherapistLayout,
+  },
+  {
+    path: "/therapist/patients",
+    component: PatientList,
+    layout: TherapistLayout,
+  },
+  {
+    path: "/therapist/records/:id",
+    component: MedicalRecordListTherapist,
+    layout: TherapistLayout
+  },
+  {
+    path: "therapist/records/:patientid/:id",
+    component: PatientMedicalRecord,
     layout: TherapistLayout,
   },
   {
