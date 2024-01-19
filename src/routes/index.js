@@ -23,6 +23,7 @@ import PatientMedicalRecord from "../pages/PatientMedicalRecord";
 import PatientAppointment from "../pages/PatientAppointment";
 import PatientRecordAccessList from "../pages/PatientRecordAccessList";
 import PatientMyTherapistRoom from "../pages/PatientMyTherapistRoom";
+import PatientVideoCall from "../pages/PatientVideoCall";
 
 // Import Layout Components
 import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
@@ -160,6 +161,11 @@ const privateRoutes = [
   {
     path: "patient/rooms",
     component: PatientMyTherapistRoom,
+    layout: PatientLayout,
+  },
+  {
+    path: "patient/videocall/",
+    component: PatientVideoCall,
     layout: PatientLayout,
   },
 ];
