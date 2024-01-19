@@ -99,7 +99,9 @@ function SideBar() {
           <SideBarButton icon={DocumentPlusIcon} name={"Booking"} path={`${patientBaseRoute}/booking`}/>
           <SideBarButton icon={DocumentTextIcon} name={"Medical Records"} path={`${patientBaseRoute}/records`} />
           <SideBarButton icon={FaceSmileIcon} name={"Self-assessment"} path={`${patientBaseRoute}/journals`} />
+          <SideBarButton icon={UserGroupIcon} name={"Access Medical Record"} path={`${patientBaseRoute}/recordaccesslist`} />
           <SideBarButton icon={UserGroupIcon} name={"My Therapist Room"} path={`${patientBaseRoute}/rooms`} />
+
         </div>
       </div>
 
