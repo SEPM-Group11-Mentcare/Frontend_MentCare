@@ -24,6 +24,7 @@ import PatientAppointment from "../pages/PatientAppointment";
 import PatientRecordAccessList from "../pages/PatientRecordAccessList";
 import PatientMyTherapistRoom from "../pages/PatientMyTherapistRoom";
 import PatientVideoCall from "../pages/PatientVideoCall";
+import TherapistVideoCall from "../pages/TherapistVideoCall";
 
 // Import Layout Components
 import HeaderFooterLayout from "../components/Layout/HeaderFooterLayout";
@@ -164,9 +165,14 @@ const privateRoutes = [
     layout: PatientLayout,
   },
   {
-    path: "videocall/:id",
+    path: "patient/videocall/:id",
     component: PatientVideoCall,
     layout: PatientLayout,
+  },
+  {
+    path: "therapist/videocall/:id",
+    component: TherapistVideoCall,
+    layout: TherapistLayout,
   },
 ];
 

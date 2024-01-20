@@ -6,7 +6,7 @@ import { MeetingContainer } from "./meeting/MeetingContainer";
 import { LeaveScreen } from "./components/screens/LeaveScreen";
 import { JoiningScreen } from "./components/screens/JoiningScreen";
 
-function VideoMeeting({ roomID }) {
+function VideoMeeting({ roomID, returnPath }) {
   const [token, setToken] = useState("");
   const [meetingId, setMeetingId] = useState("");
   const [participantName, setParticipantName] = useState("");
@@ -57,6 +57,7 @@ function VideoMeeting({ roomID }) {
             joinWithoutUserInteraction={true}
           >
             <MeetingContainer
+              returnPath={returnPath}
               onMeetingLeave={() => {
                 setToken("");
                 setMeetingId("");

@@ -14,8 +14,8 @@ function AppointmentRow({
   handleUpdate,
   meetingID,
   recordID,
-  appointmentID, 
-  patientID
+  appointmentID,
+  patientID,
 }) {
   // console.log(appointmentID);
   return (
@@ -38,19 +38,21 @@ function AppointmentRow({
       </td>
       <td>
         <div className="flex justify-center gap-3">
-        {status === "Confirmed" ? (
-          <Link to={`/videocall/${meetingID}`}>
-            <Button variant="red">Join</Button>
-          </Link>
-        ) : null}
+          {status === "Confirmed" ? (
+            <Link to={`/therapist/videocall/${meetingID}`}>
+              <Button variant="red">Join</Button>
+            </Link>
+          ) : null}
 
-        {recordID ? (
-          <Button href={`/therapist/records/${patientID}/${recordID}`}>View Record</Button>
-        ) : (
-          <Button href={`/therapist/medicalrecord/create/${appointmentID}`}>
-            Create Record
-          </Button>
-        )}
+          {recordID ? (
+            <Button href={`/therapist/records/${patientID}/${recordID}`}>
+              View Record
+            </Button>
+          ) : (
+            <Button href={`/therapist/medicalrecord/create/${appointmentID}`}>
+              Create Record
+            </Button>
+          )}
         </div>
       </td>
     </tr>
