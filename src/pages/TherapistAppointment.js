@@ -17,14 +17,13 @@ function TherapistAppointment() {
         await axiosInstance
           .getRequestList()
           .then((res) => {
-            console.log(res);
             setAppointments(res);
           })
           .catch((err) => {
             console.log(err);
           });
       },
-    [appointments]
+    []
   );
   return (
     <ContentLayout title="Appointment List">
@@ -67,8 +66,9 @@ function TherapistAppointment() {
                 {/* Data */}
 
                 {appointments &&
-                  appointments.map((appointment) => (
+                  appointments.map((appointment, index) => (
                     <AppointmentRow
+                      key={index}
                       meetingID={appointment.meetingID}
                       patient={appointment.patientName}
                       // therapist={appointment.therapistName}
