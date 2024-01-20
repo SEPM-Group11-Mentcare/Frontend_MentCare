@@ -22,7 +22,7 @@ function TherapistAppointment() {
             console.log(err);
           });
       },
-    [appointments]
+    []
   );
   return (
     <ContentLayout title="Appointment List">
@@ -65,8 +65,9 @@ function TherapistAppointment() {
                 {/* Data */}
 
                 {appointments &&
-                  appointments.map((appointment) => (
+                  appointments.map((appointment, index) => (
                     <AppointmentRow
+                      key={index}
                     appointmentID={appointment.id}
                       meetingID={appointment.meetingID}
                       patient={appointment.patientName}
