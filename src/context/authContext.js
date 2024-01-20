@@ -5,6 +5,7 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState(null);
+  const [role, setRole] = useState(null);
 
   async function fetchData() {
     try {
@@ -31,7 +32,7 @@ const AuthProvider = ({ children }) => {
   // console.log(userInfo);
 
   return (
-    <AuthContext.Provider value={{ userInfo, fetchData }}>
+    <AuthContext.Provider value={{ userInfo, fetchData, setRole, role }}>
       {children}
     </AuthContext.Provider>
   );

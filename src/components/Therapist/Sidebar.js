@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 // Import Icons from Hero Icons
 import {
@@ -14,18 +14,36 @@ import {
 // Import Components
 import UserInformation from "../common/UserInformation";
 import SideBarButton from "../common/SideBarButton";
+import { AuthContext } from "../../context/authContext";
+import * as axiosInstance from "../../services/auth";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 function SideBar() {
+  const { userInfo, fetchData } = useContext(AuthContext);
   const therapistBaseRoute = '/therapist'
+  const navigate = useNavigate();
+
+  const logOut = async () => {
+    await axiosInstance
+      .signout()
+      .then((res) => {
+        Cookies.remove("token");
+        fetchData();
+        navigate("/")
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
-    <div className="px-6 py-6 flex flex-col bg-white h-screen w-[280px] justify-between border-r-[#EFEFEF] border-r-2">
+    <div className="px-6 py-6 flex flex-col bg-white h-screen w-96 justify-between border-r-[#EFEFEF] border-r-2">
       {/* SideBar Content */}
       <div className="flex flex-col gap-10">
         {/* User Information */}
-        <UserInformation
-          userName={"Therapist Name"}
-          userEmail={"therapistdemo@gmail.com"}
-        />
+        {userInfo && <UserInformation
+          userName={userInfo.name}
+        />}
 
         {/* Links */}
         <div>
@@ -37,7 +55,7 @@ function SideBar() {
       </div>
 
       {/* Log Out Button */}
-      <SideBarButton icon={ArrowRightOnRectangleIcon} name={"Logout"} path={`${therapistBaseRoute}/logout`} />
+      <SideBarButton icon={ArrowRightOnRectangleIcon} name={"Logout"} path={`${therapistBaseRoute}/logout`} onClick={logOut}/>
     </div>
   );
 }

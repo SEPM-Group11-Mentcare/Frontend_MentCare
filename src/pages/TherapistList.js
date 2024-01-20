@@ -20,7 +20,6 @@ const TherapistList = () => {
       await axiosInstance
         .getTherapists()
         .then((res) => {
-          // console.log(res);
           setTherapists(res.therapists);
         })
         .catch((err) => {
@@ -69,11 +68,10 @@ const TherapistList = () => {
           {
             filteredTherapists.map((therapist) => (
               <DoctorCard
-              img="https://picsum.photos/200/500"
               name={therapist.name}
               specialization={therapist.specialization}
               availableToday={therapist.availableToday}
-              price="500000"
+              price={therapist.price}
               id={therapist._id}
               />
             ))

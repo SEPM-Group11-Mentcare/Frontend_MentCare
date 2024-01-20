@@ -50,9 +50,9 @@ export const deleteJournal = async (id) => {
   }
 };
 
-export const getJournalsByUserId = async (userId) => {
+export const getJournalsByUserId = async () => {
   try {
-    const res = await axiosInstance.get(`/journals/patient/${userId}`);
+    const res = await axiosInstance.get(`/journals/patient`);
     return res.data;
   } catch (err) {
     return err;
