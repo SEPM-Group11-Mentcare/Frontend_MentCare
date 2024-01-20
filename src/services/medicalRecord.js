@@ -18,3 +18,13 @@ export const getMedicalRecordDetail = async(id) => {
     return err;
   }
 }
+
+export const createMedicalRecord = async(meetingSummary, diagnostic, appointment, prescription, advice) => {
+  const res = await axiosInstance.post(`/medicalRecord/create`, {meetingSummary, diagnostic, appointment, prescription, advice})
+
+  try {
+    return res.data;
+  } catch (err) {
+    return err;
+  }
+}
