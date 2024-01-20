@@ -1,13 +1,19 @@
-Group 11: MindHeal - Online mental counseling platform
+# Backend
 
-Disclaimer: As we are using a free tier service, you will need to wait around a minute when you first open the link. After that, the link works smoothly. For more information, refer to Technologies section below. 
+# Group 11: MindHeal - Online mental counseling platform
 
-- Project start date: 30/10/2023 
+**_Disclaimer: As we are using a free tier service, you will need to wait around a minute when you first open the link. After that, the link works smoothly. For more information, refer to Technologies section below._**
+<br />
+
+<hr>
+- Project start date: 30/10/2023
+<br />
 - Project end date: 21/01/2024
 
-Project Structure
+## Project Structure
 
-Backend/
+```
+FRONTEND_MENTCARE/
 ├── src/
 |   ├── assets/
 |   ├── components/
@@ -18,61 +24,78 @@ Backend/
 |   ├── utils/    
 ├── .env
 ├── Dockerfile
+├── App.js
+├── App.css
+├── index.css
 ├── index.js
 ├── package-lock.json
 ├── package.json
 ├── README.md
+```
 
-assets/ This directory stores images needed to build the website UI
+1. `assets/`
+This directory stores images needed to build the website UI
 
-componets/ The views directory contains all the components on the website
+2. `componets/`
+The views directory contains all the components on the website
 
-context This directory store the context of each function
+3. `context`
+This directory store the context of each function
 
-pages The directory contains .ejs files related to that website pages, such as homepage, dashboard, etc.
+4. `pages`
+The directory contains .ejs files related to that website pages, such as homepage, dashboard, etc.
 
-routes This stores the routes of the layouts. It works with the controllers and middleware to define the page route and control user access to each pages.
+5. `routes`
+This stores the routes of the layouts. It works with the `controllers` and `middleware` to define the page route and control user access to each pages.
 
-service This directory store the integrate of backend and frontend
+6. `service`
+This directory store the integrate of backend and frontend
 
-utils This directory's purpose is to create tokens, connect with and validate MongoDB ID
+7. `utils`
+This directory's purpose is to create tokens, connect with and validate MongoDB ID
 
-.env This file contains ENVIRONMENT VARIABLES such as ACCESS KEY, which is meant to be hidden and ignored by .gitignore
+8. `.env`
+   This file contains ENVIRONMENT VARIABLES such as ACCESS KEY, which is meant to be hidden and ignored by `.gitignore`
 
-package.json & package-lock.json Manage dependencies and package versions.
+9. `package.json` & `package-lock.json`
+   Manage dependencies and package versions.
 
-README.md A text file containing useful reference information about this project.
+10. `README.md`
+   A text file containing useful reference information about this project.
 
-About:
+## About:
 
-This is an assignment project for COSC2634 Building IT Systen offered at RMIT University Vietnam during Semester 2023C.
+This is an assignment project for ISYS2101 Software Engineering Project Management offered at RMIT University Vietnam during Semester 2023C.
 
-Campus: Saigon South (SGS), Vietnam
+- Campus: Saigon South (SGS), Vietnam
 
-Lecturer: Mr. Nguyen Hoang Thien Phuc
+- Lecturer: Dr. Tran Minh Tuan 
 
-Technologies used:
+### Technologies used:
 
-MERN Stack
+**MERN Stack**
 
-Frontend: ReactJS, TailwindCSS
-Backend: NodeJS, ExpressJS
-Database: MongoDB
-Deployment: Netlify + Vercel
-Supporting tools used
+- Frontend: ReactJS, TailwindCSS
+- Backend: NodeJS, ExpressJS
+- Database: MongoDB
+- Deployment: Netlify + Vercel
 
-UI Prototype: Figma
-Management: Jira Software
-Other resources: TailWindCSS docs, RMIT Canvas, NPM Package, ChatGPT, Packages' Docs
-Packages: Refer to package.json and package-lock.json
-Build
+### Supporting tools used
 
-To clone and run this project, you'll need Git and Node.js (which comes with npm) installed on your computer.
+- UI Prototype: Figma
+- Management: Jira Software
+- Other resources:TailWindCSS docs, RMIT Canvas, NPM Package, ChatGPT, Packages' Docs
+- Packages: Refer to package.json and package-lock.json
 
-Prequisite: VSCode or Other IDE / Editor
+## Build
 
-From your CLI, Terminal or SHELL:
+To clone and run this project, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](https://npmjs.com)) installed on your computer.
 
+- Prequisite: VSCode or Other IDE / Editor
+
+- From your CLI, Terminal or SHELL:
+
+```bash
 # Clone this repository
 $ git clone https://github.com/SEPM-Group11-Mentcare/Frontend_MentCare.git
 
@@ -84,20 +107,31 @@ $ npm start
 
 # OR Start with node
 $ node index.js
+```
 
-Test accounts
-Patient:
+## Test accounts
+
+1. Patient:
+
+```
 username: 
 password: 
+```
 
-Therapist:
+2. Therapist:
+
+```
 username: 
 password: 
+```
 
-Admin:
+3. Admin:
+
+```
 username: 
 password: 
+```
 
-License
+## License
 
 This software is licensed under the MIT License ©
