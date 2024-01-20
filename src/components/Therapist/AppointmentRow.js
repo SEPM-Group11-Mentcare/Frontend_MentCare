@@ -13,7 +13,11 @@ function AppointmentRow({
   status,
   handleUpdate,
   meetingID,
+  recordID,
+  appointmentID, 
+  patientID
 }) {
+  // console.log(appointmentID);
   return (
     <tr className="text-overflow: ellipsis">
       <td>{patient}</td>
@@ -33,11 +37,21 @@ function AppointmentRow({
         <Chip>{status === "Confirmed" ? "Upcoming" : status}</Chip>
       </td>
       <td>
+        <div className="flex justify-center gap-3">
         {status === "Confirmed" ? (
           <Link to={`/videocall/${meetingID}`}>
-            <Button>Join</Button>
+            <Button variant="red">Join</Button>
           </Link>
         ) : null}
+
+        {recordID ? (
+          <Button href={`/therapist/records/${patientID}/${recordID}`}>View Record</Button>
+        ) : (
+          <Button href={`/therapist/medicalrecord/create/${appointmentID}`}>
+            Create Record
+          </Button>
+        )}
+        </div>
       </td>
     </tr>
   );

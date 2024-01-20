@@ -6,6 +6,8 @@ import Button from "../components/common/Button";
 import { Controller, useForm } from "react-hook-form";
 import MedicalRecordInfo from "../components/Therapists/MedicalRecordInfo";
 import RedirectButton from "../components/common/RedirectButton";
+import { useParams } from "react-router-dom";
+import * as axiosInstance from "../services/medicalRecord";
 
 const TherapistMedicalRecord = () => {
   const {
@@ -16,9 +18,18 @@ const TherapistMedicalRecord = () => {
     mode: "onChange",
   });
 
+  const { id } = useParams();
+
   const onSubmit = async (d) => {
     //Axios....
     console.log(d);
+    await axiosInstance.createMedicalRecord(d.summary, d.diagnostic, id, d.prescription, d.advice)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   };
 
   return (
@@ -36,7 +47,7 @@ const TherapistMedicalRecord = () => {
 
             {/* Meeting Summary */}
             <div className="py-10">
-              <MedicalRecordInfo />
+              {/* <MedicalRecordInfo /> */}
             </div>
 
             <Text children="Meeting Summary" weight="bold" />
@@ -45,11 +56,7 @@ const TherapistMedicalRecord = () => {
               control={control}
               defaultValue=""
               rules={{
-                required: "Full name is required!",
-                minLength: {
-                  value: 2,
-                  message: "Full name should be at least 2 characters long.",
-                },
+                required: "Meeting summary is required!"
               }}
               render={({ field }) => (
                 <div>
@@ -60,6 +67,11 @@ const TherapistMedicalRecord = () => {
                     value={field.value}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
+                  {errors.summary && (
+                    <Text variant="text-xs" className="text-red-500 mt-3">
+                      {errors.summary.message}
+                    </Text>
+                  )}
                 </div>
               )}
             />
@@ -71,6 +83,9 @@ const TherapistMedicalRecord = () => {
               name="prescription"
               control={control}
               defaultValue=""
+              rules={{
+                required: "Prescription is required!"
+              }}
               render={({ field }) => (
                 <div>
                   <InputForm
@@ -80,6 +95,11 @@ const TherapistMedicalRecord = () => {
                     value={field.value}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
+                  {errors.prescription && (
+                    <Text variant="text-xs" className="text-red-500 mt-3">
+                      {errors.prescription.message}
+                    </Text>
+                  )}
                 </div>
               )}
             />
@@ -90,6 +110,9 @@ const TherapistMedicalRecord = () => {
             <Controller
               name="diagnostic"
               control={control}
+              rules={{
+                required: "Diagnostic is required!"
+              }}
               defaultValue=""
               render={({ field }) => (
                 <div>
@@ -100,6 +123,11 @@ const TherapistMedicalRecord = () => {
                     value={field.value}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
+                  {errors.diagnostic && (
+                    <Text variant="text-xs" className="text-red-500 mt-3">
+                      {errors.diagnostic.message}
+                    </Text>
+                  )}
                 </div>
               )}
             />
@@ -111,6 +139,9 @@ const TherapistMedicalRecord = () => {
               name="advises"
               control={control}
               defaultValue=""
+              rules={{
+                required: "Advise is required!"
+              }}
               render={({ field }) => (
                 <div>
                   <InputForm
@@ -120,6 +151,11 @@ const TherapistMedicalRecord = () => {
                     value={field.value}
                     onChange={(e) => field.onChange(e.target.value)}
                   />
+                  {errors.advises && (
+                    <Text variant="text-xs" className="text-red-500 mt-3">
+                      {errors.advises.message}
+                    </Text>
+                  )}
                 </div>
               )}
             />
