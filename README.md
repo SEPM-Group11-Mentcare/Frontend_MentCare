@@ -1,4 +1,4 @@
-# Backend
+# Frontend
 
 # Group 11: MindHeal - Online mental counseling platform
 
