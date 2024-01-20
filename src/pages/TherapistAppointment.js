@@ -22,7 +22,7 @@ function TherapistAppointment() {
             console.log(err);
           });
       },
-    []
+    [appointments]
   );
   return (
     <ContentLayout title="Appointment List">
