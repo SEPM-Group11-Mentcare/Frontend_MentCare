@@ -150,6 +150,7 @@ function PipBTN({ isMobile, isTab }) {
 }
 
 export function BottomBar({
+  returnPath,
   bottomBarHeight,
   setIsMeetingLeft,
   selectWebcamDeviceId,
@@ -599,7 +600,7 @@ export function BottomBar({
 
     return (
       <Link
-        to={"/patient/appointments"}
+        to={returnPath}
         onClick={() => {
           leave();
           setIsMeetingLeft(true);

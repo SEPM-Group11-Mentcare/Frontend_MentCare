@@ -21,23 +21,23 @@ const Signin = () => {
   const { fetchData, setRole } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const onSubmit = async(d) => {
-    await axiosInstance.signin(d.username, d.password)
-    .then((res) => {
-      console.log(res);
-      Cookies.set("token", res.token);
-      fetchData();
-      setRole(res.role);
-      if (res.role === "patient") {
-        navigate("/patient/appointments");
-      } else if (res.role === "therapist") {
-        navigate("/therapist/appointments");
-      }
-      
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+  const onSubmit = async (d) => {
+    await axiosInstance
+      .signin(d.username, d.password)
+      .then((res) => {
+        console.log(res);
+        Cookies.set("token", res.token);
+        fetchData();
+        setRole(res.role);
+        if (res.role === "patient") {
+          navigate("/patient/appointments");
+        } else if (res.role === "therapist") {
+          navigate("/therapist/appointments");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -56,7 +56,7 @@ const Signin = () => {
             Welcome back!
           </Text>
           <form className="flex-col flex gap-6">
-          <Controller
+            <Controller
               name="username"
               control={control}
               defaultValue=""
@@ -111,7 +111,7 @@ const Signin = () => {
               )}
             />
 
-            <Button onClick={handleSubmit(onSubmit)}>Sign Up</Button>
+            <Button onClick={handleSubmit(onSubmit)}>Sign In</Button>
           </form>
 
           <div className="flex items-center">

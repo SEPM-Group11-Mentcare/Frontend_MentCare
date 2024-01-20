@@ -25,6 +25,7 @@ export function MeetingContainer({
   setSelectMicDeviceId,
   micEnabled,
   webcamEnabled,
+  returnPath,
 }) {
   const { useRaisedHandParticipants } = useMeetingAppContext();
   const { getVideoTrack } = useMediaStream();
@@ -282,6 +283,7 @@ export function MeetingContainer({
               </div>
 
               <BottomBar
+                returnPath={returnPath}
                 bottomBarHeight={bottomBarHeight}
                 setIsMeetingLeft={setIsMeetingLeft}
                 selectWebcamDeviceId={selectWebcamDeviceId}

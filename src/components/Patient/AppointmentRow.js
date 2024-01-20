@@ -47,7 +47,7 @@ function AppointmentRow({
           </Button>
         ) : null}
         {status === "Confirmed" ? (
-          <Link to={`/videocall/${meetingID}`}>
+          <Link to={`/patient/videocall/${meetingID}`}>
             <Button>Join</Button>
           </Link>
         ) : null}
