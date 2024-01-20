@@ -113,11 +113,43 @@ function MeetingView() {
     </div>
   );
 }
+
+const getMeetingId = async (token) => {
+  try {
+    //We will use VideoSDK rooms API endpoint to create a meetingId
+    const VIDEOSDK_API_ENDPOINT = `https://api.videosdk.live/v2/rooms`;
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // We will pass the token in the headers
+        Authorization: token,
+      },
+    };
+    const meetingId = await fetch(VIDEOSDK_API_ENDPOINT, options)
+      .then(async (result) => {
+        const { roomId } = await result.json();
+        return roomId;
+      })
+      .catch((error) => console.log("error", error));
+
+    //we will return the meetingId which we got from the response of the api
+    return meetingId;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 const VideoCall = () => {
+  console.log(
+    getMeetingId(
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJlOGY0MWU4Zi1hNzBlLTRjY2EtOTI4YS1jNGRmMGJjM2NiYzMiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTcwNTY0NTY1OSwiZXhwIjoxNzA1NzMyMDU5fQ.Gp-A_G7-oKvIa7_539mqUxMvwi5S92cTN0UGXBf1tOA"
+    )
+  );
   return (
     <MeetingProvider
       config={{
-        meetingId: "k9yt-e160-arz1",
+        meetingId: "3ipi-notw-9d6j",
         micEnabled: true,
         webcamEnabled: true,
         name: "Thong's Org",
