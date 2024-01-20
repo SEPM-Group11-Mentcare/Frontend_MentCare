@@ -63,6 +63,7 @@ function TherapistAppointment() {
               </thead>
               <tbody>
                 {/* Data */}
+                {console.log(appointments)}
                 {appointments &&
                   appointments.map((appointment, index) => (
                     <AppointmentRow
