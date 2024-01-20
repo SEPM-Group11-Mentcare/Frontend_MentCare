@@ -6,7 +6,7 @@ import { MeetingContainer } from "./meeting/MeetingContainer";
 import { LeaveScreen } from "./components/screens/LeaveScreen";
 import { JoiningScreen } from "./components/screens/JoiningScreen";
 
-function VideoMeeting() {
+function VideoMeeting({ roomID }) {
   const [token, setToken] = useState("");
   const [meetingId, setMeetingId] = useState("");
   const [participantName, setParticipantName] = useState("");
@@ -48,7 +48,7 @@ function VideoMeeting() {
               meetingId,
               micEnabled: micOn,
               webcamEnabled: webcamOn,
-              name: participantName ? participantName : "TestUser",
+              name: participantName ? participantName : "Bla Bla",
 
               multiStream: true,
             }}
@@ -81,6 +81,7 @@ function VideoMeeting() {
         <LeaveScreen setIsMeetingLeft={setIsMeetingLeft} />
       ) : (
         <JoiningScreen
+          meetingId={roomID}
           participantName={participantName}
           setParticipantName={setParticipantName}
           setMeetingId={setMeetingId}
