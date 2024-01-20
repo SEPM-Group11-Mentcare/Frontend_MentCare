@@ -5,6 +5,8 @@ import { ReactComponent as DefaultAvatar } from "../../assets/images/avatar.svg"
 import Text from "./Text";
 
 function UserInformation({ imgSrc, userName, role }) {
+  console.log(role);
+  console.log(role === "therapist");
   return (
     <div className="flex flex-row">
       {/* User Image */}

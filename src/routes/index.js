@@ -75,7 +75,7 @@ const publicRoutes = [
     layout: TherapistLayout,
   },
   {
-    path: "/admin/dashboard",
+    path: "/admin/therapistlist",
     component: AdminDashboard,
     layout: AdminLayout,
   },

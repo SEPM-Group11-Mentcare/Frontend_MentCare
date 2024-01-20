@@ -35,14 +35,9 @@ function SideBar() {
 
   const { userInfo, fetchData } = useContext(AuthContext);
 
-  const onSubmit = (d) => {
-    console.log(d);
-  };
-
   const navigate = useNavigate();
 
   const logOut = async () => {
-    console.log("123");
     await axiosInstance
       .signout()
       .then((res) => {
@@ -54,7 +49,7 @@ function SideBar() {
         console.log(err);
       });
   };
-  const patientBaseRoute = '/patient';
+  const adminBaseRoute = '/admin';
 
   return (
     <div className="px-6 py-6 flex flex-col bg-white h-screen w-96 justify-between border-r-[#EFEFEF] border-r-2">
@@ -68,14 +63,8 @@ function SideBar() {
 
         {/* Links */}
         <div>
-        <SideBarButton icon={CalendarDaysIcon} name={"Appointments"} path={`${patientBaseRoute}/appointments`} />
-          {/* <SideBarButton icon={SquaresPlusIcon} name={"Dashboard"} path={`${patientBaseRoute}/dashboard`}/> */}
-          <SideBarButton icon={UserCircleIcon} name={"My Profiles"} path={`${patientBaseRoute}/profile`} />
-          <SideBarButton icon={DocumentPlusIcon} name={"Booking"} path={`${patientBaseRoute}/booking`}/>
-          <SideBarButton icon={DocumentTextIcon} name={"Medical Records"} path={`${patientBaseRoute}/records`} />
-          <SideBarButton icon={FaceSmileIcon} name={"Self-assessment"} path={`${patientBaseRoute}/journals`} />
-          <SideBarButton icon={SquaresPlusIcon} name={"Access Medical Record"} path={`${patientBaseRoute}/recordaccesslist`} />
-          <SideBarButton icon={UserGroupIcon} name={"My Therapist Room"} path={`${patientBaseRoute}/rooms`} />
+        <SideBarButton icon={CalendarDaysIcon} name={"Appointments"} path={`${adminBaseRoute}/appointments`} />
+          <SideBarButton icon={UserGroupIcon} name={"My Therapist Room"} path={`${adminBaseRoute}/therapistlist`} />
 
         </div>
       </div>
