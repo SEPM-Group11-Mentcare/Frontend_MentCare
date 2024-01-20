@@ -39,7 +39,7 @@ const ConfirmBox = ({
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-11/12 max-w-md transform overflow-hidden rounded bg-gray-750 p-4 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title className="text-base font-medium  text-white ">
+                  <Dialog.Title className="text-base font-medium  text-black ">
                     {title}
                   </Dialog.Title>
                   <div className="mt-2">

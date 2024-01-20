@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:4000/api/",
+  baseURL: "https://g11-mindheal.vercel.app/api/",
   timeout: 5000,
   headers: {
     Accept: "application/json",
@@ -13,7 +13,6 @@ axiosInstance.interceptors.request.use(function (config) {
   config.headers.authorization = Cookies.get("token");
   return config;
 });
-
 
 export const signin = async (username, password) => {
   const res = await axiosInstance.post("account/signin", {
@@ -30,4 +29,4 @@ export const signin = async (username, password) => {
   }
 };
 
-export default axiosInstance
+export default axiosInstance;

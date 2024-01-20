@@ -169,7 +169,7 @@ export default function SettingDialogueBox({
             <div className="fixed inset-0 bg-black bg-opacity-25" />
           </Transition.Child>
 
-          <div className="fixed inset-0 overflow-y-auto">
+          <div className="fixed inset-0 overflow-y-auto ">
             <div className="flex min-h-full items-center justify-center p-4 text-center">
               <Transition.Child
                 as={Fragment}
@@ -180,14 +180,14 @@ export default function SettingDialogueBox({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded bg-gray-750 p-6 text-center align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden bg-gray-750 p-6 text-center align-middle shadow-xl transition-all bg-black rounded-lg px-5 py-5">
                   <Dialog.Title
                     as="h5"
-                    className="text-lg font-medium leading-6 text-white"
+                    className="text-lg font-medium leading-6 text-white bg-black"
                   >
                     Settings
                   </Dialog.Title>
-                  <div className="flex flex-1  flex-col overflow-hidden bg-gray-750  xl:p-[2px] lg:p-[5px] p-[2px]">
+                  <div className="flex flex-1  flex-col overflow-hidden bg-gray-750  xl:p-[2px] lg:p-[5px] p-[2px] bg-black">
                     <div className="flex items-center justify-center">
                       <div className="absolute top-2 right-2 focus-visible:border-none">
                         <button

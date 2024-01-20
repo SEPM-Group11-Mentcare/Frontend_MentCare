@@ -1,4 +1,5 @@
 import { CheckIcon, ClipboardIcon } from "@heroicons/react/24/outline";
+import Button from "../../common/Button";
 import React, { useState } from "react";
 
 export function MeetingDetailsScreen({
@@ -50,7 +51,7 @@ export function MeetingDetailsScreen({
               setMeetingId(e.target.value);
             }}
             placeholder={"Enter meeting Id"}
-            className="px-4 py-3 bg-gray-650 rounded-xl text-white w-full text-center"
+            className="px-4 py-3 bg-gray-650 rounded-xl text-black w-full text-center"
           />
           {meetingIdError && (
             <p className="text-xs text-red-600">{`Please enter valid meetingId`}</p>
@@ -97,7 +98,7 @@ export function MeetingDetailsScreen({
       {!iscreateMeetingClicked && !isJoinMeetingClicked && (
         <div className="w-full md:mt-0 mt-4 flex flex-col">
           <div className="flex items-center justify-center flex-col w-full ">
-            <button
+            {/* <button
               className="w-full bg-purple-350 text-white px-2 py-3 rounded-xl"
               onClick={async (e) => {
                 const meetingId = await _handleOnCreateMeeting();
@@ -106,15 +107,30 @@ export function MeetingDetailsScreen({
               }}
             >
               Create a meeting
-            </button>
-            <button
-              className="w-full bg-gray-650 text-white px-2 py-3 rounded-xl mt-5"
+            </button> */}
+            <Button
+              // className="w-full bg-gray-650 text-white px-2 py-3 rounded-xl mt-5"
+              // variant={}
               onClick={(e) => {
-                setIsJoinMeetingClicked(true);
+                onClickJoin("3ipi-notw-9d6j");
+                // if (meetingId.match("\\w{4}\\-\\w{4}\\-\\w{4}")) {
+                //   onClickJoin("3ipi-notw-9d6j");
+                // } else setMeetingIdError(true);
+                // if (iscreateMeetingClicked) {
+                //   if (videoTrack) {
+                //     videoTrack.stop();
+                //     setVideoTrack(null);
+                //   }
+                //   onClickStartMeeting();
+                // } else {
+                //   if (meetingId.match("\\w{4}\\-\\w{4}\\-\\w{4}")) {
+                //     onClickJoin(meetingId);
+                //   } else setMeetingIdError(true);
+                // }
               }}
             >
               Join a meeting
-            </button>
+            </Button>
           </div>
         </div>
       )}

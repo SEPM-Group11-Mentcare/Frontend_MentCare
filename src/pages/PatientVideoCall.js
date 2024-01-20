@@ -10,23 +10,6 @@ function PatientVideoCall() {
     <ContentLayout title={"Video Call"}>
       <div className="bg-white w-full h-full rounded-md py-4 px-10 flex justify-center items-center">
         {/* <VideoCall /> */}
-        <ToastContainer
-          toastClassName={() =>
-            "relative flex py-4 px-3 rounded overflow-hidden cursor-pointer bg-white shadow-lg"
-          }
-          bodyClassName={() => "text-black text-base font-normal"}
-          position="bottom-left"
-          autoClose={4000}
-          hideProgressBar={true}
-          newestOnTop={false}
-          closeButton={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
         <VideoMeeting />
       </div>
     </ContentLayout>
