@@ -2,10 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import Text from "../components/common/Text";
 import ContentLayout from "../components/Layout/ContentLayout";
-import SideBar from "../components/Therapist/Sidebar";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import * as axiosInstance from "../services/therapist";
-import Dropdown from "../components/common/Dropdown";
 import AppointmentRow from "../components/Therapist/AppointmentRow";
 
 function TherapistAppointment() {
@@ -17,8 +15,8 @@ function TherapistAppointment() {
         await axiosInstance
           .getRequestList()
           .then((res) => {
-            console.log(res);
             setAppointments(res);
+            console.log(res);
           })
           .catch((err) => {
             console.log(err);
@@ -69,12 +67,15 @@ function TherapistAppointment() {
                 {appointments &&
                   appointments.map((appointment) => (
                     <AppointmentRow
+                    appointmentID={appointment.id}
                       meetingID={appointment.meetingID}
                       patient={appointment.patientName}
                       // therapist={appointment.therapistName}
                       dateTime={appointment.dateTime}
                       accept={appointment.accept}
                       status={appointment.status}
+                      recordID={appointment.record}
+                      patientID={appointment.patient}
                       // handleUpdate={() => handleUpdate(appointment.id, "Confirmed")}
                     />
                   ))}

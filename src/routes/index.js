@@ -65,7 +65,7 @@ const publicRoutes = [
     layout: TherapistLayout,
   },
   {
-    path: "/therapist/medicalrecord/create",
+    path: "/therapist/medicalrecord/create/:id",
     component: TherapistMedicalRecord,
     layout: TherapistLayout,
   },
