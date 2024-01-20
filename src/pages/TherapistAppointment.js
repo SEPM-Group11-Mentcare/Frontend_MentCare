@@ -9,21 +9,38 @@ import AppointmentRow from "../components/Therapist/AppointmentRow";
 function TherapistAppointment() {
   const [appointments, setAppointments] = useState([]);
 
-  useEffect(
-    () =>
-      async function fetchData() {
-        await axiosInstance
-          .getRequestList()
-          .then((res) => {
-            setAppointments(res);
-            console.log(res);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      },
-    []
-  );
+  // useEffect(
+  //   () =>
+  //     async function fetchData() {
+  //       await axiosInstance
+  //         .getRequestList()
+  //         .then((res) => {
+  //           setAppointments(res);
+  //           console.log(res);
+  //         })
+  //         .catch((err) => {
+  //           console.log(err);
+  //         });
+  //     },
+  //   []
+  // );
+
+  async function fetchData() {
+    await axiosInstance
+      .getRequestList()
+      .then((res) => {
+        setAppointments(res);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <ContentLayout title="Appointment List">
       <div className="bg-white w-full h-full rounded-md py-4 px-10 flex flex-col gap-6">
