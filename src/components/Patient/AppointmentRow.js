@@ -12,6 +12,7 @@ function AppointmentRow({
   amount,
   status,
   handleCancel,
+  meetingID,
 }) {
   return (
     <tr className="text-overflow: ellipsis">
@@ -46,7 +47,7 @@ function AppointmentRow({
           </Button>
         ) : null}
         {status === "Confirmed" ? (
-          <Link to={"/videocall"}>
+          <Link to={`/videocall/${meetingID}`}>
             <Button>Join</Button>
           </Link>
         ) : null}

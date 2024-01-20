@@ -43,21 +43,24 @@ function ParticipantView(props) {
     <div className="w-full h-full">
       <audio ref={micRef} autoPlay playsInline muted={isLocal} />
       {webcamOn && (
-        <ReactPlayer
-          playsinline // very very imp prop
-          pip={false}
-          light={false}
-          controls={false}
-          muted={true}
-          playing={true}
-          url={videoStream}
-          // className="w-1/2 h-1/2"
-          width="100%"
-          height="100%"
-          onError={(err) => {
-            console.log(err, "participant video error");
-          }}
-        />
+        <div className="w-full h-full relative ">
+          <ReactPlayer
+            playsinline // very very imp prop
+            pip={false}
+            light={false}
+            controls={false}
+            muted={true}
+            playing={true}
+            url={videoStream}
+            // className="w-1/2 h-1/2"
+            width="100%"
+            height="100%"
+            className="left-0 top-0 absolute aspect-video"
+            onError={(err) => {
+              console.log(err, "participant video error");
+            }}
+          />
+        </div>
       )}
     </div>
   );
@@ -86,8 +89,8 @@ function MeetingView() {
   return (
     <div className="container w-full h-full">
       {joined && joined == "JOINED" ? (
-        <div>
-          <div className="grid grid-cols-2 gap-5">
+        <div className="w-full h-full">
+          <div className="h-4/6 grid grid-cols-2 gap-5">
             {[...participants.keys()].map((participantId) => (
               <ParticipantView
                 participantId={participantId}
@@ -143,7 +146,7 @@ const getMeetingId = async (token) => {
 const VideoCall = () => {
   console.log(
     getMeetingId(
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJlOGY0MWU4Zi1hNzBlLTRjY2EtOTI4YS1jNGRmMGJjM2NiYzMiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTcwNTY0NTY1OSwiZXhwIjoxNzA1NzMyMDU5fQ.Gp-A_G7-oKvIa7_539mqUxMvwi5S92cTN0UGXBf1tOA"
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJlOGY0MWU4Zi1hNzBlLTRjY2EtOTI4YS1jNGRmMGJjM2NiYzMiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTcwNTczMjU5OCwiZXhwIjoxNzIxMjg0NTk4fQ.XScCQ766Rjkydz6zwJaEUQMJ3c0erZHVWGgduWeJWUE"
     )
   );
   return (
@@ -154,7 +157,7 @@ const VideoCall = () => {
         webcamEnabled: true,
         name: "Thong's Org",
       }}
-      token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJlOGY0MWU4Zi1hNzBlLTRjY2EtOTI4YS1jNGRmMGJjM2NiYzMiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTcwNTY0NTY1OSwiZXhwIjoxNzA1NzMyMDU5fQ.Gp-A_G7-oKvIa7_539mqUxMvwi5S92cTN0UGXBf1tOA"
+      token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJlOGY0MWU4Zi1hNzBlLTRjY2EtOTI4YS1jNGRmMGJjM2NiYzMiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTcwNTczMjU5OCwiZXhwIjoxNzIxMjg0NTk4fQ.XScCQ766Rjkydz6zwJaEUQMJ3c0erZHVWGgduWeJWUE"
     >
       <div className="w-full h-full flex items-center justify-center">
         <MeetingView />

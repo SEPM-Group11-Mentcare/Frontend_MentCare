@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const axiosInstance = axios.create({
-  baseURL: "https://g11-mindheal.vercel.app/api/",
+  baseURL: "https://g11-mindheal.netlify.app/api/",
   timeout: 5000,
   headers: {
     Accept: "application/json",

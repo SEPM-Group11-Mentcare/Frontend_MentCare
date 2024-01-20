@@ -24,6 +24,7 @@ export function JoiningScreen({
   webcamEnabled,
   setWebcamOn,
   setMicOn,
+  meetingId,
 }) {
   const [setting, setSetting] = useState("video");
   const [{ webcams, mics }, setDevices] = useState({
@@ -455,6 +456,7 @@ export function JoiningScreen({
               <div className="md:col-span-5 2xl:col-span-6 col-span-12 md:relative">
                 <div className="flex flex-1 flex-col items-center justify-center xl:m-16 lg:m-6 md:mt-9 lg:mt-14 xl:mt-20 mt-3 md:absolute md:left-0 md:right-0 md:top-0 md:bottom-0">
                   <MeetingDetailsScreen
+                    roomId={meetingId}
                     participantName={participantName}
                     setParticipantName={setParticipantName}
                     videoTrack={videoTrack}
@@ -478,14 +480,14 @@ export function JoiningScreen({
                         setParticipantName("");
                       } else alert("Invalid Meeting Id");
                     }}
-                    _handleOnCreateMeeting={async () => {
-                      const token = await getToken();
-                      const _meetingId = await createMeeting({ token });
-                      setToken(token);
-                      setMeetingId(_meetingId);
-                      setParticipantName("");
-                      return _meetingId;
-                    }}
+                    // _handleOnCreateMeeting={async () => {
+                    //   const token = await getToken();
+                    //   const _meetingId = await createMeeting({ token });
+                    //   setToken(token);
+                    //   setMeetingId(_meetingId);
+                    //   setParticipantName("");
+                    //   return _meetingId;
+                    // }}
                   />
                 </div>
               </div>

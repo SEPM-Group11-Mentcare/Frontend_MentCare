@@ -5,7 +5,8 @@ export const bookAppointment = async (
   schedule,
   note,
   accept,
-  total
+  total,
+  meetingID
 ) => {
   const res = await axiosInstance.post("/patient/booking", {
     therapist,
@@ -13,6 +14,7 @@ export const bookAppointment = async (
     note,
     accept,
     total,
+    meetingID,
   });
 
   try {
@@ -117,21 +119,8 @@ export const updatePatientProfile = async (id, username, name, dob) => {
   }
 };
 
-export const getAccessList = async() => {
+export const getAccessList = async () => {
   const res = await axiosInstance.get("patient/access");
-  
-  try {
-    if (res.status === 200) {
-      return res.data;
-    }
-  } catch (err) {
-    console.error("Error fetching patient profile: ", err);
-    throw err;
-  }
-}
-
-export const removeAccess = async(id) => {
-  const res = await axiosInstance.put(`patient/removeaccess/${id}`)
 
   try {
     if (res.status === 200) {
@@ -141,4 +130,17 @@ export const removeAccess = async(id) => {
     console.error("Error fetching patient profile: ", err);
     throw err;
   }
-}
+};
+
+export const removeAccess = async (id) => {
+  const res = await axiosInstance.put(`patient/removeaccess/${id}`);
+
+  try {
+    if (res.status === 200) {
+      return res.data;
+    }
+  } catch (err) {
+    console.error("Error fetching patient profile: ", err);
+    throw err;
+  }
+};

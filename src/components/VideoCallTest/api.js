@@ -1,6 +1,6 @@
 const API_BASE_URL = "https://api.videosdk.live";
 const VIDEOSDK_TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJlOGY0MWU4Zi1hNzBlLTRjY2EtOTI4YS1jNGRmMGJjM2NiYzMiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTcwNTY0NTY1OSwiZXhwIjoxNzA1NzMyMDU5fQ.Gp-A_G7-oKvIa7_539mqUxMvwi5S92cTN0UGXBf1tOA";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJlOGY0MWU4Zi1hNzBlLTRjY2EtOTI4YS1jNGRmMGJjM2NiYzMiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTcwNTczMjU5OCwiZXhwIjoxNzIxMjg0NTk4fQ.XScCQ766Rjkydz6zwJaEUQMJ3c0erZHVWGgduWeJWUE";
 const API_AUTH_URL = process.env.REACT_APP_AUTH_URL;
 
 export const getToken = async () => {
@@ -25,7 +25,10 @@ export const createMeeting = async ({ token }) => {
   const url = `${API_BASE_URL}/v2/rooms`;
   const options = {
     method: "POST",
-    headers: { Authorization: token, "Content-Type": "application/json" },
+    headers: {
+      Authorization: VIDEOSDK_TOKEN,
+      "Content-Type": "application/json",
+    },
   };
 
   const { roomId } = await fetch(url, options)

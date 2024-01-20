@@ -57,7 +57,7 @@ const publicRoutes = [
   {
     path: "/therapist/records/:id",
     component: MedicalRecordListTherapist,
-    layout: TherapistLayout
+    layout: TherapistLayout,
   },
   {
     path: "therapist/records/:patientid/:id",
@@ -164,7 +164,7 @@ const privateRoutes = [
     layout: PatientLayout,
   },
   {
-    path: "videocall/",
+    path: "videocall/:id",
     component: PatientVideoCall,
     layout: PatientLayout,
   },

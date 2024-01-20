@@ -3,6 +3,7 @@ import Button from "../../common/Button";
 import React, { useState } from "react";
 
 export function MeetingDetailsScreen({
+  roomId,
   onClickJoin,
   _handleOnCreateMeeting,
   participantName,
@@ -112,7 +113,8 @@ export function MeetingDetailsScreen({
               // className="w-full bg-gray-650 text-white px-2 py-3 rounded-xl mt-5"
               // variant={}
               onClick={(e) => {
-                onClickJoin("3ipi-notw-9d6j");
+                // console.log(roomId);
+                onClickJoin(roomId);
                 // if (meetingId.match("\\w{4}\\-\\w{4}\\-\\w{4}")) {
                 //   onClickJoin("3ipi-notw-9d6j");
                 // } else setMeetingIdError(true);

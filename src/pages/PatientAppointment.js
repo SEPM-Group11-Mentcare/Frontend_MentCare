@@ -14,29 +14,31 @@ function PatientAppointment() {
     setSort(e.target.value);
   };
   async function fetchData() {
-    await axiosInstance.getAppointments(sort)
-    .then((res) => {
-      // console.log(res);
-      setAppointments(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+    await axiosInstance
+      .getAppointments(sort)
+      .then((res) => {
+        // console.log(res);
+        setAppointments(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  const handleCancel = async(id) => {
-    await axiosInstance.cancelAppointment(id)
-    .then((res) => {
-      console.log(res);
-      fetchData();
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }
-    useEffect(() => {
-      fetchData()
-    }, [sort]);
+  const handleCancel = async (id) => {
+    await axiosInstance
+      .cancelAppointment(id)
+      .then((res) => {
+        console.log(res);
+        fetchData();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    fetchData();
+  }, [sort]);
 
   return (
     <ContentLayout title="Appointments">
@@ -49,7 +51,7 @@ function PatientAppointment() {
           <span className="text-2xl mb-2 font-semibold">All appointments</span>
 
           <div className="flex flex-row items-center gap-4">
-          <div className="flex justify-center items-center input input-bordered max-w-xs bg-[#F9FBFF] rounded-md border-none focus:outline-none focus:ring-primaryBlue text-sm">
+            <div className="flex justify-center items-center input input-bordered max-w-xs bg-[#F9FBFF] rounded-md border-none focus:outline-none focus:ring-primaryBlue text-sm">
               <FontAwesomeIcon icon={faSearch} />
               <input
                 type="text"
@@ -57,7 +59,7 @@ function PatientAppointment() {
                 className="border-0 bg-transparent focus:outline-none focus:ring-0"
               />
             </div>
-            <Dropdown options={sortList} selected={sort} onChange={onChange}/>
+            <Dropdown options={sortList} selected={sort} onChange={onChange} />
           </div>
         </div>
 
@@ -77,18 +79,19 @@ function PatientAppointment() {
                 </tr>
               </thead>
               <tbody>
-                {
-                  appointments && appointments.map((appointment) => (
-                    <AppointmentRow 
-                    therapist={appointment.therapistName}
-                    dateTime={appointment.dateTime}
-                    // accept={appointment.accept}
-                    amount={appointment.total}
-                    status={appointment.status}
-                    handleCancel={() => handleCancel(appointment.id)}
+                {console.log(appointments)}
+                {appointments &&
+                  appointments.map((appointment) => (
+                    <AppointmentRow
+                      therapist={appointment.therapistName}
+                      dateTime={appointment.dateTime}
+                      // accept={appointment.accept}
+                      amount={appointment.total}
+                      status={appointment.status}
+                      meetingID={appointment.meetingID}
+                      handleCancel={() => handleCancel(appointment.id)}
                     />
-                  ))
-                }
+                  ))}
               </tbody>
             </table>
             {/* <div className="join">
