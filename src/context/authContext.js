@@ -30,6 +30,7 @@ const AuthProvider = ({ children }) => {
   }, [])
 
   // console.log(userInfo);
+  // console.log(role);
 
   return (
     <AuthContext.Provider value={{ userInfo, fetchData, setRole, role }}>

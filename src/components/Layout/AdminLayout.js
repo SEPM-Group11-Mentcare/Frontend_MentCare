@@ -1,10 +1,10 @@
 import React from "react";
-import SideBar from "../Therapist/Sidebar";
+import SideBar from "../Admin/SideBar";
 
 function AdminLayout({ children }) {
   return (
     <div className="flex flex-row">
-      <SideBar />
+      <SideBar/>
       {children}
     </div>
   );
