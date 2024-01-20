@@ -7,7 +7,7 @@ import * as axiosInstance from "../services/therapist";
 import AppointmentRow from "../components/Therapist/AppointmentRow";
 
 function TherapistAppointment() {
-  const [appointments, setAppointments] = useState();
+  const [appointments, setAppointments] = useState([]);
 
   useEffect(
     () =>
@@ -63,12 +63,11 @@ function TherapistAppointment() {
               </thead>
               <tbody>
                 {/* Data */}
-
                 {appointments &&
                   appointments.map((appointment, index) => (
                     <AppointmentRow
                       key={index}
-                    appointmentID={appointment.id}
+                      appointmentID={appointment.id}
                       meetingID={appointment.meetingID}
                       patient={appointment.patientName}
                       // therapist={appointment.therapistName}
