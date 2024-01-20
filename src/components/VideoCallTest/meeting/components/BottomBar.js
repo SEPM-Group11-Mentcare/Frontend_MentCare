@@ -28,6 +28,7 @@ import { Dialog, Popover, Transition } from "@headlessui/react";
 import { createPopper } from "@popperjs/core";
 import { useMeetingAppContext } from "../../MeetingAppContextDef";
 import useMediaStream from "../../hooks/useMediaStream";
+import { Link } from "react-router-dom";
 
 function PipBTN({ isMobile, isTab }) {
   const { pipMode, setPipMode } = useMeetingAppContext();
@@ -597,15 +598,19 @@ export function BottomBar({
     const { leave } = useMeeting();
 
     return (
-      <OutlinedButton
-        Icon={EndIcon}
-        bgColor="bg-red-150"
+      <Link
+        to={"/patient/appointments"}
         onClick={() => {
           leave();
           setIsMeetingLeft(true);
         }}
-        tooltip="Leave Meeting"
-      />
+      >
+        <OutlinedButton
+          Icon={EndIcon}
+          bgColor="bg-red"
+          tooltip="Leave Meeting"
+        />
+      </Link>
     );
   };
 
