@@ -8,7 +8,7 @@ import * as axiosInstance from "../../services/medicalRecord";
 import { AuthContext } from "../../context/authContext";
 
 function PatientMedicalRecordList() {
-  const [medicalRecords, setMedicalRecords] = useState();
+  const [medicalRecords, setMedicalRecords] = useState(null);
   const { userInfo } = useContext(AuthContext);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function PatientMedicalRecordList() {
       await axiosInstance
         .getMedicalRecords(userInfo._id)
         .then((res) => {
-          // console.log(res);
+          console.log(res);
           setMedicalRecords(res);
         })
         .catch((err) => {

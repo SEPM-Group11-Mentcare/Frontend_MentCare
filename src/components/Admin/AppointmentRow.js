@@ -18,11 +18,11 @@ function AppointmentRow({
       <td>{therapist}</td>
       <td>{format(new Date(dateTime), "dd MMM yyyy")}</td>
       <td >{new Date(dateTime).toLocaleTimeString("en-GB", {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false,
-          })}</td>
-        <td className={cn(accept ? "text-green-500"  : "text-red-500")}>{accept ? "Accepted" : "Declined"}</td>
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      })}</td>
+      <td className={cn(accept ? "text-green-500" : "text-red-500")}>{accept ? "Accepted" : "Declined"}</td>
 
       <td>
         <Chip color={status === "Pending" ? "yellow" : (status === "Confirmed") ? "" : "red"}>{status}</Chip>
@@ -31,8 +31,8 @@ function AppointmentRow({
         <td className="p-0 flex justify-center gap-4">
           {status === "Pending" ? (
             <>
-            <Button onClick={handleUpdate}>Confirm</Button>
-            {/* <Button onClick={onDecline} variant="red">Decline</Button> */}
+              <Button onClick={handleUpdate}>Confirm</Button>
+              {/* <Button onClick={onDecline} variant="red">Decline</Button> */}
             </>
           ) : null}
         </td>

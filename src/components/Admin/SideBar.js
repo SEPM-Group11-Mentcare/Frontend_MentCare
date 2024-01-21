@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 // Import Icons from Hero Icons
 import {

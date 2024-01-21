@@ -8,8 +8,8 @@ import Error from "./pages/public/Error";
 function App() {
 
   // Validate route
-  const { userInfo, role } = useContext(AuthContext);
-  console.log(role);
+  const { userInfo } = useContext(AuthContext);
+  console.log(userInfo?.role);
 
   return (
     <Router>
@@ -29,7 +29,7 @@ function App() {
                       <Page />
                     </Layout>
                   ) : (
-                    <Navigate to={`/${role}/appointments`} replace />
+                    <Navigate to={`/${userInfo?.role}/appointments`} replace />
                   )
                 }
               />
@@ -44,7 +44,7 @@ function App() {
                   key={index}
                   path={route.path}
                   element={
-                    userInfo && role === 'patient' ? (
+                    userInfo && userInfo?.role === 'patient' ? (
                       <Layout>
                         <Page />
                       </Layout>
@@ -65,7 +65,7 @@ function App() {
                   key={index}
                   path={route.path}
                   element={
-                    userInfo && role === 'therapist' ? (
+                    userInfo && userInfo?.role === 'therapist' ? (
                       <Layout>
                         <Page />
                       </Layout>
@@ -86,7 +86,7 @@ function App() {
                   key={index}
                   path={route.path}
                   element={
-                    userInfo && role === 'admin' ? (
+                    userInfo && userInfo?.role === 'admin' ? (
                       <Layout>
                         <Page />
                       </Layout>
