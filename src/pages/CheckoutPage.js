@@ -9,7 +9,7 @@ import { Controller, useForm } from "react-hook-form";
 import CheckoutCard from "../components/Checkout/CheckoutCard";
 import { PatientContext } from "../context/patientContext";
 import * as axiosInstance from "../services/patient";
-import { createMeeting } from "../components/VideoCallTest/api";
+import { createMeeting } from "../components/VideoCall/api";
 
 function CheckoutPage() {
   const {
