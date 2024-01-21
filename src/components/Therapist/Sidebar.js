@@ -39,9 +39,9 @@ function SideBar() {
       {/* SideBar Content */}
       <div className="flex flex-col gap-10">
         {/* User Information */}
-        {userInfo && <UserInformation
-          userName={userInfo.name}
-        />}
+        {userInfo && (
+          <UserInformation userName={userInfo.name} role={userInfo.role} />
+        )}
 
         {/* Links */}
         <div>

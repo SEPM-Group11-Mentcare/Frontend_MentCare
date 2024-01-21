@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import ContentLayout from "../../components/Layout/ContentLayout";
 import Text from "../../components/common/Text";
 import InputForm from "../../components/common/InputForm";
@@ -6,6 +6,8 @@ import Button from "../../components/common/Button";
 import { Controller, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import * as axiosInstance from "../../services/medicalRecord";
+import { NotificationContext } from "../../context/notificationContext";
+import Alert from "../../components/common/Alert";
 
 const TherapistMedicalRecord = () => {
   const {
@@ -15,6 +17,14 @@ const TherapistMedicalRecord = () => {
   } = useForm({
     mode: "onChange",
   });
+  const {
+    setIsMessageVisible,
+    isMessageVisible,
+    message,
+    setMessage,
+    setNotiType,
+    notiType,
+  } = useContext(NotificationContext);
 
   const { id } = useParams();
 
@@ -23,6 +33,15 @@ const TherapistMedicalRecord = () => {
     await axiosInstance.createMedicalRecord(d.summary, d.diagnostic, id, d.prescription, d.advice)
       .then((res) => {
         console.log(res);
+        setMessage(res);
+          setIsMessageVisible(true);
+          setNotiType("success");
+          // Hide the error after 3 seconds
+          setTimeout(() => {
+            setMessage(null);
+            setIsMessageVisible(false);
+          }, 3000);
+
       })
       .catch((err) => {
         console.log(err);
@@ -32,8 +51,9 @@ const TherapistMedicalRecord = () => {
   return (
     <ContentLayout title="Medical Record" className="fixed">
       {/* <RedirectButton /> */}
-      <div className="overflow-y-auto h-full">
-        <div className="bg-white w-full rounded-md py-4 px-10 shadow">
+      {isMessageVisible && <Alert message={message} type={notiType} />}
+      <div className="overflow-y-auto h-full ">
+        <div className="bg-white w-full rounded-md py-4 px-10 shadow ">
           <form className="flex-col flex gap-1 py-5 px-10">
             <Text
               children="Appointment Record #1"

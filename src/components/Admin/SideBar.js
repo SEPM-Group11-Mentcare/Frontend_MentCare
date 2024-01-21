@@ -22,7 +22,7 @@ function SideBar() {
     mode: "onChange",
   });
 
-  const { fetchData } = useContext(AuthContext);
+  const { fetchData, userInfo } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -45,10 +45,9 @@ function SideBar() {
       {/* SideBar Content */}
       <div className="flex flex-col gap-10">
         {/* User Information */}
-        <UserInformation
-          userName={"Ha Anh"}
-        // role={userInfo.role}
-        />
+        {userInfo && (
+          <UserInformation userName={userInfo.name} role={userInfo.role} />
+        )}
 
         {/* Links */}
         <div>

@@ -63,7 +63,7 @@ const BookingPage = () => {
 
   return (
     <ContentLayout title="Booking">
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 bg-transparent">
         {therapist && (
           <DoctorCard
             img="https://picsum.photos/200"

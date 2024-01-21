@@ -2,16 +2,23 @@ import InputForm from "../common/InputForm";
 import Button from "../common/Button";
 import { useForm, Controller } from "react-hook-form";
 import * as axiosInstance from "../../services/therapist";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { NotificationContext } from "../../context/notificationContext";
 
 function TherapistProfileForm({ profile }) {
   const { control, handleSubmit, setValue } = useForm();
-
+  const {
+    setIsMessageVisible,
+    isMessageVisible,
+    message,
+    setMessage,
+    setNotiType,
+    notiType,
+  } = useContext(NotificationContext);
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     try {
-
       await axiosInstance
         .updateProfile(
           data.userId,
@@ -27,6 +34,14 @@ function TherapistProfileForm({ profile }) {
         )
         .then((res) => {
           console.log(res);
+          setMessage(res);
+          setIsMessageVisible(true);
+          setNotiType("success");
+          // Hide the error after 3 seconds
+          setTimeout(() => {
+            setMessage(null);
+            setIsMessageVisible(false);
+          }, 3000);
         })
         .catch((err) => {
           console.log(err);

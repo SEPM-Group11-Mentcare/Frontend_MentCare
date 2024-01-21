@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import PatientProvider from "./context/patientContext";
 import AuthProvider from "./context/authContext";
+import NotificationProvider from "./context/notificationContext";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -11,7 +12,9 @@ root.render(
   <React.StrictMode>
     <AuthProvider>
       <PatientProvider>
+        <NotificationProvider>
         <App />
+        </NotificationProvider>
       </PatientProvider>
     </AuthProvider>
 

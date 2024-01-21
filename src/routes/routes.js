@@ -29,6 +29,7 @@ import TherapistLayout from "../components/Layout/TherapistLayout";
 import TherapistSignup from "../pages/public/TherapistSignup";
 import MedicalRecordListTherapist from "../pages/private/MedicalRecordListTherapist";
 import PatientList from "../pages/private/PatientList";
+import AdminTherapistList from "../pages/private/AdminTherapistList";
 
 // Public Routes
 const publicRoutes = [
@@ -162,6 +163,11 @@ const adminRoutes = [
   {
     path: "/admin/appointments",
     component: AdminApointment,
+    layout: AdminLayout,
+  },
+  {
+    path: "/admin/therapistlist",
+    component: AdminTherapistList,
     layout: AdminLayout,
   },
 ]

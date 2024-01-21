@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Picker from "emoji-picker-react";
@@ -7,6 +7,8 @@ import { useForm, Controller } from "react-hook-form";
 import Button from "../common/Button";
 import * as axiosInstance from "../../services/journal";
 import Text from "../common/Text";
+import { NotificationContext } from "../../context/notificationContext";
+import Alert from "../../components/common/Alert";
 
 function TextEditor() {
   const { journalID } = useParams();
@@ -20,6 +22,14 @@ function TextEditor() {
     formState: { errors },
     setValue,
   } = useForm();
+  const {
+    setIsMessageVisible,
+    isMessageVisible,
+    message,
+    setMessage,
+    setNotiType,
+    notiType,
+  } = useContext(NotificationContext);
 
   useEffect(() => {
     // Fetch journal data based on journalID
@@ -46,6 +56,8 @@ function TextEditor() {
     setShowIconPicker(false);
   };
 
+  const navigate = useNavigate();
+
   const onSubmit = async (data) => {
     // Combine data from the form and CKEditor
     const journalDataAPI = {
@@ -57,14 +69,35 @@ function TextEditor() {
     // Make an API request to update the journal
     try {
       if (journalID !== "new") {
-        const updatedJournal = await axiosInstance.updateJournal(
+        await axiosInstance.updateJournal(
           journalID,
           journalDataAPI
-        );
-        console.log("Journal updated successfully:", updatedJournal);
+        )
+        .then((res) => {
+          console.log(res);
+          navigate('/patient/journals');
+          setMessage(res);
+          setIsMessageVisible(true);
+          setNotiType("success");
+          // Hide the error after 3 seconds
+          setTimeout(() => {
+            setMessage(null);
+            setIsMessageVisible(false);
+          }, 3000);
+        })
+        // console.log("Journal updated successfully:", updatedJournal);
       } else {
         await axiosInstance.createJournal(journalDataAPI).then((res) => {
-          console.log(res);
+          // console.log(res);
+          setMessage(res);
+          setIsMessageVisible(true);
+          setNotiType("success");
+          navigate('/patient/journals');
+          // Hide the error after 3 seconds
+          setTimeout(() => {
+            setMessage(null);
+            setIsMessageVisible(false);
+          }, 3000);
         });
       }
     } catch (error) {
@@ -88,7 +121,38 @@ function TextEditor() {
         </span>
       )}
       {/* Use Controller to integrate input with React Hook Form */}
-
+      <Controller
+        name="title"
+        control={control}
+        defaultValue={""}
+        rules={{
+          required: "Title is required!",
+        }}
+        render={({ field }) => (
+          <div className="flex flex-col">
+            <input
+              {...field}
+              type="text"
+              // value={title}
+              // onChange={(e) => {
+              //   setTitle(e.target.value);
+              // }}
+              placeholder={
+                journalData
+                  ? journalData.journalTitle
+                  : "Please Enter Journal Title"
+              }
+              className="border-[#CCCED1] border-solid border-[1px]"
+            />
+            {/* <div>123</div> */}
+            {errors.title && (
+              <Text variant="text-xs" className="text-red-500 mt-3">
+                {errors.title.message}
+              </Text>
+            )}
+          </div>
+        )}
+        />
       {/* Patient Mood */}
       <span className="text-xl font-semibold my-4">Your Mood</span>
       <div className="relative">

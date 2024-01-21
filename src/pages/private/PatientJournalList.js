@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import JournalRow from "../../components/Journal/JournalRow";
 import ContentLayout from "../../components/Layout/ContentLayout";
 import Dropdown from "../../components/common/Dropdown";
@@ -6,9 +6,19 @@ import Button from "../../components/common/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import * as axiosInstance from "../../services/journal";
+import Alert from "../../components/common/Alert";
+import { NotificationContext } from "../../context/notificationContext";
 
 function PatientJournalList() {
   const [journals, setJournals] = useState();
+  const {
+    setIsMessageVisible,
+    isMessageVisible,
+    message,
+    setMessage,
+    setNotiType,
+    notiType,
+  } = useContext(NotificationContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -29,7 +39,17 @@ function PatientJournalList() {
   const handleDeleteJournal = async (journalID) => {
     try {
       // Call the API to delete the journal by its ID
-      await axiosInstance.deleteJournal(journalID);
+      await axiosInstance.deleteJournal(journalID)
+      .then((res) => {
+        setMessage(res);
+          setIsMessageVisible(true);
+          setNotiType("success");
+          // Hide the error after 3 seconds
+          setTimeout(() => {
+            setMessage(null);
+            setIsMessageVisible(false);
+          }, 3000);
+      })
 
       // Remove the deleted journal from the local state
       setJournals((prevState) =>
@@ -47,6 +67,7 @@ function PatientJournalList() {
 
   return (
     <ContentLayout title="Journal List">
+            {isMessageVisible && <Alert message={message} type={notiType} />}
       <div className="bg-white w-full h-full rounded-md py-4 px-10">
         {/* Title */}
 

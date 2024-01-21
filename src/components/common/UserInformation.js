@@ -23,7 +23,7 @@ function UserInformation({ imgSrc, userName, role }) {
       {/* User Name & User Email */}
       <div className="flex flex-col max-w-[160px] gap-1 justify-center">
         {/* variant="text-4xl" weight="bold" className="text-[#2B50D8]" */}
-        <Text className="truncate text-base font-bold">{role === "therapist" ? "Therapist" : "Patient" }</Text>
+        <Text className="truncate text-base font-bold">{role === "therapist" ? "Therapist" : role === "patient"? "Patient" : "Admin" }</Text>
         <Text className="truncate text-base">{userName}</Text>
       </div>
     </div>

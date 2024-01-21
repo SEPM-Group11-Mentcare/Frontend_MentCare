@@ -4,10 +4,19 @@ import { useForm, Controller } from "react-hook-form";
 import { updatePatientProfile } from "../../services/patient";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
+import { NotificationContext } from "../../context/notificationContext";
 
 function PatientProfileForm({ profile }) {
   const { control, handleSubmit, setValue } = useForm();
   const { fetchData } = useContext(AuthContext);
+  const {
+    setIsMessageVisible,
+    isMessageVisible,
+    message,
+    setMessage,
+    setNotiType,
+    notiType,
+  } = useContext(NotificationContext);
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -21,6 +30,14 @@ function PatientProfileForm({ profile }) {
         .then((res) => {
           console.log(res);
           fetchData();
+          setMessage(res);
+          setIsMessageVisible(true);
+          setNotiType("success");
+          // Hide the error after 3 seconds
+          setTimeout(() => {
+            setMessage(null);
+            setIsMessageVisible(false);
+          }, 3000);
         })
         .catch((err) => {
           console.log(err);
