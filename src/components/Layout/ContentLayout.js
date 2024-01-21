@@ -1,6 +1,5 @@
 import React from "react";
 import RedirectButton from "../common/RedirectButton";
-import Breadcrumbs from "../common/Breadcrumbs";
 
 function ContentLayout({ title, children }) {
   return (
@@ -11,9 +10,10 @@ function ContentLayout({ title, children }) {
       <div className="pb-5">
         <RedirectButton />
       </div>
+      <div className="overflow-y-scroll bg-white">
+        {children}
+      </div>
 
-      {/* <RedirectButton/> */}
-      {children}
     </div>
   );
 }

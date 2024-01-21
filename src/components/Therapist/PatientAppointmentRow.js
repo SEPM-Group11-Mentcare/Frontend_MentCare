@@ -1,5 +1,4 @@
 import React from "react";
-import Status from "../common/Status";
 import Button from "../common/Button";
 
 function PatientAppointmentRow({

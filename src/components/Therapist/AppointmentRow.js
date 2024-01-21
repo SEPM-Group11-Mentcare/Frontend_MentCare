@@ -7,11 +7,9 @@ import { Link } from "react-router-dom";
 
 function AppointmentRow({
   patient,
-  therapist,
   dateTime,
   accept,
   status,
-  handleUpdate,
   meetingID,
   recordID,
   appointmentID,

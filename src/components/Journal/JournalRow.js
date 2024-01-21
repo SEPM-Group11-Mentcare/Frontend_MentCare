@@ -1,12 +1,11 @@
 import React from "react";
 import Button from "../common/Button";
-import * as axiosInstance from "../../services/journal";
+
 
 function JournalRow({
   number,
   journalID,
   journalTitle,
-  journalText,
   mood,
   createdDate,
   handleDelete,

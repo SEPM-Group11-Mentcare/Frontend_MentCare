@@ -24,8 +24,8 @@ function RequestRow({
         <td className="p-0 flex justify-center gap-4">
           {status === "Pending" ? (
             <>
-            <Button onClick={onAccept}>Approve</Button>
-            <Button onClick={onDecline} variant="red">Decline</Button>
+              <Button onClick={onAccept}>Approve</Button>
+              <Button onClick={onDecline} variant="red">Decline</Button>
             </>
           ) : null}
         </td>
