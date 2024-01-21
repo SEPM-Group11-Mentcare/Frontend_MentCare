@@ -1,19 +1,16 @@
 import React from "react";
 import Text from "../common/Text";
 import {
-  faCertificate,
   faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { formatMoney } from "../../utils/formatMoney";
 
 function CheckoutCard({
   doctorName,
-  doctorExperience,
   date,
   time,
   consultingFee,
-  bookingFee,
-  videoCallFee,
   totalFee,
 }) {
   return (
@@ -25,22 +22,10 @@ function CheckoutCard({
 
       {/* Doctor Details */}
       <div className="flex gap-6 items-center my-6">
-        <div className="w-20 h-20 object-contain">
-          <img
-            className="rounded-md"
-            src={"https://picsum.photos/200"}
-            alt="doctor"
-          />
-        </div>
-
         <div className="flex flex-col gap-2">
           <div className="flex gap-2 items-center">
             <Text weight="semibold">Dr. {doctorName}</Text>
             <FontAwesomeIcon icon={faCircleCheck} color="#22C550" />
-          </div>
-          <div className="flex gap-2 items-center">
-            {/* <FontAwesomeIcon icon={faCertificate} /> */}
-            {/* <Text>{doctorExperience} Years of Experience</Text> */}
           </div>
         </div>
       </div>
@@ -59,15 +44,7 @@ function CheckoutCard({
       <div className="mt-8 mb-4 pb-4 border-b-2 border-solid ">
         <div className="flex flex-row justify-between">
           <Text weight="semibold">Consulting Fee</Text>
-          <Text className="text-[#757575]">${consultingFee}</Text>
-        </div>
-        <div className="flex flex-row justify-between">
-          <Text weight="semibold">Booking Fee</Text>
-          <Text className="text-[#757575]">${bookingFee}</Text>
-        </div>
-        <div className="flex flex-row justify-between">
-          <Text weight="semibold">Video Call</Text>
-          <Text className="text-[#757575]">${videoCallFee}</Text>
+          <Text className="text-[#757575]">{formatMoney(consultingFee)}</Text>
         </div>
       </div>
 
@@ -77,7 +54,7 @@ function CheckoutCard({
           Total
         </Text>
         <Text className="text-primaryBlue" weight="bold" variant="text-lg">
-          ${totalFee}
+        {formatMoney(totalFee)}
         </Text>
       </div>
     </div>

@@ -23,7 +23,6 @@ FRONTEND_MENTCARE/
 |   ├── service/
 |   ├── utils/    
 ├── .env
-├── Dockerfile
 ├── App.js
 ├── App.css
 ├── index.css
@@ -40,16 +39,16 @@ This directory stores images needed to build the website UI
 The views directory contains all the components on the website
 
 3. `context`
-This directory store the context of each function
+This directory store the context of each function, mainly supporting the useContext for fetching data 
 
 4. `pages`
-The directory contains .ejs files related to that website pages, such as homepage, dashboard, etc.
+The directory contains files related to that website pages, such as homepage, dashboard, etc.
 
 5. `routes`
-This stores the routes of the layouts. It works with the `controllers` and `middleware` to define the page route and control user access to each pages.
+This stores the public and private routes of the layouts. It works with the `controllers` and `middleware` to define the page route and control user access to each pages.
 
 6. `service`
-This directory store the integrate of backend and frontend
+This directory store the integrate of backend and frontend, using axios to fetch data. 
 
 7. `utils`
 This directory's purpose is to create tokens, connect with and validate MongoDB ID

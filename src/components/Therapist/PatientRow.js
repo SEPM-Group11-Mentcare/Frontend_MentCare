@@ -1,14 +1,12 @@
 import React from "react";
 import Button from "../common/Button";
-import * as axiosInstance from "../../services/journal";
 
 function PatientRow({
   id,
   number,
   patient,
 }) {
-  // const formattedDate = new Date(createdDate).toLocaleDateString("en-GB");
-
+  
   return (
     <tr>
       <td>{number}</td>

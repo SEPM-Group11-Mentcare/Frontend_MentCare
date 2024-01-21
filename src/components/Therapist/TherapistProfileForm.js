@@ -1,23 +1,16 @@
 import InputForm from "../common/InputForm";
 import Button from "../common/Button";
 import { useForm, Controller } from "react-hook-form";
-import { CameraIcon } from "@heroicons/react/24/outline";
 import * as axiosInstance from "../../services/therapist";
-import { useEffect, useRef, useState } from "react";
-import Text from "../common/Text";
+import { useEffect } from "react";
 
 function TherapistProfileForm({ profile }) {
-  const { control, handleSubmit, setValue, watch } = useForm();
-  //   console.log(profile);
+  const { control, handleSubmit, setValue } = useForm();
+
 
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      // const formData = new FormData();
-      // formData.append("username", data.username);
-      // formData.append("name", data.name);
-      // formData.append("dob", data.dob);
-      // formData.append("avatar", data.avatar);
 
       await axiosInstance
         .updateProfile(

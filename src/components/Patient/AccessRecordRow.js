@@ -7,7 +7,6 @@ function AccessRecordRow({ number, name, spec, cert, className, handleRemove }) 
       <th>{number}</th>
       <td>{name}</td>
       <td>{spec}</td>
-      {/* <td>{cert}</td> */}
       <td>
         <Button variant={"red"} onClick={handleRemove}>Remove</Button>
       </td>

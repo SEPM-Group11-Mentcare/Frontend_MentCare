@@ -1,23 +1,15 @@
 import React, { useContext } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 // Import Icons from Hero Icons
 import {
-  SquaresPlusIcon,
-  UserCircleIcon,
   CalendarDaysIcon,
-  DocumentTextIcon,
-  FaceSmileIcon,
   UserGroupIcon,
-  BellIcon,
   ArrowRightOnRectangleIcon,
-  UsersIcon,
-  DocumentPlusIcon,
 } from "@heroicons/react/24/outline";
 
 // Import Components
 import UserInformation from "../common/UserInformation";
-import InputForm from "../common/InputForm";
 import SideBarButton from "../common/SideBarButton";
 import { AuthContext } from "../../context/authContext";
 import * as axiosInstance from "../../services/auth";
@@ -26,14 +18,11 @@ import { useNavigate } from "react-router-dom";
 
 function SideBar() {
   const {
-    control,
-    handleSubmit,
-    formState: { errors },
   } = useForm({
     mode: "onChange",
   });
 
-  const { userInfo, fetchData } = useContext(AuthContext);
+  const { fetchData } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -58,7 +47,7 @@ function SideBar() {
         {/* User Information */}
         <UserInformation
           userName={"Ha Anh"}
-          // role={userInfo.role}
+        // role={userInfo.role}
         />
 
         {/* Links */}
