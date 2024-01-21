@@ -48,34 +48,24 @@ const TherapistList = () => {
         {/* Actions */}
         <div className="flex flex-row items-center justify-between">
           <Text variant="text-xl" weight="bold">
-            Doctors
+            Therapists
           </Text>
 
           <div className="flex flex-row items-center gap-4">
-            <div className="flex justify-center items-center input input-bordered max-w-xs bg-[#F9FBFF] rounded-md border-none focus:outline-none focus:ring-primaryBlue text-sm">
-              <FontAwesomeIcon icon={faSearch} />
-              <input
-                type="text"
-                placeholder="Search"
-                className="border-0 bg-transparent focus:outline-none focus:ring-0"
-              />
-            </div>
             <Dropdown options={sortList} selected={sort} onChange={onChange} />
           </div>
         </div>
 
         <div className="flex gap-5 flex-col">
-          {
-            filteredTherapists.map((therapist) => (
-              <DoctorCard
+          {filteredTherapists.map((therapist) => (
+            <DoctorCard
               name={therapist.name}
               specialization={therapist.specialization}
               availableToday={therapist.availableToday}
               price={therapist.price}
               id={therapist._id}
-              />
-            ))
-          }
+            />
+          ))}
         </div>
       </div>
     </ContentLayout>

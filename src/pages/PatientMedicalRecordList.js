@@ -10,42 +10,30 @@ import { AuthContext } from "../context/authContext";
 function PatientMedicalRecordList() {
   const [medicalRecords, setMedicalRecords] = useState();
   const { userInfo } = useContext(AuthContext);
-  
+
   useEffect(() => {
     async function fetchData() {
-      await axiosInstance.getMedicalRecords(userInfo._id)
-      .then((res) => {
-        // console.log(res);
-        setMedicalRecords(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+      await axiosInstance
+        .getMedicalRecords(userInfo._id)
+        .then((res) => {
+          // console.log(res);
+          setMedicalRecords(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
 
     fetchData();
-  }, [])
+  }, []);
 
   return (
     <ContentLayout title={"Medical Record List"}>
       <div className="overflow-x-auto bg-white w-full h-full rounded-md py-4 px-10">
-      <div className="flex flex-row items-center justify-between mb-10">
-        
+        <div className="flex flex-row items-center justify-between mb-10">
           <Text variant="text-xl" weight="bold">
             All Medical Records
           </Text>
-
-          <div className="flex flex-row items-center gap-4">
-            <div className="flex justify-center items-center input input-bordered max-w-xs bg-[#F9FBFF] rounded-md border-none focus:outline-none focus:ring-primaryBlue text-sm">
-              <FontAwesomeIcon icon={faSearch} />
-              <input
-                type="text"
-                placeholder="Search"
-                className="border-0 bg-transparent focus:outline-none focus:ring-0"
-              />
-            </div>
-            {/* <Dropdown options={sortList} selected={sort} onChange={onChange} /> */}
-          </div>
         </div>
         <table className="table text-center">
           {/* head */}
@@ -60,19 +48,20 @@ function PatientMedicalRecordList() {
           </thead>
           <tbody>
             {/* All Records */}
-            {medicalRecords && medicalRecords.map((data, index) => {
-              const className = (index + 1) % 2 === 0 ? "bg-base-200" : "";
-              return (
-                <MedicalRow
-                  number={index + 1}
-                  recordID={data._id}
-                  date={data.date}
-                  therapistName={data.therapist}
-                  className={className}
-                  href={`/patient/records/${data._id}`}
-                />
-              );
-            })}
+            {medicalRecords &&
+              medicalRecords.map((data, index) => {
+                const className = (index + 1) % 2 === 0 ? "bg-base-200" : "";
+                return (
+                  <MedicalRow
+                    number={index + 1}
+                    recordID={data._id}
+                    date={data.date}
+                    therapistName={data.therapist}
+                    className={className}
+                    href={`/patient/records/${data._id}`}
+                  />
+                );
+              })}
           </tbody>
         </table>
       </div>

@@ -11,10 +11,17 @@ import Text from "../common/Text";
 function TextEditor() {
   const { journalID } = useParams();
   const [journalData, setJournalData] = useState(null);
+  const [title, setTitle] = useState(null);
   const [content, setContent] = useState("");
-  const [chosenEmoji, setChosenEmoji] = useState(null);
+  const [chosenEmoji, setChosenEmoji] = useState("🥰");
   const [showIconPicker, setShowIconPicker] = useState(false);
-  const { control, handleSubmit, formState: { errors }, watch } = useForm();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    watch,
+    setValue,
+  } = useForm();
 
   useEffect(() => {
     // Fetch journal data based on journalID
@@ -23,6 +30,9 @@ function TextEditor() {
         const response = await axiosInstance.getJournalById(journalID);
         setChosenEmoji(response.mood);
         setJournalData(response);
+        // setTitle(response.title);
+        console.log(journalData);
+        setValue("title", response.journalTitle);
       } catch (error) {
         console.error("Error fetching journal data:", error);
       }
@@ -34,6 +44,7 @@ function TextEditor() {
   }, [journalID]);
 
   const onEmojiClick = (emojiObject) => {
+    console.log(emojiObject);
     setChosenEmoji(emojiObject.emoji);
     setShowIconPicker(false);
   };
@@ -55,10 +66,9 @@ function TextEditor() {
         );
         console.log("Journal updated successfully:", updatedJournal);
       } else {
-        await axiosInstance.createJournal(journalDataAPI)
-        .then((res) => {
+        await axiosInstance.createJournal(journalDataAPI).then((res) => {
           console.log(res);
-        })
+        });
       }
     } catch (error) {
       console.error("Error updating journal:", error);
@@ -81,7 +91,7 @@ function TextEditor() {
         </span>
       )}
       {/* Use Controller to integrate input with React Hook Form */}
-      
+
       <Controller
         name="title"
         control={control}
@@ -91,31 +101,34 @@ function TextEditor() {
         }}
         render={({ field }) => (
           <div className="flex flex-col">
-          <input
-            {...field}
-            type="text"
-            placeholder={
-              journalData
-                ? journalData.journalTitle
-                : "Please Enter Journal Title"
-            }
-            className="border-[#CCCED1] border-solid border-[1px]"
-          />
-          {/* <div>123</div> */}
-          {errors.title && (
-                    <Text variant="text-xs" className="text-red-500 mt-3">
-                      {errors.title.message}
-                    </Text>
-                  )}
+            <input
+              {...field}
+              type="text"
+              // value={title}
+              // onChange={(e) => {
+              //   setTitle(e.target.value);
+              // }}
+              placeholder={
+                journalData
+                  ? journalData.journalTitle
+                  : "Please Enter Journal Title"
+              }
+              className="border-[#CCCED1] border-solid border-[1px]"
+            />
+            {/* <div>123</div> */}
+            {errors.title && (
+              <Text variant="text-xs" className="text-red-500 mt-3">
+                {errors.title.message}
+              </Text>
+            )}
           </div>
         )}
       />
 
       {/* Patient Mood */}
-      <span className="text-xl font-semibold my-4">Patient Mood</span>
-
+      <span className="text-xl font-semibold my-4">Your Mood</span>
       <div className="relative">
-        {chosenEmoji ? (
+        {chosenEmoji && (
           <div className="flex flex-col justify-center items-center">
             <span
               className="text-5xl cursor-pointer"
@@ -127,13 +140,6 @@ function TextEditor() {
               Click on the icon to change your selection{" "}
             </span>
           </div>
-        ) : (
-          <span
-            className="text-gray-400"
-            onClick={() => setShowIconPicker(true)}
-          >
-            Click here to choose your moods
-          </span>
         )}
 
         {showIconPicker && (
@@ -144,22 +150,19 @@ function TextEditor() {
       </div>
 
       {/* Patient Editor */}
-      <span className="text-xl font-semibold my-4">Patient Journal</span>
-        {/* CKEditor configuration remains the same */}
+      <span className="text-xl font-semibold my-4">Your Journal Writing</span>
+      {/* CKEditor configuration remains the same */}
 
-       
-          <CKEditor
-          editor={ClassicEditor}
-          data={journalData ? journalData.journalText : ""}
-          onChange={(event, editor) => {
-            const editorData = editor.getData();
-            setContent(editorData);
-          }}
-        />
-        
-      
+      <CKEditor
+        editor={ClassicEditor}
+        data={journalData ? journalData.journalText : ""}
+        onChange={(event, editor) => {
+          const editorData = editor.getData();
+          setContent(editorData);
+        }}
+      />
 
-        {/* <CKEditor
+      {/* <CKEditor
           editor={ClassicEditor}
           data={journalData ? journalData.journalText : ""}
           onChange={(event, editor) => {

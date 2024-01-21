@@ -4,6 +4,7 @@ import React from "react";
 import Button from "../common/Button";
 import Chip from "../common/Chip";
 import Text from "../common/Text";
+import { formatMoney } from "../../utils/formatMoney";
 
 const DoctorCard = ({
   img,
@@ -17,10 +18,13 @@ const DoctorCard = ({
   return (
     <div className="flex flex-row justify-between items-center border p-4 rounded-lg bg-white">
       <div className="flex gap-6 items-center w-3/6">
-
         <div className="flex flex-col gap-2">
           <div className="flex gap-2 items-center">
-            <Text weight="semibold" variant="text-md" href={`/patient/therapistprofile/${id}`}>
+            <Text
+              weight="semibold"
+              variant="text-md"
+              href={`/patient/therapistprofile/${id}`}
+            >
               Dr. {name}
             </Text>
             <FontAwesomeIcon icon={faCircleCheck} color="#22C550" />
@@ -46,7 +50,7 @@ const DoctorCard = ({
 
           <div className="flex items-center justify-end w-1/5">
             <div className="flex flex-col gap-2 items-center">
-              <Text weight="semibold">{price} VND</Text>
+              <Text weight="semibold">{formatMoney(price)}</Text>
               <Button href={`/patient/booking/${id}`}>Book Appointment</Button>
             </div>
           </div>

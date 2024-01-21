@@ -98,9 +98,6 @@ function PatientProfileForm({ profile }) {
             )}
           />
           <div className="mt-5 flex justify-end gap-1">
-            <Button size="lg" variant="red" type="reset">
-              Reset
-            </Button>
             <Button size="lg" type="submit">
               Save
             </Button>

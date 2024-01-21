@@ -12,7 +12,7 @@ import {
   BellIcon,
   ArrowRightOnRectangleIcon,
   UsersIcon,
-  DocumentPlusIcon
+  DocumentPlusIcon,
 } from "@heroicons/react/24/outline";
 
 // Import Components
@@ -48,13 +48,13 @@ function SideBar() {
       .then((res) => {
         Cookies.remove("token");
         fetchData();
-        navigate("/")
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  const patientBaseRoute = '/patient';
+  const patientBaseRoute = "/patient";
 
   return (
     <div className="px-6 py-6 flex flex-col bg-white h-screen w-96 justify-between border-r-[#EFEFEF] border-r-2">
@@ -68,20 +68,47 @@ function SideBar() {
 
         {/* Links */}
         <div>
-        <SideBarButton icon={CalendarDaysIcon} name={"Appointments"} path={`${patientBaseRoute}/appointments`} />
+          <SideBarButton
+            icon={CalendarDaysIcon}
+            name={"Appointments"}
+            path={`${patientBaseRoute}/appointments`}
+          />
           {/* <SideBarButton icon={SquaresPlusIcon} name={"Dashboard"} path={`${patientBaseRoute}/dashboard`}/> */}
-          <SideBarButton icon={UserCircleIcon} name={"My Profiles"} path={`${patientBaseRoute}/profile`} />
-          <SideBarButton icon={DocumentPlusIcon} name={"Booking"} path={`${patientBaseRoute}/booking`}/>
-          <SideBarButton icon={DocumentTextIcon} name={"Medical Records"} path={`${patientBaseRoute}/records`} />
-          <SideBarButton icon={FaceSmileIcon} name={"Self-assessment"} path={`${patientBaseRoute}/journals`} />
-          <SideBarButton icon={SquaresPlusIcon} name={"Access Medical Record"} path={`${patientBaseRoute}/recordaccesslist`} />
-          <SideBarButton icon={UserGroupIcon} name={"My Therapist Room"} path={`${patientBaseRoute}/rooms`} />
-
+          <SideBarButton
+            icon={UserCircleIcon}
+            name={"My Profiles"}
+            path={`${patientBaseRoute}/profile`}
+          />
+          <SideBarButton
+            icon={DocumentPlusIcon}
+            name={"Booking"}
+            path={`${patientBaseRoute}/booking`}
+          />
+          <SideBarButton
+            icon={DocumentTextIcon}
+            name={"Medical Records"}
+            path={`${patientBaseRoute}/records`}
+          />
+          <SideBarButton
+            icon={FaceSmileIcon}
+            name={"Journals"}
+            path={`${patientBaseRoute}/journals`}
+          />
+          <SideBarButton
+            icon={SquaresPlusIcon}
+            name={"Access Medical Record"}
+            path={`${patientBaseRoute}/recordaccesslist`}
+          />
         </div>
       </div>
 
       {/* Log Out Button */}
-      <SideBarButton icon={ArrowRightOnRectangleIcon} name={"Logout"} path={`/`} onClick={logOut} />
+      <SideBarButton
+        icon={ArrowRightOnRectangleIcon}
+        name={"Logout"}
+        path={`/`}
+        onClick={logOut}
+      />
     </div>
   );
 }

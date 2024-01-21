@@ -48,18 +48,6 @@ function TherapistAppointment() {
           <Text variant="text-xl" weight="bold">
             Appointments
           </Text>
-          <div className="flex flex-row items-center gap-4">
-            <div className="flex justify-center items-center input input-bordered max-w-xs bg-[#F9FBFF] rounded-md border-none focus:outline-none focus:ring-primaryBlue text-sm">
-              <FontAwesomeIcon icon={faSearch} />
-              <input
-                type="text"
-                placeholder="Search"
-                className="border-0 bg-transparent focus:outline-none focus:ring-0"
-              />
-            </div>
-
-            {/* <Dropdown options={sortList} onChange={onChange} selected={sort} /> */}
-          </div>
         </div>
 
         {/* Table */}
