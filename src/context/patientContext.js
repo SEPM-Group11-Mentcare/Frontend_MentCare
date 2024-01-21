@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import * as axiosInstance from "../services/auth";
 
 export const PatientContext = createContext(null);
 

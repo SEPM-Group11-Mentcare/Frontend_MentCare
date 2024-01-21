@@ -1,6 +1,6 @@
 import React from "react";
 import ContentLayout from "../../components/Layout/ContentLayout";
-import Schedule from "../../components/TherapistSchedule/Schedule";
+import Schedule from "../../components/Therapist/Schedule";
 
 const TherapistSchedule = () => {
 return (

@@ -25,7 +25,6 @@ const Signin = () => {
     await axiosInstance
       .signin(d.username, d.password)
       .then((res) => {
-        // console.log(res);
         Cookies.set("token", res.token);
         fetchData();
         setRole(res.role);
@@ -117,7 +116,6 @@ const Signin = () => {
           <div className="flex items-center">
             <hr className="flex-1 border-t border-gray-300" />
             <Text className="text-gray-400 px-3"> OR </Text>
-            {/* <p className="mx-4 text-gray-400 font-bold">OR</p> */}
             <hr className="flex-1 border-t border-gray-300" />
           </div>
 

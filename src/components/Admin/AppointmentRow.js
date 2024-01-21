@@ -32,7 +32,6 @@ function AppointmentRow({
           {status === "Pending" ? (
             <>
               <Button onClick={handleUpdate}>Confirm</Button>
-              {/* <Button onClick={onDecline} variant="red">Decline</Button> */}
             </>
           ) : null}
         </td>

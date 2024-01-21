@@ -19,7 +19,6 @@ import TherapistAppointment from "../pages/private/TherapistAppointment";
 import PatientMedicalRecord from "../pages/private/PatientMedicalRecord";
 import PatientAppointment from "../pages/private/PatientAppointment";
 import PatientRecordAccessList from "../pages/private/PatientRecordAccessList";
-import PatientMyTherapistRoom from "../pages/private/PatientMyTherapistRoom";
 import PatientVideoCall from "../pages/private/PatientVideoCall";
 import TherapistVideoCall from "../pages/private/TherapistVideoCall";
 
@@ -104,11 +103,6 @@ const patientRoutes = [
   {
     path: "/patient/recordaccesslist",
     component: PatientRecordAccessList,
-    layout: PatientLayout,
-  },
-  {
-    path: "patient/rooms",
-    component: PatientMyTherapistRoom,
     layout: PatientLayout,
   },
   {

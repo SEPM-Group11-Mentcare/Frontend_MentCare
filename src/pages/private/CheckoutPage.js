@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import ContentLayout from "../../components/Layout/ContentLayout";
 import InputForm from "../../components/common/InputForm";
 import Button from "../../components/common/Button";
-import Box from "../../components/common/Box";
 import Text from "../../components/common/Text";
 import Checkbox from "../../components/common/Checkbox";
 import { Controller, useForm } from "react-hook-form";
@@ -15,7 +14,6 @@ function CheckoutPage() {
   const {
     control,
     handleSubmit,
-    formState: { errors },
   } = useForm({
     mode: "onChange",
   });
@@ -100,10 +98,8 @@ function CheckoutPage() {
             doctorExperience="20"
             date={bookingSession.session.date}
             time={bookingSession.session.time}
-            consultingFee="100"
-            bookingFee="10"
-            videoCallFee="50"
-            totalFee="160"
+            consultingFee={bookingSession.therapistInfo.price}
+            totalFee={bookingSession.therapistInfo.price}
           />
         )}
         {/* </div> */}

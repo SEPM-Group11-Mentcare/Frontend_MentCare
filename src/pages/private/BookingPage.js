@@ -52,7 +52,6 @@ const BookingPage = () => {
       await axiosInstance
         .getTherapist(id)
         .then((res) => {
-          // console.log(res);
           setTherapist(res);
         })
         .catch((err) => {

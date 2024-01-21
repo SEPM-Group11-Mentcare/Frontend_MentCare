@@ -4,8 +4,6 @@ import Text from "../../components/common/Text";
 import InputForm from "../../components/common/InputForm";
 import Button from "../../components/common/Button";
 import { Controller, useForm } from "react-hook-form";
-import MedicalRecordInfo from "../../components/Therapists/MedicalRecordInfo";
-import RedirectButton from "../../components/common/RedirectButton";
 import { useParams } from "react-router-dom";
 import * as axiosInstance from "../../services/medicalRecord";
 
@@ -21,15 +19,14 @@ const TherapistMedicalRecord = () => {
   const { id } = useParams();
 
   const onSubmit = async (d) => {
-    //Axios....
     console.log(d);
     await axiosInstance.createMedicalRecord(d.summary, d.diagnostic, id, d.prescription, d.advice)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   };
 
   return (
@@ -47,7 +44,6 @@ const TherapistMedicalRecord = () => {
 
             {/* Meeting Summary */}
             <div className="py-10">
-              {/* <MedicalRecordInfo /> */}
             </div>
 
             <Text children="Meeting Summary" weight="bold" />

@@ -2,13 +2,11 @@ import React from "react";
 import Chip from "../common/Chip";
 import Button from "../common/Button";
 import { format } from "date-fns";
-import { cn } from "../../utils/cn";
 import { Link } from "react-router-dom";
 
 function AppointmentRow({
   therapist,
   dateTime,
-  // accept,
   amount,
   status,
   handleCancel,
@@ -25,7 +23,6 @@ function AppointmentRow({
           hour12: false,
         })}
       </td>
-      {/* <td className={cn(accept ? "text-green-500"  : "text-red-500")}>{accept ? "Accepted" : "Declined"}</td> */}
       <td>{amount}</td>
       <td>
         <Chip

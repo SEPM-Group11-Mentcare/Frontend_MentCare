@@ -5,20 +5,16 @@ import App from "./App";
 import PatientProvider from "./context/patientContext";
 import AuthProvider from "./context/authContext";
 
-// import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-// import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* <PatientContext> */}
     <AuthProvider>
       <PatientProvider>
         <App />
       </PatientProvider>
     </AuthProvider>
 
-    {/* </PatientContext> */}
   </React.StrictMode>
 );
 

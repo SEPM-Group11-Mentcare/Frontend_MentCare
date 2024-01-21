@@ -14,13 +14,12 @@ function MedicalRecordListTherapist() {
   useEffect(() => {
     async function fetchData() {
       await axiosInstance.getMedicalRecords(id)
-      .then((res) => {
-        // console.log(res);
-        setMedicalRecords(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+        .then((res) => {
+          setMedicalRecords(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     }
 
     fetchData();
@@ -29,8 +28,8 @@ function MedicalRecordListTherapist() {
   return (
     <ContentLayout title={"Medical Record List"}>
       <div className="overflow-x-auto bg-white w-full h-full rounded-md py-4 px-10">
-      <div className="flex flex-row items-center justify-between mb-10">
-        
+        <div className="flex flex-row items-center justify-between mb-10">
+
           <Text variant="text-xl" weight="bold">
             All Medical Records
           </Text>
@@ -44,7 +43,6 @@ function MedicalRecordListTherapist() {
                 className="border-0 bg-transparent focus:outline-none focus:ring-0"
               />
             </div>
-            {/* <Dropdown options={sortList} selected={sort} onChange={onChange} /> */}
           </div>
         </div>
         <table className="table text-center">

@@ -12,7 +12,6 @@ function PatientViewTherapistProfile() {
   const [therapist, setTherapist] = useState();
   const [schedule, setSchedule] = useState();
   const { id } = useParams()
-  // console.log(id);
   useEffect(() => {
     async function fetchData() {
       await axiosInstance
@@ -87,7 +86,6 @@ function PatientViewTherapistProfile() {
             </>
           ) : (
             <div className="flex flex-col mt-5 pl-10">
-              {/* <Text children="Business Hours Content" weight="bold" /> */}
               {/* Add the bussiness hour */}
               <Calendar schedules={schedule}/>
             </div>

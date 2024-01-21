@@ -11,7 +11,6 @@ import Text from "../common/Text";
 function TextEditor() {
   const { journalID } = useParams();
   const [journalData, setJournalData] = useState(null);
-  const [title, setTitle] = useState(null);
   const [content, setContent] = useState("");
   const [chosenEmoji, setChosenEmoji] = useState("🥰");
   const [showIconPicker, setShowIconPicker] = useState(false);
@@ -19,7 +18,6 @@ function TextEditor() {
     control,
     handleSubmit,
     formState: { errors },
-    watch,
     setValue,
   } = useForm();
 
@@ -30,7 +28,6 @@ function TextEditor() {
         const response = await axiosInstance.getJournalById(journalID);
         setChosenEmoji(response.mood);
         setJournalData(response);
-        // setTitle(response.title);
         console.log(journalData);
         setValue("title", response.journalTitle);
       } catch (error) {
@@ -92,39 +89,6 @@ function TextEditor() {
       )}
       {/* Use Controller to integrate input with React Hook Form */}
 
-      <Controller
-        name="title"
-        control={control}
-        defaultValue={""}
-        rules={{
-          required: "Title is required!",
-        }}
-        render={({ field }) => (
-          <div className="flex flex-col">
-            <input
-              {...field}
-              type="text"
-              // value={title}
-              // onChange={(e) => {
-              //   setTitle(e.target.value);
-              // }}
-              placeholder={
-                journalData
-                  ? journalData.journalTitle
-                  : "Please Enter Journal Title"
-              }
-              className="border-[#CCCED1] border-solid border-[1px]"
-            />
-            {/* <div>123</div> */}
-            {errors.title && (
-              <Text variant="text-xs" className="text-red-500 mt-3">
-                {errors.title.message}
-              </Text>
-            )}
-          </div>
-        )}
-      />
-
       {/* Patient Mood */}
       <span className="text-xl font-semibold my-4">Your Mood</span>
       <div className="relative">
@@ -161,16 +125,6 @@ function TextEditor() {
           setContent(editorData);
         }}
       />
-
-      {/* <CKEditor
-          editor={ClassicEditor}
-          data={journalData ? journalData.journalText : ""}
-          onChange={(event, editor) => {
-            const editorData = editor.getData();
-            setContent(editorData);
-          }}
-        /> */}
-
       <div className="w-full flex justify-end mt-3">
         <Button type="submit">Save</Button>
       </div>

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import AppointmentRow from "../../components/Patient/AppointmentRow";
 import ContentLayout from "../../components/Layout/ContentLayout";
 import Dropdown from "../../components/common/Dropdown";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import * as axiosInstance from "../../services/patient";
 
 function PatientAppointment() {
@@ -17,7 +15,6 @@ function PatientAppointment() {
     await axiosInstance
       .getAppointments(sort)
       .then((res) => {
-        // console.log(res);
         setAppointments(res);
       })
       .catch((err) => {
@@ -47,7 +44,6 @@ function PatientAppointment() {
 
         {/* Actions */}
         <div className="flex flex-row items-center justify-between mb-10">
-          {/* <span className="text-sm text-[#16C098]">Next Appointments</span> */}
           <span className="text-2xl mb-2 font-semibold">All appointments</span>
 
           <div className="flex flex-row items-center gap-4">
@@ -77,7 +73,6 @@ function PatientAppointment() {
                     <AppointmentRow
                       therapist={appointment.therapistName}
                       dateTime={appointment.dateTime}
-                      // accept={appointment.accept}
                       amount={appointment.total}
                       status={appointment.status}
                       meetingID={appointment.meetingID}
@@ -86,12 +81,6 @@ function PatientAppointment() {
                   ))}
               </tbody>
             </table>
-            {/* <div className="join">
-              <button className="join-item btn btn-sm">1</button>
-              <button className="join-item btn btn-sm btn-active">2</button>
-              <button className="join-item btn btn-sm">3</button>
-              <button className="join-item btn btn-sm">4</button>
-            </div> */}
           </div>
         </div>
       </div>

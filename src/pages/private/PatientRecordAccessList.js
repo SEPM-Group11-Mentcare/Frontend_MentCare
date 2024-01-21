@@ -4,33 +4,6 @@ import AccessRecordRow from "../../components/Patient/AccessRecordRow";
 import * as axiosInstance from "../../services/patient";
 
 function PatientRecordAccessList() {
-  const fakeData = [
-    {
-      therapistName: "Dr. Johnson",
-      specialization: "Clinical Psychology",
-      practicingCertificateNumber: "CP12345",
-    },
-    {
-      therapistName: "Dr. Smith",
-      specialization: "Counseling",
-      practicingCertificateNumber: "CC67890",
-    },
-    {
-      therapistName: "Dr. Davis",
-      specialization: "Marriage and Family Therapy",
-      practicingCertificateNumber: "MFT54321",
-    },
-    {
-      therapistName: "Dr. Taylor",
-      specialization: "Child Psychology",
-      practicingCertificateNumber: "CP98765",
-    },
-    {
-      therapistName: "Dr. Anderson",
-      specialization: "Addiction Counseling",
-      practicingCertificateNumber: "AC23456",
-    },
-  ];
 
   const [therapists, setTherapists] = useState();
 
@@ -70,7 +43,6 @@ function PatientRecordAccessList() {
               <th></th>
               <th>Therapist Name</th>
               <th>Specialization</th>
-              {/* <th>Pratising Certificate Number</th> */}
               <th>Action</th>
             </tr>
           </thead>
@@ -83,7 +55,6 @@ function PatientRecordAccessList() {
                   number={index + 1}
                   name={data.name}
                   spec={data.specialization}
-                  // cert={data.practicingCertificateNumber}
                   className={className}
                   handleRemove={() => handleRemove(data._id)}
                 />

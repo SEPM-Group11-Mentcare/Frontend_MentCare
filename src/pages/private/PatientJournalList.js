@@ -8,11 +8,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import * as axiosInstance from "../../services/journal";
 
 function PatientJournalList() {
-  // const sortList = ["Newest", "Oldest"];
-  // const [sort, setSort] = useState(sortList[0]);
   const [journals, setJournals] = useState();
-
-  // console.log(journals);
 
   useEffect(() => {
     async function fetchData() {
@@ -53,24 +49,11 @@ function PatientJournalList() {
     <ContentLayout title="Journal List">
       <div className="bg-white w-full h-full rounded-md py-4 px-10">
         {/* Title */}
-        {/* <span className="text-2xl mb-2 font-semibold">All Journals</span> */}
 
         {/* Actions */}
         <div className="flex flex-row items-center justify-between mb-10 mt-3">
-        <span className="text-2xl mb-2 font-semibold">All Journals</span>
-
+          <span className="text-2xl mb-2 font-semibold">All Journals</span>
           <Button href={"/patient/journals/new"}>Create A Journal</Button>
-
-          {/* <div className="flex flex-row items-center gap-4">
-            <div className="flex justify-center items-center input input-bordered max-w-xs bg-[#F9FBFF] rounded-md border-none focus:outline-none focus:ring-primaryBlue text-sm">
-              <FontAwesomeIcon icon={faSearch} />
-              <input
-                type="text"
-                placeholder="Search"
-                className="border-0 bg-transparent focus:outline-none focus:ring-0"
-              />
-            </div>
-          </div> */}
         </div>
 
         {/* Table */}

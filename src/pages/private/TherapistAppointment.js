@@ -1,29 +1,11 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import Text from "../../components/common/Text";
 import ContentLayout from "../../components/Layout/ContentLayout";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import * as axiosInstance from "../../services/therapist";
 import AppointmentRow from "../../components/Therapist/AppointmentRow";
 
 function TherapistAppointment() {
   const [appointments, setAppointments] = useState([]);
-
-  // useEffect(
-  //   () =>
-  //     async function fetchData() {
-  //       await axiosInstance
-  //         .getRequestList()
-  //         .then((res) => {
-  //           setAppointments(res);
-  //           console.log(res);
-  //         })
-  //         .catch((err) => {
-  //           console.log(err);
-  //         });
-  //     },
-  //   []
-  // );
 
   async function fetchData() {
     await axiosInstance
@@ -58,12 +40,10 @@ function TherapistAppointment() {
               <thead>
                 <tr>
                   <th>Patient Name</th>
-                  {/* <th>Therapist Name</th> */}
                   <th>Date</th>
                   <th>Time</th>
                   <th>Access Medical Record</th>
                   <th>Status</th>
-                  {/* <th>Action</th> */}
                 </tr>
               </thead>
               <tbody>
@@ -76,13 +56,11 @@ function TherapistAppointment() {
                       appointmentID={appointment.id}
                       meetingID={appointment.meetingID}
                       patient={appointment.patientName}
-                      // therapist={appointment.therapistName}
                       dateTime={appointment.dateTime}
                       accept={appointment.accept}
                       status={appointment.status}
                       recordID={appointment.record}
                       patientID={appointment.patient}
-                      // handleUpdate={() => handleUpdate(appointment.id, "Confirmed")}
                     />
                   ))}
               </tbody>
