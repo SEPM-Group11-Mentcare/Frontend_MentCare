@@ -104,31 +104,27 @@ $ npm install
 # Start with npm
 $ npm start
 
-# OR Start with node
-$ node index.js
-```
-
 ## Test accounts
 
 1. Patient:
 
 ```
-username: 
-password: 
+username: patient1
+password: Patient@1234
 ```
 
 2. Therapist:
 
 ```
-username: 
-password: 
+username: therapist1
+password: Therapist@1234
 ```
 
 3. Admin:
 
 ```
-username: 
-password: 
+username: admin1
+password: Admin@1234
 ```
 
 ## License
