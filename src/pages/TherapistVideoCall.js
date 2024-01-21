@@ -1,8 +1,8 @@
 import React from "react";
 import ContentLayout from "../components/Layout/ContentLayout";
-import VideoCall from "../components/VideoCall/VideoCall";
+
 import { useParams } from "react-router-dom";
-import VideoMeeting from "../components/VideoCallTest/VideoMeeting";
+import VideoMeeting from "../components/VideoCall/VideoMeeting";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

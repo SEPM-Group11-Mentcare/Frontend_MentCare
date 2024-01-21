@@ -12,7 +12,7 @@ import {
   BellIcon,
   ArrowRightOnRectangleIcon,
   UsersIcon,
-  DocumentPlusIcon
+  DocumentPlusIcon,
 } from "@heroicons/react/24/outline";
 
 // Import Components
@@ -43,13 +43,13 @@ function SideBar() {
       .then((res) => {
         Cookies.remove("token");
         fetchData();
-        navigate("/")
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  const adminBaseRoute = '/admin';
+  const adminBaseRoute = "/admin";
 
   return (
     <div className="px-6 py-6 flex flex-col bg-white h-screen w-96 justify-between border-r-[#EFEFEF] border-r-2">
@@ -63,14 +63,26 @@ function SideBar() {
 
         {/* Links */}
         <div>
-        <SideBarButton icon={CalendarDaysIcon} name={"Appointments"} path={`${adminBaseRoute}/appointments`} />
-          <SideBarButton icon={UserGroupIcon} name={"My Therapist Room"} path={`${adminBaseRoute}/therapistlist`} />
-
+          <SideBarButton
+            icon={CalendarDaysIcon}
+            name={"Appointments"}
+            path={`${adminBaseRoute}/appointments`}
+          />
+          <SideBarButton
+            icon={UserGroupIcon}
+            name={"Therapist Request List"}
+            path={`${adminBaseRoute}/therapistlist`}
+          />
         </div>
       </div>
 
       {/* Log Out Button */}
-      <SideBarButton icon={ArrowRightOnRectangleIcon} name={"Logout"} path={`/`} onClick={logOut} />
+      <SideBarButton
+        icon={ArrowRightOnRectangleIcon}
+        name={"Logout"}
+        path={`/`}
+        onClick={logOut}
+      />
     </div>
   );
 }
