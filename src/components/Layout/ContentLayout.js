@@ -10,7 +10,7 @@ function ContentLayout({ title, children }) {
       <div className="pb-5">
         <RedirectButton />
       </div>
-      <div className="overflow-y-scroll bg-white">
+      <div className="overflow-y-scroll">
         {children}
       </div>
 

@@ -1,13 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AppointmentRow from "../../components/Patient/AppointmentRow";
 import ContentLayout from "../../components/Layout/ContentLayout";
 import Dropdown from "../../components/common/Dropdown";
 import * as axiosInstance from "../../services/patient";
+import { NotificationContext } from "../../context/notificationContext";
+import Alert from "../../components/common/Alert";
 
 function PatientAppointment() {
   const [appointments, setAppointments] = useState([]);
   const sortList = ["All", "Pending", "Confirmed", "Declined", "Done"];
   const [sort, setSort] = useState(sortList[0]);
+  const {
+    setIsMessageVisible,
+    isMessageVisible,
+    message,
+    setMessage,
+    setNotiType,
+    notiType,
+  } = useContext(NotificationContext);
+
   const onChange = (e) => {
     setSort(e.target.value);
   };
@@ -28,6 +39,14 @@ function PatientAppointment() {
       .then((res) => {
         console.log(res);
         fetchData();
+        setMessage(res.message);
+        setIsMessageVisible(true);
+        setNotiType("success");
+        // Hide the error after 3 seconds
+        setTimeout(() => {
+          setMessage(null);
+          setIsMessageVisible(false);
+        }, 3000);
       })
       .catch((err) => {
         console.log(err);
@@ -39,6 +58,8 @@ function PatientAppointment() {
 
   return (
     <ContentLayout title="Appointments">
+      {isMessageVisible && <Alert message={message} type={notiType} />}
+
       <div className="bg-white w-full h-full rounded-md py-4 px-10">
         {/* Title */}
 

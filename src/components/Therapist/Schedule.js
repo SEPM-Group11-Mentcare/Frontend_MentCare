@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "../common/Button";
 import InputForm from "../common/InputForm";
 import Text from "../common/Text";
@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Controller, useForm } from "react-hook-form";
 import * as axiosInstance from "../../services/therapist";
+import { NotificationContext } from "../../context/notificationContext";
 
 const Schedule = () => {
   const {
@@ -35,6 +36,15 @@ const Schedule = () => {
     "22:00",
     "23:00",
   ];
+  const {
+    setIsMessageVisible,
+    isMessageVisible,
+    message,
+    setMessage,
+    setNotiType,
+    notiType,
+  } = useContext(NotificationContext);
+
   const [availableTime, setAvailableTime] = useState([]);
   const [selectedDate, setSelectedDate] = useState([])
 
@@ -86,7 +96,16 @@ const Schedule = () => {
   const handleUpdate = async(e) => {
     await axiosInstance.deleteSchedule(e.target.value)
     .then((res) => {
+      // console.log(res);
       fetchData()
+      setMessage(res);
+        setIsMessageVisible(true);
+        setNotiType("success");
+        // Hide the error after 3 seconds
+        setTimeout(() => {
+          setMessage(null);
+          setIsMessageVisible(false);
+        }, 3000);
     })
     .catch((err) => {
       console.log(err);
@@ -121,6 +140,15 @@ const Schedule = () => {
     await axiosInstance.setSchedule(availableTime)
     .then((res) => {
       fetchData();
+      console.log(res);
+      setMessage(res);
+        setIsMessageVisible(true);
+        setNotiType("success");
+        // Hide the error after 3 seconds
+        setTimeout(() => {
+          setMessage(null);
+          setIsMessageVisible(false);
+        }, 3000);
     })
     .catch((err) => {
       console.log(err);

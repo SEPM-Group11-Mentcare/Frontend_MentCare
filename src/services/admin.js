@@ -17,7 +17,7 @@ export const changeTherapistStatus = async(therapistID, newStatus) => {
   });
   try {
       if (res.status === 200) {
-          return res;
+          return res.data;
       }
   } catch(err) {
       return err;
@@ -41,7 +41,7 @@ export const changeAppointmentStatus = async(appointmentID, newStatus) => {
   });
   try {
       if (res.status === 200) {
-          return res;
+          return res.data;
       }
   } catch(err) {
       return err;

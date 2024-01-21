@@ -9,14 +9,21 @@ import CheckoutCard from "../../components/Checkout/CheckoutCard";
 import { PatientContext } from "../../context/patientContext";
 import * as axiosInstance from "../../services/patient";
 import { createMeeting } from "../../components/VideoCall/api";
+import { NotificationContext } from "../../context/notificationContext";
+import Alert from "../../components/common/Alert";
 
 function CheckoutPage() {
-  const {
-    control,
-    handleSubmit,
-  } = useForm({
+  const { control, handleSubmit } = useForm({
     mode: "onChange",
   });
+  const {
+    setIsMessageVisible,
+    isMessageVisible,
+    message,
+    setMessage,
+    setNotiType,
+    notiType,
+  } = useContext(NotificationContext);
 
   const { bookingSession } = useContext(PatientContext);
 
@@ -33,11 +40,19 @@ function CheckoutPage() {
         bookingSession.session.id,
         d.notes,
         d.accept,
-        500000,
+        bookingSession.therapistInfo.price,
         meetingID
       )
       .then((res) => {
         console.log(res);
+        setMessage(res.message);
+        setIsMessageVisible(true);
+        setNotiType("success");
+        // Hide the error after 3 seconds
+        setTimeout(() => {
+          setMessage(null);
+          setIsMessageVisible(false);
+        }, 3000);
       })
       .catch((err) => {
         console.log(err);
@@ -45,6 +60,8 @@ function CheckoutPage() {
   };
   return (
     <ContentLayout title={"Checkout"}>
+      {isMessageVisible && <Alert message={message} type={notiType} />}
+
       <div className="flex flex-row gap-8 bg-white justify-around px-8 py-8 rounded-md border-[#F0F0F0] border-[1px] border-solid">
         <div className="w-4/6">
           <Text variant="text-lg" weight="semibold" className="text-center">
