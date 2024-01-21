@@ -19,14 +19,25 @@ function TherapistProfileForm({ profile }) {
       // formData.append("dob", data.dob);
       // formData.append("avatar", data.avatar);
 
-      await axiosInstance.updateProfile(data.userId, data.username, data.name, data.dob, data.nationalID, data.pratisingCertNum, data.specialization, data.price, data.aboutme, data.experience)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-    
+      await axiosInstance
+        .updateProfile(
+          data.userId,
+          data.username,
+          data.name,
+          data.dob,
+          data.nationalID,
+          data.pratisingCertNum,
+          data.specialization,
+          data.price,
+          data.aboutme,
+          data.experience
+        )
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } catch (err) {
       console.error("Error updating profile: ", err);
     }
@@ -192,9 +203,6 @@ function TherapistProfileForm({ profile }) {
         </div>
 
         <div className="mt-5 flex justify-end gap-1">
-          <Button size="lg" variant="red" type="reset">
-            Reset
-          </Button>
           <Button size="lg" type="submit">
             Save
           </Button>

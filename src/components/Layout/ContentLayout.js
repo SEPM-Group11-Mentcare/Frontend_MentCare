@@ -1,5 +1,5 @@
 import React from "react";
-import RedirectButton from '../common/RedirectButton';
+import RedirectButton from "../common/RedirectButton";
 import Breadcrumbs from "../common/Breadcrumbs";
 
 function ContentLayout({ title, children }) {
@@ -9,9 +9,9 @@ function ContentLayout({ title, children }) {
         {title}
       </span>
       <div className="pb-5">
-      <Breadcrumbs/>
+        <RedirectButton />
       </div>
-      
+
       {/* <RedirectButton/> */}
       {children}
     </div>
