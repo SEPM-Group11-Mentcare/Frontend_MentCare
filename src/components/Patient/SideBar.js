@@ -21,7 +21,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 function SideBar() {
-  const { fetchData } = useContext(AuthContext);
+  const { fetchData, userInfo } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -45,9 +45,9 @@ function SideBar() {
       {/* SideBar Content */}
       <div className="flex flex-col gap-10">
         {/* User Information */}
-        <UserInformation
-          userName={"Ha Anh"}
-        />
+        {userInfo && (
+          <UserInformation userName={userInfo.name} role={userInfo.role} />
+        )}
 
         {/* Links */}
         <div>
