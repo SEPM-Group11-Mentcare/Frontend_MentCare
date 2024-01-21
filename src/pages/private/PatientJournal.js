@@ -1,7 +1,7 @@
 import React from "react";
 
-import ContentLayout from "../components/Layout/ContentLayout";
-import TextEditor from "../components/Journal/TextEditor";
+import ContentLayout from "../../components/Layout/ContentLayout";
+import TextEditor from "../../components/Journal/TextEditor";
 
 function PatientJournal() {
   return (

@@ -1,12 +1,12 @@
 // Import layout
-import ContentLayout from "../components/Layout/ContentLayout";
+import ContentLayout from "../../components/Layout/ContentLayout";
 import React, { useState, useEffect } from "react";
-import * as axiosInstance from "../services/admin";
-import Text from "../components/common/Text";
+import * as axiosInstance from "../../services/admin";
+import Text from "../../components/common/Text";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import Dropdown from "../components/common/Dropdown";
-import AppointmentRow from "../components/Admin/AppointmentRow";
+import Dropdown from "../../components/common/Dropdown";
+import AppointmentRow from "../../components/Admin/AppointmentRow";
 
 function AdminAppointment() {
   const [appointments, setAppointments] = useState([]);

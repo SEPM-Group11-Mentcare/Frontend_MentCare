@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import ContentLayout from "../components/Layout/ContentLayout";
-import Text from "../components/common/Text";
-import InputForm from "../components/common/InputForm";
-import Button from "../components/common/Button";
-import MedicalRecordInfo from "../components/Therapists/MedicalRecordInfo";
+import ContentLayout from "../../components/Layout/ContentLayout";
+import Text from "../../components/common/Text";
+import InputForm from "../../components/common/InputForm";
+import Button from "../../components/common/Button";
+import MedicalRecordInfo from "../../components/Therapists/MedicalRecordInfo";
 import { Controller, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
-import * as axiosInstance from "../services/medicalRecord";
+import * as axiosInstance from "../../services/medicalRecord";
 
 function PatientMedicalRecord() {
   const dummyData = {

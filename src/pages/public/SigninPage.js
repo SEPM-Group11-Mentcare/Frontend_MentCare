@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import Box from "../components/common/Box";
-import InputForm from "../components/common/InputForm";
-import Text from "../components/common/Text";
+import Box from "../../components/common/Box";
+import InputForm from "../../components/common/InputForm";
+import Text from "../../components/common/Text";
 import { Controller, useForm } from "react-hook-form";
-import Button from "../components/common/Button";
-import * as axiosInstance from "../services/auth";
+import Button from "../../components/common/Button";
+import * as axiosInstance from "../../services/auth";
 import Cookies from "js-cookie";
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
@@ -25,7 +25,7 @@ const Signin = () => {
     await axiosInstance
       .signin(d.username, d.password)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         Cookies.set("token", res.token);
         fetchData();
         setRole(res.role);
@@ -46,7 +46,7 @@ const Signin = () => {
       <div className="flex justify-center py-32">
         <div className="h-1/2 flex max-w-3xl flex-col justify-center items-center gap-20">
           <img
-            src={require("../assets/images/SigninImg.png")}
+            src={require("../../assets/images/SigninImg.png")}
             alt="avatarIcon"
           />
         </div>

@@ -1,9 +1,9 @@
 import React from "react";
-import Text from "../components/common/Text";
-import EmotionTag from "../components/Landing/EmotionTag";
-import StartIcon from "../assets/svg/StartIcon";
-import InfoContainer from "../components/Landing/InfoContainer";
-import Logo from "../assets/svg/logo";
+import Text from "../../components/common/Text";
+import EmotionTag from "../../components/Landing/EmotionTag";
+import StartIcon from "../../assets/svg/StartIcon";
+import InfoContainer from "../../components/Landing/InfoContainer";
+import Logo from "../../assets/svg/logo";
 
 const Landing = () => {
   return (
@@ -12,7 +12,7 @@ const Landing = () => {
         <div className="flex justify-center">
           <img
             className="object-cover"
-            src={require("../assets/images/background1LandingPage.png")}
+            src={require("../../assets/images/background1LandingPage.png")}
             alt="background1"
           />
         </div>
@@ -46,7 +46,7 @@ const Landing = () => {
           {/* Getting Started Container 1 */}
           <div className="flex flex-col items-center w-1/3 text-center">
             <img
-              src={require("../assets/images/Landing-Logo-1.png")}
+              src={require("../../assets/images/Landing-Logo-1.png")}
               alt="logo1"
             />
             <Text variant="text-xl" weight="bold">
@@ -63,7 +63,7 @@ const Landing = () => {
           {/* Getting Started Container 2 */}
           <div className="flex flex-col items-center w-1/3 text-center">
             <img
-              src={require("../assets/images/Landing-Logo-3.png")}
+              src={require("../../assets/images/Landing-Logo-3.png")}
               alt="logo3"
             />
             <Text variant="text-xl" weight="bold">
@@ -81,7 +81,7 @@ const Landing = () => {
           {/* Getting Started Container 3 */}
           <div className="flex flex-col items-center w-1/3">
             <img
-              src={require("../assets/images/Landing-Logo-2.png")}
+              src={require("../../assets/images/Landing-Logo-2.png")}
               alt="logo2"
             />
             <Text variant="text-xl" weight="bold">
@@ -107,28 +107,28 @@ const Landing = () => {
             border="black"
             title="Emotional Issues"
             description="Coping with stress and depression"
-            image={require("../assets/images/emotion_depression.png")}
+            image={require("../../assets/images/emotion_depression.png")}
           />
 
           <EmotionTag
             bg="purple"
             title="Relationship"
             description="Resolving conflicts and divorce"
-            image={require("../assets/images/emotion_heart.png")}
+            image={require("../../assets/images/emotion_heart.png")}
           />
 
           <EmotionTag
             border="black"
             title="Life Adjustments"
             description="Helping with life transitions and rehabilitation"
-            image={require("../assets/images/emotion_life.png")}
+            image={require("../../assets/images/emotion_life.png")}
           />
 
           <EmotionTag
             bg="purple"
             title="Mental Disorder"
             description="Providing professional therapy for behavioral challenges"
-            image={require("../assets/images/emotion_mind.png")}
+            image={require("../../assets/images/emotion_mind.png")}
           />
         </div>
       </div>
@@ -157,32 +157,32 @@ const Landing = () => {
 
           <div class="relative flex items-center">
             <img
-              src={require("../assets/images/IconTag7.png")}
+              src={require("../../assets/images/IconTag7.png")}
               alt="icontag7"
               class="relative z-10"
             />
             <img
-              src={require("../assets/images/IconTag8.png")}
+              src={require("../../assets/images/IconTag8.png")}
               alt="icontag8"
               class="relative z-20 -ml-4"
             />
             <img
-              src={require("../assets/images/IconTag9.png")}
+              src={require("../../assets/images/IconTag9.png")}
               alt="icontag9"
               class="relative z-30 -ml-4"
             />
             <img
-              src={require("../assets/images/IconTag10.png")}
+              src={require("../../assets/images/IconTag10.png")}
               alt="icontag10"
               class="relative z-40 -ml-4"
             />
             <img
-              src={require("../assets/images/IconTag11.png")}
+              src={require("../../assets/images/IconTag11.png")}
               alt="icontag11"
               class="relative z-50 -ml-4"
             />
             <img
-              src={require("../assets/images/IconTag12.png")}
+              src={require("../../assets/images/IconTag12.png")}
               alt="icontag12"
               class="relative z-50 -ml-4"
             />
@@ -196,7 +196,7 @@ const Landing = () => {
           <div className="flex justify-between ">
             <div className="flex gap-4">
               <img
-                src={require("../assets/images/AvatarIcon.png")}
+                src={require("../../assets/images/AvatarIcon.png")}
                 alt="avatarIcon"
               />
               <div className="flex flex-col justify-center gap">

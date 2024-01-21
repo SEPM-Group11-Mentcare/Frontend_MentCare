@@ -1,11 +1,11 @@
 import React from "react";
-import Box from "../components/common/Box";
-import InputForm from "../components/common/InputForm";
-import Text from "../components/common/Text";
+import Box from "../../components/common/Box";
+import InputForm from "../../components/common/InputForm";
+import Text from "../../components/common/Text";
 import { Controller, useForm } from "react-hook-form";
-import Checkbox from "../components/common/Checkbox";
-import Button from "../components/common/Button";
-import * as axiosInstance from "../services/auth";
+import Checkbox from "../../components/common/Checkbox";
+import Button from "../../components/common/Button";
+import * as axiosInstance from "../../services/auth";
 import { useNavigate } from "react-router-dom";
 
 const TherapistSignup = () => {
@@ -38,7 +38,7 @@ const TherapistSignup = () => {
             Let's begin your journey!
           </Text>
           <img
-            src={require("../assets/images/SignupImg.png")}
+            src={require("../../assets/images/SignupImg.png")}
             alt="avatarIcon"
           />
         </div>

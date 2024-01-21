@@ -1,11 +1,11 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import Dropdown from "../components/common/Dropdown";
-import Text from "../components/common/Text";
-import ContentLayout from "../components/Layout/ContentLayout";
-import DoctorCard from "../components/Patient/DoctorCard";
-import * as axiosInstance from "../services/patient";
+import Dropdown from "../../components/common/Dropdown";
+import Text from "../../components/common/Text";
+import ContentLayout from "../../components/Layout/ContentLayout";
+import DoctorCard from "../../components/Patient/DoctorCard";
+import * as axiosInstance from "../../services/patient";
 
 const TherapistList = () => {
   const sortList = ["All", "Available", "Unavailable"];

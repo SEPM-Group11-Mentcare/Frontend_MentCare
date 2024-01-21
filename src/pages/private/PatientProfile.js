@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import ContentLayout from "../components/Layout/ContentLayout";
-import PatientProfileForm from "../components/Patient/PatientProfileForm";
-import { AuthContext } from "../context/authContext";
-import * as axiosInstance from '../services/patient'
+import ContentLayout from "../../components/Layout/ContentLayout";
+import PatientProfileForm from "../../components/Patient/PatientProfileForm";
+import { AuthContext } from "../../context/authContext";
+import * as axiosInstance from '../../services/patient'
 
 
 function PatientProfile() {

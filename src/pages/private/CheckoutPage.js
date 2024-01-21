@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
-import ContentLayout from "../components/Layout/ContentLayout";
-import InputForm from "../components/common/InputForm";
-import Button from "../components/common/Button";
-import Box from "../components/common/Box";
-import Text from "../components/common/Text";
-import Checkbox from "../components/common/Checkbox";
+import ContentLayout from "../../components/Layout/ContentLayout";
+import InputForm from "../../components/common/InputForm";
+import Button from "../../components/common/Button";
+import Box from "../../components/common/Box";
+import Text from "../../components/common/Text";
+import Checkbox from "../../components/common/Checkbox";
 import { Controller, useForm } from "react-hook-form";
-import CheckoutCard from "../components/Checkout/CheckoutCard";
-import { PatientContext } from "../context/patientContext";
-import * as axiosInstance from "../services/patient";
-import { createMeeting } from "../components/VideoCallTest/api";
+import CheckoutCard from "../../components/Checkout/CheckoutCard";
+import { PatientContext } from "../../context/patientContext";
+import * as axiosInstance from "../../services/patient";
+import { createMeeting } from "../../components/VideoCallTest/api";
 
 function CheckoutPage() {
   const {

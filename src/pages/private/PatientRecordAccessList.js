@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ContentLayout from "../components/Layout/ContentLayout";
-import AccessRecordRow from "../components/Patient/AccessRecordRow";
-import * as axiosInstance from "../services/patient";
+import ContentLayout from "../../components/Layout/ContentLayout";
+import AccessRecordRow from "../../components/Patient/AccessRecordRow";
+import * as axiosInstance from "../../services/patient";
 
 function PatientRecordAccessList() {
   const fakeData = [

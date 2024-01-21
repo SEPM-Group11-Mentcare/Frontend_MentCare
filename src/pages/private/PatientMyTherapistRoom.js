@@ -1,6 +1,6 @@
 import React from "react";
-import ContentLayout from "../components/Layout/ContentLayout";
-import CardRoom from "../components/common/CardRoom";
+import ContentLayout from "../../components/Layout/ContentLayout";
+import CardRoom from "../../components/common/CardRoom";
 
 function PatientMyTherapistRoom() {
   const fakeDate = [

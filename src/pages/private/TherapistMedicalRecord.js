@@ -1,13 +1,13 @@
 import React from "react";
-import ContentLayout from "../components/Layout/ContentLayout";
-import Text from "../components/common/Text";
-import InputForm from "../components/common/InputForm";
-import Button from "../components/common/Button";
+import ContentLayout from "../../components/Layout/ContentLayout";
+import Text from "../../components/common/Text";
+import InputForm from "../../components/common/InputForm";
+import Button from "../../components/common/Button";
 import { Controller, useForm } from "react-hook-form";
-import MedicalRecordInfo from "../components/Therapists/MedicalRecordInfo";
-import RedirectButton from "../components/common/RedirectButton";
+import MedicalRecordInfo from "../../components/Therapists/MedicalRecordInfo";
+import RedirectButton from "../../components/common/RedirectButton";
 import { useParams } from "react-router-dom";
-import * as axiosInstance from "../services/medicalRecord";
+import * as axiosInstance from "../../services/medicalRecord";
 
 const TherapistMedicalRecord = () => {
   const {

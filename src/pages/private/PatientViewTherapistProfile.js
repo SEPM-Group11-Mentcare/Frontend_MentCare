@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import ContentLayout from "../components/Layout/ContentLayout";
-import Text from "../components/common/Text";
-import DoctorProfileCard from "../components/Therapist/DoctorProfileCard";
-import Timeline from "../components/Therapists/Timeline";
+import ContentLayout from "../../components/Layout/ContentLayout";
+import Text from "../../components/common/Text";
+import DoctorProfileCard from "../../components/Therapist/DoctorProfileCard";
+import Timeline from "../../components/Therapists/Timeline";
 import { useParams } from 'react-router-dom';
-import * as axiosInstance from "../services/patient"
-import Calendar from "../components/common/Calendar";
+import * as axiosInstance from "../../services/patient"
+import Calendar from "../../components/common/Calendar";
 
 function PatientViewTherapistProfile() {
   const [showOverview, setShowOverview] = useState(true);

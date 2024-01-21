@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import Text from "../components/common/Text";
-import ContentLayout from "../components/Layout/ContentLayout";
-import MedicalRow from "../components/Patient/MedicalRow";
-import * as axiosInstance from "../services/medicalRecord";
+import Text from "../../components/common/Text";
+import ContentLayout from "../../components/Layout/ContentLayout";
+import MedicalRow from "../../components/Patient/MedicalRow";
+import * as axiosInstance from "../../services/medicalRecord";
 import { useParams } from "react-router-dom";
 
 function MedicalRecordListTherapist() {

@@ -1,13 +1,13 @@
 import { format } from "date-fns";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Button from "../components/common/Button";
-import Calendar from "../components/common/Calendar";
-import ContentLayout from "../components/Layout/ContentLayout";
-import DoctorCard from "../components/Patient/DoctorCard";
-import { PatientContext } from "../context/patientContext";
-import * as axiosInstance from "../services/patient";
-import * as axiosInstanceSchedule from "../services/schedule";
+import Button from "../../components/common/Button";
+import Calendar from "../../components/common/Calendar";
+import ContentLayout from "../../components/Layout/ContentLayout";
+import DoctorCard from "../../components/Patient/DoctorCard";
+import { PatientContext } from "../../context/patientContext";
+import * as axiosInstance from "../../services/patient";
+import * as axiosInstanceSchedule from "../../services/schedule";
 
 const BookingPage = () => {
   const [schedules, setSchedule] = useState([]);

@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import Text from "../components/common/Text";
-import ContentLayout from "../components/Layout/ContentLayout";
+import Text from "../../components/common/Text";
+import ContentLayout from "../../components/Layout/ContentLayout";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import * as axiosInstance from "../services/therapist";
-import AppointmentRow from "../components/Therapist/AppointmentRow";
+import * as axiosInstance from "../../services/therapist";
+import AppointmentRow from "../../components/Therapist/AppointmentRow";
 
 function TherapistAppointment() {
   const [appointments, setAppointments] = useState([]);

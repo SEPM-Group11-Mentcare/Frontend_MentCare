@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import JournalRow from "../components/Journal/JournalRow";
-import ContentLayout from "../components/Layout/ContentLayout";
-import Dropdown from "../components/common/Dropdown";
-import Button from "../components/common/Button";
+import JournalRow from "../../components/Journal/JournalRow";
+import ContentLayout from "../../components/Layout/ContentLayout";
+import Dropdown from "../../components/common/Dropdown";
+import Button from "../../components/common/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import * as axiosInstance from "../services/journal";
+import * as axiosInstance from "../../services/journal";
 
 function PatientJournalList() {
   // const sortList = ["Newest", "Oldest"];
