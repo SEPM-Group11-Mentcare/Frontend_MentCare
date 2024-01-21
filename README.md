@@ -90,6 +90,8 @@ This is an assignment project for ISYS2101 Software Engineering Project Manageme
 
 To clone and run this project, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](https://npmjs.com)) installed on your computer.
 
+**As the Backend is not deployed, you'll need to clone the Backend repository to run the website.** 
+
 - Prequisite: VSCode or Other IDE / Editor
 
 - From your CLI, Terminal or SHELL:
