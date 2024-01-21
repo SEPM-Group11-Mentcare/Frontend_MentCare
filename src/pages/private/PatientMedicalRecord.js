@@ -22,12 +22,14 @@ function PatientMedicalRecord() {
   }, [id])
   return (
     <ContentLayout title="Medical Record" className="fixed">
-      <div className="overflow-y-auto h-full">
-        <div className="bg-white w-full h-full rounded-md py-4 px-10 shadow">
+      <div className="overflow-y-auto h-full ">
+        <div className="bg-white w-full h-full rounded-md py-4 px-10 shadow overflow-scroll">
           {
-            medicalRecord && <Text className="absolute top-21 right-20  text-gray-400">
+            medicalRecord && <div className="text-right">
+              <Text className=" text-gray-400">
               Medical record ID: {medicalRecord._id.toUpperCase()}
             </Text>
+            </div>
           }
           {
             medicalRecord && <div>

@@ -3,6 +3,7 @@ import Chip from "../common/Chip";
 import Button from "../common/Button";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
+import { formatMoney } from "../../utils/formatMoney";
 
 function AppointmentRow({
   therapist,
@@ -23,7 +24,7 @@ function AppointmentRow({
           hour12: false,
         })}
       </td>
-      <td>{amount}</td>
+      <td>{formatMoney(amount)}</td>
       <td>
         <Chip
           color={

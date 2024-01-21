@@ -52,8 +52,8 @@ const TherapistMedicalRecord = () => {
     <ContentLayout title="Medical Record" className="fixed">
       {/* <RedirectButton /> */}
       {isMessageVisible && <Alert message={message} type={notiType} />}
-      <div className="overflow-y-auto h-full">
-        <div className="bg-white w-full rounded-md py-4 px-10 shadow">
+      <div className="overflow-y-auto h-full ">
+        <div className="bg-white w-full rounded-md py-4 px-10 shadow ">
           <form className="flex-col flex gap-1 py-5 px-10">
             <Text
               children="Appointment Record #1"
