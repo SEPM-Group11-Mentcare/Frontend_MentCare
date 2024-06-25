@@ -106,6 +106,8 @@ $ npm install
 # Start with npm
 $ npm start
 
+```
+
 ## Test accounts
 
 1. Patient:
